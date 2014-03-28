@@ -22,8 +22,13 @@ class DefaultController extends Controller
 
    	public function ajouterAction()
   	{
+      
+      //Accéder à la base :
+      
+      $em=$this->getDoctrine()->getManager()->getRepository('ExoBundle:Exercice');
+
   		  // On crée un objet Article
-		  $feuilleExerrcices = new Exercice();
+		  $Exercice = new Exercice();
 
 		  // On crée le FormBuilder grâce à la méthode du contrôleur
 
@@ -39,6 +44,10 @@ class DefaultController extends Controller
 		  // À partir du formBuilder, on génère le formulaire
 		 // $form = $form->getForm();
 
+
+        //stocker l'exercice dans la base:
+        $em->persist($Exercice);
+        $em->flush();
 		  // On passe la méthode createView() du formulaire à la vue afin qu'elle puisse afficher le formulaire toute seule
 		  return $this->render('MoocExoBundle:Exo:ajouter.html.twig', array(
 		    'form' => $form->createView(),
