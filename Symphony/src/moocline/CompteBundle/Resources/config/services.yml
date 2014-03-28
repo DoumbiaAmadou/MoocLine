@@ -1,0 +1,7 @@
+parameters:
+#    moocline_compte.example.class: moocline\CompteBundle\Example
+
+services:
+#    moocline_compte.example:
+#        class: %moocline_compte.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
