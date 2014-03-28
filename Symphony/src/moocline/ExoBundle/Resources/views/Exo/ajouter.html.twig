@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   
+	<link rel="stylesheet" href="style.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inscription Mooc'Line</title>
+
+    <!-- Bootstrap -->
+   
+   {% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}"/>
+	<link rel="stylesheet" type="text/css"  href="{{asset('css/fstyle.css')}}" />
+	
+	{% endblock %}
+
+    <link rel="stylesheet" type="text/css" href="css/fstyle.css">
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.js"></script>
+    <script type="text/javascript" src="./lib/jquery.validate/dist/jquery.validate.js"></script>
+    <script type="text/javascript" src="./lib/jquery.validate/dist/additional-methods.js"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
+    <script type="text/javascript" src="./js/js.js"></script>
+
+    <noscript>
+        Le formulaire a besoin de JavaScript activÃ© pour Ãªtre rempli !!
+        <style>form { display:none; }</style>
+    </noscript>
+
+  </head>
+ <body>
+
+  
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        
+          <a class="navbar-brand" href="#">
+            <img src="img/livre.jpg" alt="Home" href="#" style="heigh:20px ; width : 40px">
+              'Line</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><span>         </span></li>
+            <li class="active"><a href="index.php">Accueil</a></li>
+            <li><a href="#about">Cours</a></li>
+            <li><a href="contact.php">Institutions</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">SpÃ©cialitÃ© <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                 <li class="divider"></li>
+                <li class="dropdown-header">Science</li>
+                <li><a href="#">MathÃ©matique</a></li>
+                <li><a href="#">Physique</a></li>
+                <li><a href="#">Chimie</a></li>
+                <li><a href="#">Informatique</a></li>
+                <li><a href="#">Science et vie de la Terre</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Langue</li>
+                <li><a href="#">Anglais</a></li>
+                <li><a href="#">FranÃ§ais</a></li>
+                <li><a href="#">Espagnol</a></li>
+                <li><a href="#">Chinois</a></li>
+                <li><a href="#">Arabe</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Economie</li>
+                <li><a href="#">Marketing</a></li>
+                <li><a href="#">Communication</a></li>
+                 <li><a href="#">Management</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+          <li>
+         	<form class="navbar-form navbar-left" role="search">
+        		<div class="form-group">
+        		  <input type="text" class="form-control" placeholder="Search">
+        		</div>
+    		   <!-- <button type="submit" class="btn btn-default">Submit</button  -->
+		      </form>
+  		 </li>
+            <li><a><span style=â€‹"margin:â€‹3px -5px 0px 2px;â€‹â€‹">â€‹|â€‹</span></a></li>
+            <li><a href="login.php">Se connecter</a></li>
+             <li>
+              <a href="#">S'inscrire</a>
+            </li>
+          </ul>
+
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+ 
+<!--    carousels 
+	
+	    <div class=â€‹"region-banner"    style=" margin-bottom:100px ">
+	    
+	    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	  <!-- Indicators 
+	  <ol class="carousel-indicators">
+	    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+	    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+	    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	  </ol>
+	  -->
+	  <!-- Wrapper for slides 
+	  <div class="carousel-inner" style=" margin-left : 300px ">
+	    <div class="item active">
+	      <img src="img/architecture.jpg" alt="base de donnÃ©es ">
+	      <div class="carousel-caption">
+	       sture de donnÃ©es 
+	      </div>
+	    </div>
+	    <div class="item ">
+	      <img src="img/bda.jpg" alt="base de donnÃ©es ">
+	      <div class="carousel-caption">
+	       sture de donnÃ©es 
+	      </div>
+	    </div>
+		 <div class="item">
+	      <img src="img/bda.jpg" alt="base de donnÃ©es ">
+	      <div class="carousel-caption">
+	       sture de donnÃ©es 
+	      </div>
+	    </div>
+	  </div> -->
+	  <!-- Controls 
+	  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"  style= " color : black ">
+	    <span class="glyphicon glyphicon-chevron-left"  </span>
+	  </a>
+	  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"  style= " color : black ">
+	    <span class="glyphicon glyphicon-chevron-right" </span>
+	  </a>
+	</div>
+    </div> -->
+        
+    
+  
+      
+    <!-- ---------------------------------------- debut du formulaire --------------------------------------------------------- -->
+
+		<h3> Formulaire de Creation d'exercice</h3>
+		
+		<div class="well">
+		  <form method="post" {{ form_enctype(form) }}>
+		    {{ form_widget(form) }}
+		    <input type="submit" class="btn btn-primary" />
+		  </form>
+		 
+
+
+	</div>
+    <!-- ----------------------------------------- fin du formulaire ---------------------------------------------------------- -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+  
+
+</body>
+<footer>
+
+ <script type="text/javascript" src="./js/jquery.js"></script>
+{# On charge la bibliothèque jQuery. Ici, je la prends depuis le site jquery.com,
+   mais si vous l'avez en local, changez simplement l'adresse. #}
+<script src="{{asset('js/jquery.js')}}"></script>
+
+{# Voici le script en question : #}
+<script type="text/javascript">
+$(document).ready(function() {
+  // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
+  var $container = $('div#mooc_exobundle_exercice_QCM');
+   var $container1 = $('div#mooc_exobundle_exercice_QCM_0_BadReponse');
+    var $container2 = $('div#mooc_exobundle_exercice_QCM_0_BadReponse');
+
+  // On ajoute un lien pour ajouter une nouvelle 
+  var $lienAjout = $('<a href="#" id="ajout_categorie" class="btn"> ajout de QCM</a>');
+  $container.append($lienAjout);
+  $container1.append($lienAjout);
+  $container2.append($lienAjout);
+
+  // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
+  $lienAjout.click(function(e) {
+    ajouterCategorie($container , 0);
+    ajouterCategorie($container1,1);
+    ajouterCategorie($container2, 2 );
+    e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+    return false;
+  });
+
+  // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
+  var index = $container.find(':input').length;
+
+  // On ajoute un premier champ directement s'il n'en existe pas déjà un (cas d'un nouvel article par exemple).
+  if (index == 0) {
+    ajouterCategorie($container ,0);
+    ajouterCategorie($container1 ,1);
+    ajouterCategorie($container2 ,2);
+  } else {
+    // Pour chaque catégorie déjà existante, on ajoute un lien de suppression
+    $container.children('div').each(function() {
+      ajouterLienSuppression($(this));
+    });
+  }
+
+  // La fonction qui ajoute un formulaire Categorie
+  function ajouterCategorie($container , $i ) {
+  var  partie =" " ; 
+  if($i == 0 )  partie = 'QCM n°' ; 
+  else if($i == 1) partie = ' Bonne Reponse ';
+  else partie = partie = 'Mauvaise reponse'  ;
+  
+    // Dans le contenu de l'attribut « data-prototype », on remplace :
+    // - le texte "__name__label__" qu'il contient par le label du champ
+    // - le texte "__name__" qu'il contient par le numéro du champ
+    var $prototype = $($container.attr('data-prototype').replace(/__name__label__/g, partie+ (index+1))
+                                                        .replace(/__name__/g, index) 
+                    );
+ 	
+ 	
+    // On ajoute au prototype un lien pour pouvoir supprimer la catégorie
+    ajouterLienSuppression($prototype);
+
+    // On ajoute le prototype modifié à la fin de la balise <div>
+    $container.append($prototype);
+
+    // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
+    index++;
+  }
+
+  // La fonction qui ajoute un lien de suppression d'une catégorie
+  function ajouterLienSuppression($prototype) {
+    // Création du lien
+    $lienSuppression = $('<a href="#" class="btn btn-danger">Supprimer</a>');
+
+    // Ajout du lien
+    $prototype.append($lienSuppression);
+
+    // Ajout du listener sur le clic du lien
+    $lienSuppression.click(function(e) {
+      $prototype.remove();
+      e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+      return false;
+    });
+  }
+});
+</script>
+<footer>
+</html>

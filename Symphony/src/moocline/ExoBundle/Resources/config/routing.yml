@@ -1,0 +1,10 @@
+mooc_exo_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: MoocExoBundle:Default:index }
+
+mooc_exo_cree:
+    pattern:  /cree/Exo
+    defaults: { _controller: MoocExoBundle:Default:creeExo }
+mooc_exo_cree:
+    pattern:  /ajouter/
+    defaults: { _controller: MoocExoBundle:Default:ajouter }
