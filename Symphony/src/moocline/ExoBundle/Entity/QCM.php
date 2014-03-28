@@ -3,76 +3,120 @@
 namespace moocline\ExoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Mooc\ExoBundle\Form\ExerciceType;
+
 /**
  * QCM
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="moocline\ExoBundle\Entity\QCMRepository")
  */
 class QCM
 {
     /**
      * @var integer
-     *  /**
-     * @ORM\ManyToOne(targetEntity="Sdz\BlogBundle\Entity\Article")
-     * @ORM\JoinColumn(nullable=false)
+     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    private $question; 
-    private $GoodReponse ; 
-    private $BadReponse;
 
-    
+     /**
+    * @ORM\OneToMany(targetEntity="moocline\ExoBundle\Entity\Question",mappedBy="QCM")
+    cascade={"persist"})
+    */
+    private $questions;
+
+     /**
+    * @ORM\OneToMany(targetEntity="moocline\ExoBundle\Entity\Reponse",mappedBy="QCM")
+    cascade={"persist"})
+    */
+    private $reponses;
 
 
-    public function __construct (){
-
-         
-    
-    }
-    
     /**
      * Get id
      *
      * @return integer 
      */
-    
     public function getId()
     {
         return $this->id;
     }
-      public function getquestion()
-    {
-        return $this->question;
-    }
-      public function setquestion($question)
-    {
-        return $this->question = $question;
-    }
-    
-         public function getBadReponse()
-    {
-        return $this->BadReponse;
-    }
-      public function setBadReponse($BadReponse)
-    {
-        return $this->BadReponse =$BadReponse;
-    }
-     
 
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->reponses = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
-    public function getGoodReponse()
+    /**
+     * Add questions
+     *
+     * @param \moocline\ExoBundle\Entity\Question $questions
+     * @return QCM
+     */
+    public function addQuestion(\moocline\ExoBundle\Entity\Question $questions)
     {
-        return $this->GoodReponse;
+        $this->questions[] = $questions;
+
+        return $this;
     }
-      public function setGoodReponse($GoodReponse)
+
+    /**
+     * Remove questions
+     *
+     * @param \moocline\ExoBundle\Entity\Question $questions
+     */
+    public function removeQuestion(\moocline\ExoBundle\Entity\Question $questions)
     {
-        return $this->GoodReponse = $GoodReponse;
+        $this->questions->removeElement($questions);
     }
-          
+
+    /**
+     * Get questions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+
+    /**
+     * Add reponses
+     *
+     * @param \moocline\ExoBundle\Entity\Reponse $reponses
+     * @return QCM
+     */
+    public function addReponse(\moocline\ExoBundle\Entity\Reponse $reponses)
+    {
+        $this->reponses[] = $reponses;
+
+        return $this;
+    }
+
+    /**
+     * Remove reponses
+     *
+     * @param \moocline\ExoBundle\Entity\Reponse $reponses
+     */
+    public function removeReponse(\moocline\ExoBundle\Entity\Reponse $reponses)
+    {
+        $this->reponses->removeElement($reponses);
+    }
+
+    /**
+     * Get reponses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReponses()
+    {
+        return $this->reponses;
+    }
 }

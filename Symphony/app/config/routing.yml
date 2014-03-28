@@ -10,3 +10,6 @@ moocline_compte:
     resource: "@mooclineCompteBundle/Resources/config/routing.yml"
     prefix:   /compte
 
+moocline_exercice:
+    resource: "@mooclineExoBundle/Resources/config/routing.yml"
+    prefix:   /exercice

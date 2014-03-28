@@ -8,14 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
  * Reponse
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Mooc\ExoBundle\Entity\ReponseRepository")
+ * @ORM\Entity(repositoryClass="moocline\ExoBundle\Entity\ReponseRepository")
  */
-
 class Reponse
 {
-
     /**
-     ***@varinteger
+     * @var integer
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -26,17 +24,22 @@ class Reponse
     /**
      * @var boolean
      *
-     * @ORM\Column(name="answer", type="boolean")
+     * @ORM\Column(name="correct", type="boolean")
      */
-    private $answer;
+    private $correct;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="text", type="text")
+     * @ORM\Column(name="reponse", type="text")
      */
-   
+    private $reponse;
 
+     /**
+    * @ORM\OneToOne(targetEntity="moocline\ExoBundle\Entity\Question",
+    cascade={"persist"})
+    */
+    private $question;
 
     /**
      * Get id
@@ -49,26 +52,71 @@ class Reponse
     }
 
     /**
-     * Set answer
+     * Set correct
      *
-     * @param boolean $answer
+     * @param boolean $correct
      * @return Reponse
      */
-    public function setanswer($answer)
+    public function setCorrect($correct)
     {
-        $this->answer = $answer;
+        $this->correct = $correct;
 
-        return $this->answer;
+        return $this;
     }
 
     /**
-     * Get answer
+     * Get correct
      *
      * @return boolean 
      */
-    public function getanswer()
+    public function getCorrect()
     {
-        return $this->answer;
+        return $this->correct;
     }
 
+    /**
+     * Set reponse
+     *
+     * @param string $reponse
+     * @return Reponse
+     */
+    public function setReponse($reponse)
+    {
+        $this->reponse = $reponse;
+
+        return $this;
+    }
+
+    /**
+     * Get reponse
+     *
+     * @return string 
+     */
+    public function getReponse()
+    {
+        return $this->reponse;
+    }
+
+    /**
+     * Set question
+     *
+     * @param \moocline\ExoBundle\Entity\Question $question
+     * @return Reponse
+     */
+    public function setQuestion(\moocline\ExoBundle\Entity\Question $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \moocline\ExoBundle\Entity\Question 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
 }

@@ -19,6 +19,7 @@
       <parameter key="mooclineCompteBundle">moocline\CompteBundle\mooclineCompteBundle</parameter>
       <parameter key="mooclineCoursBundle">moocline\CoursBundle\mooclineCoursBundle</parameter>
       <parameter key="mooclineForumBundle">moocline\ForumBundle\mooclineForumBundle</parameter>
+      <parameter key="mooclineExoBundle">moocline\ExoBundle\mooclineExoBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -2312,6 +2313,7 @@
             <argument type="collection">
               <argument key="mooclineCompteBundle">moocline\CompteBundle\Entity</argument>
               <argument key="mooclineCoursBundle">moocline\CoursBundle\Entity</argument>
+              <argument key="mooclineExoBundle">moocline\ExoBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2351,6 +2353,7 @@
                       <argument type="collection">
                         <argument>C:\Users\ahmed\Desktop\projet_genie_logiciel\Symphony\src\moocline\CompteBundle\Entity</argument>
                         <argument>C:\Users\ahmed\Desktop\projet_genie_logiciel\Symphony\src\moocline\CoursBundle\Entity</argument>
+                        <argument>C:\Users\ahmed\Desktop\projet_genie_logiciel\Symphony\src\moocline\ExoBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2363,10 +2366,24 @@
                       <argument type="collection">
                         <argument>C:\Users\ahmed\Desktop\projet_genie_logiciel\Symphony\src\moocline\CompteBundle\Entity</argument>
                         <argument>C:\Users\ahmed\Desktop\projet_genie_logiciel\Symphony\src\moocline\CoursBundle\Entity</argument>
+                        <argument>C:\Users\ahmed\Desktop\projet_genie_logiciel\Symphony\src\moocline\ExoBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
                   <argument>moocline\CoursBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\Users\ahmed\Desktop\projet_genie_logiciel\Symphony\src\moocline\CompteBundle\Entity</argument>
+                        <argument>C:\Users\ahmed\Desktop\projet_genie_logiciel\Symphony\src\moocline\CoursBundle\Entity</argument>
+                        <argument>C:\Users\ahmed\Desktop\projet_genie_logiciel\Symphony\src\moocline\ExoBundle\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>moocline\ExoBundle\Entity</argument>
                 </call>
               </service>
             </argument>
@@ -2755,6 +2772,10 @@
       <call method="addPath">
         <argument>C:\Users\ahmed\Desktop\projet_genie_logiciel\Symphony\src\moocline\ForumBundle/Resources/views</argument>
         <argument>mooclineForum</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\ahmed\Desktop\projet_genie_logiciel\Symphony\src\moocline\ExoBundle/Resources/views</argument>
+        <argument>mooclineExo</argument>
       </call>
       <call method="addPath">
         <argument>C:\Users\ahmed\Desktop\projet_genie_logiciel\Symphony\src\Acme\DemoBundle/Resources/views</argument>

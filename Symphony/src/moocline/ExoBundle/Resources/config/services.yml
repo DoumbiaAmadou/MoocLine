@@ -1,5 +1,5 @@
 parameters:
-#    mooc_exo.example.class: Mooc\ExoBundle\Example
+#    mooc_exo.example.class: moocline\ExoBundle\Example
 
 services:
 #    mooc_exo.example:

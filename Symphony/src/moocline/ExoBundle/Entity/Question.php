@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Question
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Mooc\ExoBundle\Entity\QuestionRepository")
+ * @ORM\Entity(repositoryClass="moocline\ExoBundle\Entity\QuestionRepository")
  */
 class Question
 {
@@ -45,7 +45,7 @@ class Question
      * @param string $question
      * @return Question
      */
-    public function setquestion($question)
+    public function setQuestion($question)
     {
         $this->question = $question;
 
@@ -57,7 +57,7 @@ class Question
      *
      * @return string 
      */
-    public function getquestion()
+    public function getQuestion()
     {
         return $this->question;
     }

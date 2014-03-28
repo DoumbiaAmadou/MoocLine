@@ -614,14 +614,15 @@ class appDevDebugProjectContainer extends Container
         $d = new \Doctrine\Common\Cache\ArrayCache();
         $d->setNamespace('sf2orm_default_752233306f406703b3a720e1a9e1d7c42d3ecf53e4b412a55d0ccc3187d60414');
 
-        $e = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => 'C:\\Users\\ahmed\\Desktop\\projet_genie_logiciel\\Symphony\\src\\moocline\\CompteBundle\\Entity', 1 => 'C:\\Users\\ahmed\\Desktop\\projet_genie_logiciel\\Symphony\\src\\moocline\\CoursBundle\\Entity'));
+        $e = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => 'C:\\Users\\ahmed\\Desktop\\projet_genie_logiciel\\Symphony\\src\\moocline\\CompteBundle\\Entity', 1 => 'C:\\Users\\ahmed\\Desktop\\projet_genie_logiciel\\Symphony\\src\\moocline\\CoursBundle\\Entity', 2 => 'C:\\Users\\ahmed\\Desktop\\projet_genie_logiciel\\Symphony\\src\\moocline\\ExoBundle\\Entity'));
 
         $f = new \Doctrine\ORM\Mapping\Driver\DriverChain();
         $f->addDriver($e, 'moocline\\CompteBundle\\Entity');
         $f->addDriver($e, 'moocline\\CoursBundle\\Entity');
+        $f->addDriver($e, 'moocline\\ExoBundle\\Entity');
 
         $g = new \Doctrine\ORM\Configuration();
-        $g->setEntityNamespaces(array('mooclineCompteBundle' => 'moocline\\CompteBundle\\Entity', 'mooclineCoursBundle' => 'moocline\\CoursBundle\\Entity'));
+        $g->setEntityNamespaces(array('mooclineCompteBundle' => 'moocline\\CompteBundle\\Entity', 'mooclineCoursBundle' => 'moocline\\CoursBundle\\Entity', 'mooclineExoBundle' => 'moocline\\ExoBundle\\Entity'));
         $g->setMetadataCacheImpl($b);
         $g->setQueryCacheImpl($c);
         $g->setResultCacheImpl($d);
@@ -2956,6 +2957,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath('C:\\Users\\ahmed\\Desktop\\projet_genie_logiciel\\Symphony\\src\\moocline\\CompteBundle/Resources/views', 'mooclineCompte');
         $instance->addPath('C:\\Users\\ahmed\\Desktop\\projet_genie_logiciel\\Symphony\\src\\moocline\\CoursBundle/Resources/views', 'mooclineCours');
         $instance->addPath('C:\\Users\\ahmed\\Desktop\\projet_genie_logiciel\\Symphony\\src\\moocline\\ForumBundle/Resources/views', 'mooclineForum');
+        $instance->addPath('C:\\Users\\ahmed\\Desktop\\projet_genie_logiciel\\Symphony\\src\\moocline\\ExoBundle/Resources/views', 'mooclineExo');
         $instance->addPath('C:\\Users\\ahmed\\Desktop\\projet_genie_logiciel\\Symphony\\src\\Acme\\DemoBundle/Resources/views', 'AcmeDemo');
         $instance->addPath('C:\\Users\\ahmed\\Desktop\\projet_genie_logiciel\\Symphony\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views', 'WebProfiler');
         $instance->addPath('C:\\Users\\ahmed\\Desktop\\projet_genie_logiciel\\Symphony\\vendor\\sensio\\distribution-bundle\\Sensio\\Bundle\\DistributionBundle/Resources/views', 'SensioDistribution');
@@ -3443,6 +3445,7 @@ class appDevDebugProjectContainer extends Container
                 'mooclineCompteBundle' => 'moocline\\CompteBundle\\mooclineCompteBundle',
                 'mooclineCoursBundle' => 'moocline\\CoursBundle\\mooclineCoursBundle',
                 'mooclineForumBundle' => 'moocline\\ForumBundle\\mooclineForumBundle',
+                'mooclineExoBundle' => 'moocline\\ExoBundle\\mooclineExoBundle',
                 'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
