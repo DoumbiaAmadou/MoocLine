@@ -43,11 +43,26 @@ class User
     private $prenom;
 
     /**
+     * @var date
+     *
+     * @ORM\Column(name="date_naissance", type="date")
+     */
+    private $date_naissance;    
+
+    /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
+
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="niveau", type="string", length=255)
+     */
+    private $niveau;
 
     /**
      * @var string
@@ -55,6 +70,13 @@ class User
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="confirm_password", type="string", length=255)
+     */
+    private $confirm_password;
 
     /**
     * @var string $image
@@ -167,6 +189,52 @@ class User
     }
 
     /**
+     * Set Date_naissance
+     *
+     * @param date $date_naissance
+     * @return User
+     */
+    public function setDateNaissance($date_naissance)
+    {
+        $this->date_naissance = $date_naissance;
+
+        return $this;
+    }
+
+    /**
+     * Get date_naissance
+     *
+     * @return date 
+     */
+    public function getDateNaissance()
+    {
+        return $this->date_naissance;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param string $niveau
+     * @return User
+     */
+    public function setNiveau($niveau)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return string 
+     */
+    public function getniveau()
+    {
+        return $this->niveau;
+    }
+
+    /**
      * Set password
      *
      * @param string $password
@@ -188,6 +256,30 @@ class User
     {
         return $this->password;
     }
+
+    /**
+     * Set confirm_password
+     *
+     * @param string $confirm_password
+     * @return User
+     */
+    public function setConfirmPassword($confirm_password)
+    {
+        $this->confirm_password = $confirm_password;
+
+        return $this;
+    }
+
+    /**
+     * Get confirm_password
+     *
+     * @return string 
+     */
+    public function getConfirmPassword()
+    {
+        return $this->confirm_password;
+    }
+
 
     /**
      * Set image

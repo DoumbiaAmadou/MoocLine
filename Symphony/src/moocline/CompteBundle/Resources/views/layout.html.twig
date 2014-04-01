@@ -1,0 +1,18 @@
+{# src/moocline/CompteBundle/Resources/views/layout.html.twig #}
+
+	{% extends "::layout.html.twig" %}
+
+	{% block title %}
+  		{{ parent() }}
+	{% endblock %}
+
+	{% block body %}
+
+  		<h1>Gestion des Comptes</h1>
+  		<hr>
+
+  		{% block compte_body %}
+  
+  		{% endblock %}
+
+	{% endblock %}
