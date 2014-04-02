@@ -1,0 +1,15 @@
+moocline_forum:
+    resource: "@mooclineForumBundle/Resources/config/routing.yml"
+    prefix:   /forum
+
+moocline_cours:
+    resource: "@mooclineCoursBundle/Resources/config/routing.yml"
+    prefix:   /cours
+
+moocline_compte:
+    resource: "@mooclineCompteBundle/Resources/config/routing.yml"
+    prefix:   /compte
+
+moocline_exercice:
+    resource: "@mooclineExoBundle/Resources/config/routing.yml"
+    prefix:   /exercice
