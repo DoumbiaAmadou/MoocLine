@@ -14,3 +14,7 @@ inscription_Enseignant:
 inscription_Etudiant:
     path:  /inscription-etudiant
     defaults: { _controller: mooclineCompteBundle:Register:inscrEtudiant }
+
+moocline_compteTableauDeBord:
+    pattern: /tableau_de_bord
+    defaults: { _controller: mooclineCompteBundle:TableauDeBord:index }

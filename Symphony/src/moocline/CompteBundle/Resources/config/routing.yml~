@@ -9,4 +9,8 @@ home:
 
 inscription_Enseignant:
     path:  /inscription-enseignant
-    defaults: { _controller: GLPRegisterBundle:Register:inscriptionEnseignant }
+    defaults: { _controller: mooclineCompteBundle:Register:inscriptionEnseignant }
+
+inscription_Etudiant:
+    path:  /inscription-etudiant
+    defaults: { _controller: mooclineCompteBundle:Register:inscrEtudiant }
