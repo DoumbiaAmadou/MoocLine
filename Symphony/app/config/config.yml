@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -62,10 +62,7 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport:  smtp
-    encryption: ssl
-    auth_mode:  login
-    host:       smtp.gmail.com
+    transport:  gmail
     username:   moocline.noreply@gmail.com
     password:   Mooc2014Line
 #swiftmailer:
@@ -75,4 +72,15 @@ swiftmailer:
 #   password:  "%mailer_password%"
 #   spool:     { type: memory }
 
-
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: moocline\CompteBundle\Entity\User
+    registration:
+        confirmation:
+            enabled:    true
+        form:
+            type: moocline_user_registration
+    from_email:
+        address:        moocline.noreply@gmail.com
+        sender_name:    Moocline App

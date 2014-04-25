@@ -3,6 +3,7 @@
 namespace moocline\CompteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * User
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="moocline\CompteBundle\Entity\UserRepository")
  */
-class User
+class User extends BaseUser
 {
     /**
      * @var integer
@@ -19,72 +20,46 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="pseudo", type="string", length=50)
-     */
-    private $pseudo;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=50)
      */
-    private $nom;
+    protected $nom;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=50)
      */
-    private $prenom;
+    protected $prenom;
 
     /**
      * @var date
      *
      * @ORM\Column(name="date_naissance", type="date")
      */
-    private $date_naissance;    
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255)
-     */
-    private $email;
-
+    protected $date_naissance;    
     
     /**
      * @var string
      *
      * @ORM\Column(name="niveau", type="string", length=255)
      */
-    private $niveau;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255)
-     */
-    private $password;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="confirm_password", type="string", length=255)
-     */
-    private $confirm_password;
+    protected $niveau;
 
     /**
     * @var string $image
     **
     @ORM\Column(name="image", type="string", length=255, nullable=true)
     */
-    private $image;
+    protected $image;
 
+   /*function __construct() {
+
+    }*/
 
     /**
      * Get id
@@ -94,29 +69,6 @@ class User
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set pseudo
-     *
-     * @param string $pseudo
-     * @return User
-     */
-    public function setPseudo($pseudo)
-    {
-        $this->pseudo = $pseudo;
-
-        return $this;
-    }
-
-    /**
-     * Get pseudo
-     *
-     * @return string 
-     */
-    public function getPseudo()
-    {
-        return $this->pseudo;
     }
 
     /**
@@ -166,29 +118,6 @@ class User
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
      * Set Date_naissance
      *
      * @param date $date_naissance
@@ -233,53 +162,6 @@ class User
     {
         return $this->niveau;
     }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set confirm_password
-     *
-     * @param string $confirm_password
-     * @return User
-     */
-    public function setConfirmPassword($confirm_password)
-    {
-        $this->confirm_password = $confirm_password;
-
-        return $this;
-    }
-
-    /**
-     * Get confirm_password
-     *
-     * @return string 
-     */
-    public function getConfirmPassword()
-    {
-        return $this->confirm_password;
-    }
-
 
     /**
      * Set image
