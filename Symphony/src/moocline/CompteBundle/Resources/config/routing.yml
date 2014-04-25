@@ -1,11 +1,6 @@
-moocline_compte_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: mooclineCompteBundle:Default:index }
-
 home:
     path:  /
     defaults: { _controller: mooclineCompteBundle:Register:index }
-
 
 inscription_Enseignant:
     path:  /inscription-enseignant

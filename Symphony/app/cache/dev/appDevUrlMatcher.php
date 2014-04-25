@@ -140,40 +140,29 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_forum_homepage')), array (  '_controller' => 'moocline\\ForumBundle\\Controller\\DefaultController::indexAction',));
         }
 
-        if (0 === strpos($pathinfo, '/co')) {
-            // moocline_cours_homepage
-            if (0 === strpos($pathinfo, '/cours/hello') && preg_match('#^/cours/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_cours_homepage')), array (  '_controller' => 'moocline\\CoursBundle\\Controller\\DefaultController::indexAction',));
+        // moocline_cours_homepage
+        if (0 === strpos($pathinfo, '/cours/hello') && preg_match('#^/cours/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_cours_homepage')), array (  '_controller' => 'moocline\\CoursBundle\\Controller\\DefaultController::indexAction',));
+        }
+
+        // home
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'home');
             }
 
-            if (0 === strpos($pathinfo, '/compte')) {
-                // moocline_compte_homepage
-                if (0 === strpos($pathinfo, '/compte/hello') && preg_match('#^/compte/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_compte_homepage')), array (  '_controller' => 'moocline\\CompteBundle\\Controller\\DefaultController::indexAction',));
-                }
+            return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegisterController::indexAction',  '_route' => 'home',);
+        }
 
-                // home
-                if (rtrim($pathinfo, '/') === '/compte') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'home');
-                    }
+        if (0 === strpos($pathinfo, '/inscription-e')) {
+            // inscription_Enseignant
+            if ($pathinfo === '/inscription-enseignant') {
+                return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegisterController::inscriptionEnseignantAction',  '_route' => 'inscription_Enseignant',);
+            }
 
-                    return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegisterController::indexAction',  '_route' => 'home',);
-                }
-
-                if (0 === strpos($pathinfo, '/compte/inscription-e')) {
-                    // inscription_Enseignant
-                    if ($pathinfo === '/compte/inscription-enseignant') {
-                        return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegisterController::inscriptionEnseignantAction',  '_route' => 'inscription_Enseignant',);
-                    }
-
-                    // inscription_Etudiant
-                    if ($pathinfo === '/compte/inscription-etudiant') {
-                        return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegisterController::inscrEtudiantAction',  '_route' => 'inscription_Etudiant',);
-                    }
-
-                }
-
+            // inscription_Etudiant
+            if ($pathinfo === '/inscription-etudiant') {
+                return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegisterController::inscrEtudiantAction',  '_route' => 'inscription_Etudiant',);
             }
 
         }

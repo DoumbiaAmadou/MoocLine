@@ -10,8 +10,6 @@ class __TwigTemplate_efeacc919d4c5251f7af53bf33cc9556cc1df93f423e6c5c162b990a398
         $this->parent = false;
 
         $this->blocks = array(
-            'stylesheets' => array($this, 'block_stylesheets'),
-            'javascripts' => array($this, 'block_javascripts'),
             'body' => array($this, 'block_body'),
         );
     }
@@ -28,28 +26,24 @@ class __TwigTemplate_efeacc919d4c5251f7af53bf33cc9556cc1df93f423e6c5c162b990a398
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
     <title>Mooc'Line</title>
 
-    <!-- Bootstrap -->
-    <!-- 
-    <link  href=\"";
+    <!-- Css, Javascript, Bootstrap && JQuery -->
+    <link rel=\"stylesheet\" href=\"";
+        // line 11
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/bootstrap3/css/bootstrap.min.css"), "html", null, true);
+        echo "\" type=\"text/css\" />
+    <link rel=\"stylesheet\" href=\"";
         // line 12
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/bootstrap.min.css"), "html", null, true);
-        echo "\" rel=\"stylesheet\">
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/fstyle.css"), "html", null, true);
+        echo "\" type=\"text/css\" />
     <script src=\"";
         // line 13
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/bootstrap3/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
-    -->
-
-    ";
-        // line 16
-        $this->displayBlock('stylesheets', $context, $blocks);
-        // line 20
-        echo "
-    ";
-        // line 21
-        $this->displayBlock('javascripts', $context, $blocks);
-        // line 30
-        echo "    
+    <script src=\"";
+        // line 14
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.js"), "html", null, true);
+        echo "\"></script>
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -70,7 +64,7 @@ class __TwigTemplate_efeacc919d4c5251f7af53bf33cc9556cc1df93f423e6c5c162b990a398
           </button>
           <a class=\"navbar-brand\" href=\"#\">
             <img src=\"";
-        // line 50
+        // line 35
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/livre.jpg"), "html", null, true);
         echo "\" alt=\"Home\" href=\"#\" style=\"heigh:20px ; width : 40px\">'Line
           </a>
@@ -117,91 +111,52 @@ class __TwigTemplate_efeacc919d4c5251f7af53bf33cc9556cc1df93f423e6c5c162b990a398
           <ul class=\"nav navbar-nav navbar-right\">
             <li><a><span style=​\"margin:​3px -5px 0px 2px;​​\">​|​</span></a></li>
             ";
-        // line 94
+        // line 79
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 95
+            // line 80
             echo "            <li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("home");
             echo "\"> ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "username"), "html", null, true);
             echo " </a></li>
             <li><a href=\"";
-            // line 96
+            // line 81
             echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
             echo "\">Déconnexion</a></li>
             ";
         } else {
-            // line 98
+            // line 83
             echo "            <li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
             echo "\">Connexion</a></li>
             <li><a href=\"";
-            // line 99
-            echo $this->env->getExtension('routing')->getPath("inscription_Etudiant");
+            // line 84
+            echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
             echo "\">S'inscrire</a></li>
             ";
         }
-        // line 101
+        // line 86
         echo "          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
     ";
-        // line 106
+        // line 91
         $this->displayBlock('body', $context, $blocks);
-        // line 108
+        // line 93
         echo " 
     <footer>
       <center><p>Mooc'Line © 2014 and Team Moocline UPD-7.</p></center>
     </footer>
-
-  
   </body>
 </html>";
     }
 
-    // line 16
-    public function block_stylesheets($context, array $blocks = array())
-    {
-        // line 17
-        echo "    <link rel=\"stylesheet\" href=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/bootstrap3/css/bootstrap.min.css"), "html", null, true);
-        echo "\" type=\"text/css\" />
-    <link rel=\"stylesheet\" href=\"";
-        // line 18
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/fstyle.css"), "html", null, true);
-        echo "\" type=\"text/css\" />
-    ";
-    }
-
-    // line 21
-    public function block_javascripts($context, array $blocks = array())
-    {
-        // line 22
-        echo "    <script src=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/bootstrap3/js/bootstrap.min.js"), "html", null, true);
-        echo "\"></script>
-    <script src=\"";
-        // line 23
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.js"), "html", null, true);
-        echo "\"></script>
-    <!-- 
-    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js\"></script>
-    <script src=\"";
-        // line 26
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/bootstrap3/js/bootstrap.min.js"), "html", null, true);
-        echo "\" type=\"text/javascript\"></script>
-    ";
-        // line 28
-        echo "    -->
-    ";
-    }
-
-    // line 106
+    // line 91
     public function block_body($context, array $blocks = array())
     {
-        // line 107
+        // line 92
         echo "    ";
     }
 
@@ -217,6 +172,6 @@ class __TwigTemplate_efeacc919d4c5251f7af53bf33cc9556cc1df93f423e6c5c162b990a398
 
     public function getDebugInfo()
     {
-        return array (  205 => 107,  202 => 106,  197 => 28,  193 => 26,  187 => 23,  182 => 22,  179 => 21,  173 => 18,  168 => 17,  165 => 16,  154 => 108,  152 => 106,  145 => 101,  140 => 99,  135 => 98,  130 => 96,  123 => 95,  121 => 94,  74 => 50,  52 => 30,  50 => 21,  47 => 20,  45 => 16,  39 => 13,  35 => 12,  22 => 1,);
+        return array (  160 => 92,  157 => 91,  148 => 93,  146 => 91,  139 => 86,  134 => 84,  129 => 83,  124 => 81,  117 => 80,  115 => 79,  68 => 35,  44 => 14,  40 => 13,  36 => 12,  32 => 11,  20 => 1,);
     }
 }

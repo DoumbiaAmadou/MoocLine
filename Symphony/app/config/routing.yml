@@ -8,7 +8,7 @@ moocline_cours:
 
 moocline_compte:
     resource: "@mooclineCompteBundle/Resources/config/routing.yml"
-    prefix:   /compte
+    prefix:   /
 
 moocline_exercice:
     resource: "@mooclineExoBundle/Resources/config/routing.yml"
