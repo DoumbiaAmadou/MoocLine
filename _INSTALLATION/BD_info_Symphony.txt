@@ -7,7 +7,7 @@ création de la base :
 	database_driver: pdo_mysql
 	database_host: localhost
 	database_port: ~
-	database_name: nom_de_la_base
+	database_name: mooc
 	database_user: root
 	database_password: ~
 
@@ -52,7 +52,3 @@ $em->flush()
 pour delete:
 $em->remove($entity)
 $em->flush()
-  
- 
-
-

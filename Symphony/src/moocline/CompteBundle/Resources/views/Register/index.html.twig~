@@ -1,0 +1,15 @@
+{# src/moocline/CompteBundle/Resources/views/Register/index.html.twig #}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bienvenue sur ma première page avec le Site du Zéro !</title>
+  </head>
+  <body>
+    <h1>Hello {{ nom }}!</h1>
+
+    <p>
+      Bonjour {{ prenom }} {{ nom }}, voici votre pseudo : {{ pseudo }}
+    </p>
+  </body>
+</html>

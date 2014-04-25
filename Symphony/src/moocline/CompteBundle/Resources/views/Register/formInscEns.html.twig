@@ -1,0 +1,30 @@
+{# src/moocline/CompteBundle/Resources/views/layout.html.twig #}
+
+{% extends "mooclineCompteBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Inscription {% endblock %}
+
+{% block compte_body %}
+
+  <div class="container">
+    <div class="row centered-form">
+      <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        <div class="panel panel-default">
+              
+          <div class="panel-heading">
+            <h3 class="panel-title"><h3>Inscription <strong>MOOC</strong>'Line</h3>
+          </div>
+
+          <div class="panel-body">
+            <form method="post" {{ form_enctype(formb) }}>
+              {{ form_widget(formb) }}
+              <input type="submit" value="s'incrire" class="btn btn-info btn-block" />
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+  

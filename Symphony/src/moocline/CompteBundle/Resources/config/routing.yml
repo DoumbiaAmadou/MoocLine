@@ -1,3 +1,20 @@
 moocline_compte_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: mooclineCompteBundle:Default:index }
+
+home:
+    path:  /accueil
+    defaults: { _controller: mooclineCompteBundle:Register:index }
+
+
+inscription_Enseignant:
+    path:  /inscription-enseignant
+    defaults: { _controller: mooclineCompteBundle:Register:inscriptionEnseignant }
+
+inscription_Etudiant:
+    path:  /inscription-etudiant
+    defaults: { _controller: mooclineCompteBundle:Register:inscrEtudiant }
+
+moocline_compteTableauDeBord:
+    pattern: /tableau_de_bord
+    defaults: { _controller: mooclineCompteBundle:TableauDeBord:index }
