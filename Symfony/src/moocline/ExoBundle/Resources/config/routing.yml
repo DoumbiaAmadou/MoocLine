@@ -1,0 +1,19 @@
+moocline_exo_homepage:
+    pattern:  /exo/hello
+    defaults: { _controller: mooclineExoBundle:Default:index }
+
+moocline_exo_import:
+    path:  /exo/importxml
+    defaults: { _controller: mooclineExoBundle:ImpExp:import }
+
+moocline_exo_create:
+    path:  /exo/createExo
+    defaults: { _controller: mooclineExoBundle:CreateExo:index }
+
+moocline_exo_createQuestion:
+    path:  /exo/createExo/{type}
+    defaults: { _controller: mooclineExoBundle:CreateExo:CreateQuestion }
+
+moocline_exo_apercu:
+    path: /exo/createExo/{type}/apercu
+    defaults: { _controller: mooclineExoBundle:CreateExo:ApercuExercice }

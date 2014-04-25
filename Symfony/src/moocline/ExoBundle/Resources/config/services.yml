@@ -1,0 +1,7 @@
+parameters:
+#    moocline_exo.example.class: moocline\ExoBundle\Example
+
+services:
+#    moocline_exo.example:
+#        class: %moocline_exo.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
