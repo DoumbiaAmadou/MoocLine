@@ -167,24 +167,33 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/exercice')) {
-            // mooc_exo_homepage
-            if (rtrim($pathinfo, '/') === '/exercice') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'mooc_exo_homepage');
+        if (0 === strpos($pathinfo, '/exercice/exo')) {
+            // moocline_exo_homepage
+            if (preg_match('#^/exercice/exo/(?P<hello>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_exo_homepage')), array (  '_controller' => 'moocline\\ExoBundle\\Controller\\DefaultController::indexAction',));
+            }
+
+            // moocline_exo_import
+            if ($pathinfo === '/exercice/exo/importxml') {
+                return array (  '_controller' => 'moocline\\ExoBundle\\Controller\\ImpExpController::importAction',  '_route' => 'moocline_exo_import',);
+            }
+
+            if (0 === strpos($pathinfo, '/exercice/exo/createExo')) {
+                // moocline_exo_create
+                if ($pathinfo === '/exercice/exo/createExo') {
+                    return array (  '_controller' => 'moocline\\ExoBundle\\Controller\\CreateExoController::indexAction',  '_route' => 'moocline_exo_create',);
                 }
 
-                return array (  '_controller' => 'moocline\\ExoBundle\\Controller\\DefaultController::indexAction',  '_route' => 'mooc_exo_homepage',);
-            }
+                // moocline_exo_createQuestion
+                if (preg_match('#^/exercice/exo/createExo/(?P<type>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_exo_createQuestion')), array (  '_controller' => 'moocline\\ExoBundle\\Controller\\CreateExoController::CreateQuestionAction',));
+                }
 
-            // mooc_exo_cree
-            if ($pathinfo === '/exercice/cree') {
-                return array (  '_controller' => 'moocline\\ExoBundle\\Controller\\DefaultController::creeExoAction',  '_route' => 'mooc_exo_cree',);
-            }
+                // moocline_exo_apercu
+                if (preg_match('#^/exercice/exo/createExo/(?P<type>[^/]++)/apercu$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_exo_apercu')), array (  '_controller' => 'moocline\\ExoBundle\\Controller\\CreateExoController::ApercuExerciceAction',));
+                }
 
-            // mooc_exo_ajouter
-            if ($pathinfo === '/exercice/ajouter') {
-                return array (  '_controller' => 'moocline\\ExoBundle\\Controller\\DefaultController::ajouterAction',  '_route' => 'mooc_exo_ajouter',);
             }
 
         }

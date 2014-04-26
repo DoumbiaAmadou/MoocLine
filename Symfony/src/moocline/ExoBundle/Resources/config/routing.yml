@@ -1,5 +1,5 @@
 moocline_exo_homepage:
-    pattern:  /exo/hello
+    pattern:  /exo/{hello}
     defaults: { _controller: mooclineExoBundle:Default:index }
 
 moocline_exo_import:
