@@ -167,30 +167,25 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/exercice/exo')) {
-            // moocline_exo_homepage
-            if (preg_match('#^/exercice/exo/(?P<hello>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_exo_homepage')), array (  '_controller' => 'moocline\\ExoBundle\\Controller\\DefaultController::indexAction',));
-            }
-
+        if (0 === strpos($pathinfo, '/exo')) {
             // moocline_exo_import
-            if ($pathinfo === '/exercice/exo/importxml') {
+            if ($pathinfo === '/exo/importxml') {
                 return array (  '_controller' => 'moocline\\ExoBundle\\Controller\\ImpExpController::importAction',  '_route' => 'moocline_exo_import',);
             }
 
-            if (0 === strpos($pathinfo, '/exercice/exo/createExo')) {
+            if (0 === strpos($pathinfo, '/exo/createExo')) {
                 // moocline_exo_create
-                if ($pathinfo === '/exercice/exo/createExo') {
+                if ($pathinfo === '/exo/createExo') {
                     return array (  '_controller' => 'moocline\\ExoBundle\\Controller\\CreateExoController::indexAction',  '_route' => 'moocline_exo_create',);
                 }
 
                 // moocline_exo_createQuestion
-                if (preg_match('#^/exercice/exo/createExo/(?P<type>[^/]++)$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/exo/createExo/(?P<type>[^/]++)$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_exo_createQuestion')), array (  '_controller' => 'moocline\\ExoBundle\\Controller\\CreateExoController::CreateQuestionAction',));
                 }
 
                 // moocline_exo_apercu
-                if (preg_match('#^/exercice/exo/createExo/(?P<type>[^/]++)/apercu$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/exo/createExo/(?P<type>[^/]++)/apercu$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_exo_apercu')), array (  '_controller' => 'moocline\\ExoBundle\\Controller\\CreateExoController::ApercuExerciceAction',));
                 }
 

@@ -1,12 +1,4 @@
-13a9fa,127.0.0.1,GET,http://moocline.org/app_dev.php/exercice/exo/createExo,1398466539,d455ec
-d455ec,127.0.0.1,GET,http://moocline.org/app_dev.php/exercice/exo/createExo,1398466539,
-41c49f,127.0.0.1,GET,http://moocline.org/app_dev.php/exercice/exo/createExo/QCM,1398466604,
-917cfd,127.0.0.1,POST,http://moocline.org/app_dev.php/exercice/exo/createExo/QCM,1398466673,
-0fbb27,127.0.0.1,GET,http://moocline.org/app_dev.php/exercice/exo/createExo/QCM/apercu,1398466678,
-055eff,127.0.0.1,POST,http://moocline.org/app_dev.php/exercice/exo/createExo/QCM/apercu,1398466687,
-8a3da1,127.0.0.1,GET,http://moocline.org/app_dev.php/exercice/exo/createExo/QCM,1398466688,
-d73a55,127.0.0.1,GET,http://moocline.org/app_dev.php/exercice/exo/createExo/QCM/apercu,1398466698,
-269134,127.0.0.1,GET,http://moocline.org/app_dev.php/exercice/exo/createExo/QCM/apercu,1398466703,cc34b0
-cc34b0,127.0.0.1,POST,http://moocline.org/app_dev.php/exercice/exo/createExo/QCM/apercu,1398466703,
-858070,127.0.0.1,GET,http://moocline.org/app_dev.php/exercice/exo/createExo/QCM/apercu,1398466909,b35bc3
-b35bc3,127.0.0.1,POST,http://moocline.org/app_dev.php/exercice/exo/createExo/QCM/apercu,1398466909,
+4e722e,127.0.0.1,GET,http://moocline.org/app_dev.php/exo/createExo,1398510409,
+62caad,127.0.0.1,GET,http://moocline.org/app_dev.php/exo/createExo/QCM,1398510423,
+e52380,127.0.0.1,GET,http://moocline.org/app_dev.php/exo/createExo/QRF,1398510430,
+700242,127.0.0.1,GET,http://moocline.org/app_dev.php/exo/createExo/QL,1398510440,

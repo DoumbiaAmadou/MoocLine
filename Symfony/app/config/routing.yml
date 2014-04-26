@@ -12,7 +12,7 @@ moocline_compte:
 
 moocline_exercice:
     resource: "@mooclineExoBundle/Resources/config/routing.yml"
-    prefix:   /exercice
+    prefix:   /
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
