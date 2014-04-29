@@ -19,6 +19,7 @@ fos_user_security:
 
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    #resource: "@mooclineCompteBundle/Resources/config/routing/profile.xml"
     prefix: /profile
 
 fos_user_register:

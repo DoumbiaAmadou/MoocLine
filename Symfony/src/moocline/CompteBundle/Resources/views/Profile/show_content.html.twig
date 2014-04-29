@@ -1,0 +1,87 @@
+{# src/moocline/CompteBundle/Resources/views/Profile\show_content.html.twig #}
+
+{# On étend le layout principal #}
+{% extends "::layout.html.twig" %}
+
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+	{% block fos_user_content %}
+	{% endblock fos_user_content %}
+
+
+	{#  profile de fos user bunble ;( ...
+		<div class="fos_user_user_show">
+		    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+		    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+		    <p> Bien sûr que ça marche !!! ;)</p>
+		</div>
+	#}
+  	<section>
+     	<article>
+	        <h3><img class="ico_categorie" />BIENVENUE SUR ESPACE ETUDIANT</h3>
+	        <div id="gestionc">
+	          <h4>Gestion de cours</h4>
+	          <b>
+	            <a href="#">M'inscrire à un cours</a><br/>
+	            <a href="#">Me désinscrire à un cours</a>
+	          </b>
+	        </div>
+	        <div id="notif">
+	          <h4>Notifications</h4>
+	          <b>
+	            <a href="#"><font color="">Devoirs corrigés</font></a><br/>
+	            <a href="#"><font color="">Devoirs en attente</font></a><br/>
+	          </b>
+	        </div>
+	        <div id="cours">
+	          <h4>Mes cours</h4>  
+	          <b>
+	            <a href="#">Cours de Réseaux et Télécommunication</a><br/>
+	            <a href="#">Cours de Bases de données</a><br/>
+	            <a href="#">Cours d' Interfaces graphiques</a><br/>
+	            <a href="#">Cours de Java</a><br/>
+	          </b>
+	        </div>
+	        <div id="devoirs">
+	          <h4>Devoirs</h4>
+	          <br/>
+	          <b>Devoirs commencés</b>
+	          <br/>
+	          <ul>
+	            <li><a href="#">Devoir Mindstorm</a></li>
+	            <li><a href="#">Devoir Dazibao</a></li>
+	          </ul>
+	          <b>Nouveaux Devoirs</b>
+	          <br/>
+	          <ul>
+	            <li><a href="#">Devoir Socket</a></li>
+	            <li><a href="#">Devoir Génie Logiciel</a></li>
+	          </ul>
+	        </div>
+     	</article>
+      	<aside>
+	        <h4><a href="#"> {{ user.username }}</a></h4>
+	        <img src="{{asset('images/bulle.png')}}" alt="" id="fleche_bulle" />
+	        <p id="photo_gayllord"><img src="{{asset('images/student2.png')}}" alt="Photo de Gayllord" /></p>
+	        <a href="#">Email: {{ user.email }}</a>
+	        <p></p>
+	        <p>
+	        	<a href="https://www.facebook.com/"><img src="{{asset('images/facebook.png')}}" alt="Facebook" /></a>
+	          	<a href="https://www.twitter.com/"><img src="{{asset('images/twitter.png')}}" alt="Twitter" /></a>
+	          	<a href="https://vimeo.com/"><img src="{{asset('images/vimeo.png')}}" alt="Vimeo" /></a>
+	          	<a href="https://www.flickr.com/"><img src="{{asset('images/flickr.png')}}" alt="Flickr" /></a>
+	          	<img src="{{asset('images/rss.png')}}" alt="RSS" />
+	        </p>
+      	</aside>
+    </section>
+{% endblock %}
+
+{%block javascripts %}
+{{ parent() }}
+{%endblock%}   
+

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Mooc'Line{% endblock %}</title>
+
+    {% block stylesheets %}
+      <link rel="stylesheet" href="{{ asset('css/bootstrap3/css/bootstrap.min.css') }}" type="text/css" />
+      <link rel="stylesheet" href="{{asset('css/fstyle.css')}}" type="text/css" />
+      <link  href="{{asset('css/style.css')}}"  type="text/css" rel="stylesheet" />
+    {% endblock %}
+
+    {% block javascripts %}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="{{ asset('css/bootstrap3/js/bootstrap.min.js') }}" type="text/javascript"></script>
+      {#<script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript" ></script>#}
+    {%endblock%}
+  
+  </head>
+
+  <body>
+    
+    {% block header %}
+      <div class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          
+            <a class="navbar-brand" href="#">
+              <img src="{{asset('images/livre.jpg')}}" alt="Home" href="#" style="heigh:20px ; width : 40px">
+                'Line</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><span>         </span></li>
+              <li class="active"><a href="#">Accueil</a></li>
+              <li><a href="#">Cours</a></li>
+              <li><a href="#">Institutions</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Spécialité <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                   <li class="divider"></li>
+                  <li class="dropdown-header">Science</li>
+                  <li><a href="#">Mathématique</a></li>
+                  <li><a href="#">Physique</a></li>
+                  <li><a href="#">Chimie</a></li>
+                  <li><a href="#">Informatique</a></li>
+                  <li><a href="#">Science et vie de la Terre</a></li>
+                   <li class="divider"></li>
+                  <li class="dropdown-header">Langue</li>
+                  <li><a href="#">Anglais</a></li>
+                  <li><a href="#">Français</a></li>
+                  <li><a href="#">Espagnol</a></li>
+                   <li><a href="#">Chinois</a></li>
+                    <li><a href="#">Arabe</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Economie</li>
+                  <li><a href="#">Marketing</a></li>
+                  <li><a href="#">Communication</a></li>
+                   <li><a href="#">Management</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <li>
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+             <!-- <button type="submit" class="btn btn-default">Submit</button  -->
+            </form>
+         </li>
+              <li><a><span style=​"margin:​3px -5px 0px 2px;​​">​|​</span></a></li>
+          <li><a href="#">Se connecter</a></li>
+          <li><a href="#">S'inscrire</a></li>
+          <li><a href="#">Se deconnecter</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+
+      {%endblock%}
+    
+    <section>
+      <article>
+        <h3><img   class="ico_categorie" />BIENVENUE SUR ESPACE ETUDIANT</h3>
+        <div id="gestionc">
+          <h4>Gestion de cours</h4>
+          <b>
+            <a href="#">M'inscrire à un cours</a><br/>
+            <a href="#">Me désinscrire à un cours</a>
+          </b>
+        </div>
+        <div id="notif">
+          <h4>Notifications</h4>
+          <b>
+            <a href="#"><font color="">Devoirs corrigés</font></a><br/>
+            <a href="#"><font color="">Devoirs en attente</font></a><br/>
+          </b>
+        </div>
+        <div id="cours">
+          <h4>Mes cours</h4>  
+          <b>
+            <a href="#">Cours de Réseaux et Télécommunication</a><br/>
+            <a href="#">Cours de Bases de données</a><br/>
+            <a href="#">Cours d' Interfaces graphiques</a><br/>
+            <a href="#">Cours de Java</a><br/>
+          </b>
+        </div>
+        <div id="devoirs">
+          <h4>Devoirs</h4>
+          <br/>
+          <b>Devoirs commencés</b>
+          <br/>
+          <ul>
+            <li><a href="#">Devoir Mindstorm</a></li>
+            <li><a href="#">Devoir Dazibao</a></li>
+          </ul>
+          <b>Nouveaux Devoirs</b><br/>
+          <ul>
+            <li><a href="#">Devoir Socket</a></li>
+            <li><a href="#">Devoir Génie Logiciel</a></li>
+          </ul>
+      </article>
+      <aside>
+        <h4><a href="#"> GAYLLORD YAPO </a></h4>
+        <img src="{{asset('images/bulle.png')}}" alt="" id="fleche_bulle" />
+        <p id="photo_gayllord"><img src="{{asset('images/student2.png')}}" alt="Photo de Gayllord" /></p>
+        <a href="#">Email: etudiant.univ@gmail.com</a>
+        <p></p>
+        <p>
+          <a href="https://www.facebook.com/"><img src="{{asset('images/facebook.png')}}" alt="Facebook" /></a>
+          <a href="https://www.twitter.com/"><img src="{{asset('images/twitter.png')}}" alt="Twitter" /></a>
+          <a href="https://vimeo.com/"><img src="{{asset('images/vimeo.png')}}" alt="Vimeo" /></a>
+          <a href="https://www.flickr.com/"><img src="{{asset('images/flickr.png')}}" alt="Flickr" /></a>
+          <img src="{{asset('images/rss.png')}}" alt="RSS" />
+        </p>
+      </aside>
+    </section>
+            
+    <footer>
+      <center><p>Mooc'Line © 2014 and Team Moocline Université Paris Diderot-P7.</p></center>
+    </footer>
+  
+  </body>
+</html>
