@@ -16,7 +16,7 @@
   </head>
   
   <body>
-
+    
     {% block navbar %}
       <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
@@ -94,12 +94,16 @@
         </div>
       </div>
     {% endblock %}
-    
-    {% block body %}
-      {% block fos_user_content %}
 
-      {% endblock fos_user_content %}
+    {% block body %}
+       
+      {% block container %}
+        
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
     
+      {% endblock container %}
+
     {% endblock %}
  
     <footer>

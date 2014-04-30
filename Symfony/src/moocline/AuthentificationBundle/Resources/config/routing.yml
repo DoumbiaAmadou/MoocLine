@@ -1,4 +1,0 @@
-moocline_authentification_homepage:
-    pattern:  /
-    defaults: { _controller: MooclineAuthentificationBundle:Default:index }
-

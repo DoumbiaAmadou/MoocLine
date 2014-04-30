@@ -12,12 +12,11 @@ class RegistrationFormType extends BaseType
         parent::buildForm($builder, $options);
 
         // add your custom field
-        //$builder->add('name');
         $builder
-            //->add('username',         'text', array('label' => 'Votre pseudo:'))
+            ->add('username',         'text', array('label' => 'Votre pseudo:'))
             ->add('prenom',           'text')
             ->add('nom',              'text')
-            //->add('email',            'email')
+            ->add('email',            'email')
             ->add('date_naissance',   'date')
             ->add('niveau',           'choice', array(  'choices' => array ( 
                                                                         'dc'  => 'Doctarant(e)',
@@ -27,21 +26,7 @@ class RegistrationFormType extends BaseType
                                                                         'clg' =>  'Collège',
                                                                         'prm' =>  'Primaire'),
                                                         'required' => false,))
-            /*->add('password',            'repeated', array(
-                                                           'first_name' => 'password',
-                                                           'second_name' => 'confirm',
-                                                           'type' => 'password',
-                                                        )
-            );
-            */
-            /*->add('password', 'repeated', array(
-                                                        'type' => 'password',
-                                                        'invalid_message' => 'Les mots de passe doivent correspondre',
-                                                        'options' => array('required' => true),
-                                                        'first_options'  => array('label' => 'Mot de passe'),
-                                                        'second_options' => array('label' => 'Mot de passe (validation)'),
-                                                ));
-       */;
+            ;
     }
 
     public function getName()
