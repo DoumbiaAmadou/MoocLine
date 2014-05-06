@@ -1,0 +1,54 @@
+BDD SYMPHONY 2:
+
+création de la base :
+
+	-rajouter le nom de la base de le fichier app/config/parameters.yml
+	parameters:
+	database_driver: pdo_mysql
+	database_host: localhost
+	database_port: ~
+	database_name: mooc
+	database_user: root
+	database_password: ~
+
+	-puis dans la console :
+	php app/console doctrine:database:create 
+
+creation des classes pour la base :
+
+	php app/console generate:doctrine:entity
+
+	puis nom du bundle:nom_objet
+	
+Si modification du de la classes (avec des relation d'entités ou ajout d'atribut) :
+
+faire après:
+php app/console doctrine:generate:entities MoocBundle:Class
+puis 
+php app/console doctrine:schema:update --dump-sql
+php app/console doctrine:schema:update --force
+
+
+Pour créer mes tables dans la base ou modifier mes table :
+
+php app/console doctrine:schema:update --dump-sql
+php app/console doctrine:schema:update --force
+
+
+Pour accéder à mes tables depuis la base:
+
+EntityManager:
+
+$em=$this->getDoctrine()->getManager();
+$repository_entity=$em->getRepository('nom_Bundle:nom_Entity');
+
+pour insert dans la base :
+
+insert et update
+
+$em->persist($entity)  // le persist doit être mit apres avec remplie tout les attributs de l'objet (et les attributs sont remplie avec les setters )
+$em->flush()
+
+pour delete:
+$em->remove($entity)
+$em->flush()

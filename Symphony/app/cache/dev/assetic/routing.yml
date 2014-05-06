@@ -1,5 +1,0 @@
-_assetic:
-    resource: .
-    type: assetic
-_app:
-    resource: 'C:/Users/ahmed/Desktop/projet_genie_logiciel/Symphony/app/config/routing_dev.yml'
