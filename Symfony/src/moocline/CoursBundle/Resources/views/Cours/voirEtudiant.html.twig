@@ -1,0 +1,27 @@
+{# empty Twig template #}
+{# On étend le layout principal #}
+{% extends "::layout.html.twig" %}
+
+{% block title %} 
+  {{ parent() }} - Cours
+{% endblock %}
+
+{% block body %}
+    
+
+    <div class="container">
+        <div class="centered-form">
+            <div class="col-sm-offset-2 col-md-offset-2">
+            {{ cours.presentation|raw }}
+            </div>
+            <div class="col-md-2 col-md-offset-8">
+        <a href="{{ path('moocline_cours_inscription', {'id':cours.id})}}" class="btn btn-block btn-lg btn-primary">s'inscrire au cours</a>
+        </div>
+        </div>
+        
+         
+    </div>
+   
+
+    
+    {% endblock %}

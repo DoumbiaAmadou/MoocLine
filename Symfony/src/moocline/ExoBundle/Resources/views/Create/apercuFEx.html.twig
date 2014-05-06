@@ -1,0 +1,58 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %} 
+  Apercu feuille d'Exercices
+{% endblock %}
+
+{% block body %}
+
+  <div class="container">
+        <div class="row centered-form">
+      <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h2 class="panel-title"> <strong>{{titreFEx}} : {{type}} <br/>nombre d'Exercices : {{numbEx}} </strong> </small></h2>
+          </div>
+          <div class="panel-body">
+            
+            
+
+
+            {%for ex in exercices %}
+
+                <h3>{{ ex.intitule }} ({{ex.type}})</h3><br/>
+
+                {%for quest in ex.questions %}
+
+                    
+                      {{ quest.question }}<br/>
+                    
+                    {% if ex.type == "QCM" or ex.type == "QRF" %}
+
+                        <h4>Reponses</h4>
+
+                        <ul class="Reponses">
+              
+                            {% for rep in quest.reponses %}
+                                <li>
+                                  {% if rep.correct == "true" %}<div style="color:green">
+                                  {% else %}<div style="color:red">{% endif %}
+                                  {{ rep.reponse }}</div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <hr/>
+                {% endfor %}  
+                <br/>
+                <hr/>
+            {%endfor%}
+
+            <a href="{{path('moocline_exo_create',{'type': vtype } )}}">Reprendre</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}

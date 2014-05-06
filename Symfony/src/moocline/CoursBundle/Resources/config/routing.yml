@@ -1,3 +1,46 @@
-moocline_cours_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: mooclineCoursBundle:Default:index }
+moocline_cours_creation:
+    pattern:  /creation
+    defaults: { _controller: mooclineCoursBundle:Cours:creer }
+    
+        
+moocline_cours_vue:
+    path:     /vuecours/{id}
+    defaults: { _controller: mooclineCoursBundle:Cours:voir }
+    requirements:
+        id: \d+
+
+moocline_cours_inscription:
+    path:     /inscription/{id}
+    defaults: { _controller: mooclineCoursBundle:Cours:inscription }
+    requirements:
+        id: \d+
+
+moocline_cours_vueEtu:
+    path:     /vuecoursEtu/{id}
+    defaults: { _controller: mooclineCoursBundle:Cours:voirEtudiant }
+    requirements:
+        id: \d+
+    
+moocline_cours_chapitre:
+    pattern:  /chapitre/creation
+    defaults: { _controller: mooclineCoursBundle:Chapitre:creer }
+    requirements:
+        id: \d+
+
+moocline_chapitre_vue:
+    path:     /vuechapitre/{id}
+    defaults: { _controller: mooclineCoursBundle:Chapitre:voir }
+    requirements:
+        id: \d+
+
+moocline_chapitre_edition:
+    path:     /chapitre/edition/{id}
+    defaults: { _controller: mooclineCoursBundle:Chapitre:edition }
+    requirements:
+        id: \d+
+
+moocline_cours_edition:
+    path:     /edition/{id}
+    defaults: { _controller: mooclineCoursBundle:Cours:edition }
+    requirements:
+        id: \d+

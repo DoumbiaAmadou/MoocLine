@@ -1,29 +1,29 @@
 moocline\CompteBundle\Entity\User:
-    properties:
-        pseudo:
-			- Length:
-                min: 6
+   properties:
+        username:
+            - Length:
+                min: 4
                 max: 25
                 minMessage: "Votre pseudo doit faire au moins {{ limit }} caractères"
                 maxMessage: "Votre pseudo ne peut pas être plus long que {{ limit }} caractères"
-		
-		nom:
-			- Length:
+
+        nom:
+            - Length:
                 max: 25
                 maxMessage: "Votre nom ne peut pas être plus long que {{ limit }} caractères"
-		
-		
-		prenom:
-			- Length:
+
+
+        prenom:
+            - Length:
                 max: 25
                 maxMessage: "Votre prenom ne peut pas être plus long que {{ limit }} caractères"
-		
-		email:
-			- Email:
-                message: '{{ value }}' n'est pas un email valide.
+
+        email:
+            - Email:
+                message: "{{ value }} n'est pas un email valide."
                 checkMX: true
-		
-		password:
-			- Length:
+
+        password:
+            - Length:
                 min: 8
-                minMessage: "Votre nom doit faire au moins {{ limit }} caractères"
+                minMessage: "Votre password doit faire au moins {{ limit }} caractères"

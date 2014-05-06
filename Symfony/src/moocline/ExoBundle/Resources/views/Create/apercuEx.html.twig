@@ -1,0 +1,56 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %} 
+  Apercu Exercice
+{% endblock %}
+
+{% block body %}
+
+  <div class="container">
+        <div class="row centered-form">
+      <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h2 class="panel-title"> <strong>{{nomEx}} type : {{type}} <br/>nombre de Questions : {{numbQuestion}} </strong> </small></h2>
+          </div>
+          <div class="panel-body">
+            
+
+
+            <form  method="POST" {{ form_enctype(form) }}>
+            
+
+
+            {%for quest in form.Questions %}
+
+
+            <h4>{{ form_label(quest.question) }}</h4><br/>
+            {{ form_widget(quest.question) }}
+
+            {% if vtype == "QCM" or vtype == "QRF" %}
+                <h4>Reponses</h4>
+                <ul class="Reponses">
+                {% for rep in quest.Reponses %}
+                   <li>{{ form_row(rep) }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <br/>
+            <hr/>
+            {%endfor%}
+
+            {{form_widget(form._token)}}
+           
+            {{ form_row(form.valider) }} <br/>
+			{{ form_row(form.exporter) }} <br/>
+            {{ form_row(form.sauvegarder) }} <br/>
+
+            </form>
+            <a href="{{path('moocline_exo_createExercice',{'type': vtype } )}}">Reprendre</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}

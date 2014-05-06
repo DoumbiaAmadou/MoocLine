@@ -26,18 +26,18 @@ class Reponse
      *
      * @ORM\Column(name="correct", type="boolean")
      */
-    private $correct;
+    protected $correct;
 
     /**
      * @var string
      *
      * @ORM\Column(name="reponse", type="text")
      */
-    private $reponse;
+    protected $reponse;
 
      /**
-    * @ORM\OneToOne(targetEntity="moocline\ExoBundle\Entity\Question",
-    cascade={"persist"})
+    * @ORM\ManyToOne(targetEntity="moocline\ExoBundle\Entity\Question", cascade={"persist"})
+	* @ORM\JoinColumn(name="question_id", referencedColumnName="id")
     */
     private $question;
 
@@ -60,8 +60,6 @@ class Reponse
     public function setCorrect($correct)
     {
         $this->correct = $correct;
-
-        return $this;
     }
 
     /**
@@ -78,13 +76,12 @@ class Reponse
      * Set reponse
      *
      * @param string $reponse
-     * @return Reponse
+     *
      */
     public function setReponse($reponse)
     {
         $this->reponse = $reponse;
 
-        return $this;
     }
 
     /**
@@ -100,20 +97,18 @@ class Reponse
     /**
      * Set question
      *
-     * @param \moocline\ExoBundle\Entity\Question $question
-     * @return Reponse
+     * @param Question $question
+     * 
      */
-    public function setQuestion(\moocline\ExoBundle\Entity\Question $question = null)
+    public function setQuestion(Question $question)
     {
         $this->question = $question;
-
-        return $this;
     }
 
     /**
      * Get question
      *
-     * @return \moocline\ExoBundle\Entity\Question 
+     * @return Question
      */
     public function getQuestion()
     {

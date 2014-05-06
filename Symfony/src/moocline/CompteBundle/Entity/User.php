@@ -3,6 +3,7 @@
 namespace moocline\CompteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * User
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="moocline\CompteBundle\Entity\UserRepository")
  */
-class User
+class User extends BaseUser
 {
     /**
      * @var integer
@@ -19,50 +20,46 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="pseudo", type="string", length=50)
-     */
-    private $pseudo;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=50)
      */
-    private $nom;
+    protected $nom;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=50)
      */
-    private $prenom;
+    protected $prenom;
 
+    /**
+     * @var date
+     *
+     * @ORM\Column(name="date_naissance", type="date")
+     */
+    protected $date_naissance;    
+    
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="niveau", type="string", length=255)
      */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255)
-     */
-    private $password;
+    protected $niveau;
 
     /**
     * @var string $image
     **
     @ORM\Column(name="image", type="string", length=255, nullable=true)
     */
-    private $image;
+    protected $image;
 
+   /*function __construct() {
+
+    }*/
 
     /**
      * Get id
@@ -72,29 +69,6 @@ class User
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set pseudo
-     *
-     * @param string $pseudo
-     * @return User
-     */
-    public function setPseudo($pseudo)
-    {
-        $this->pseudo = $pseudo;
-
-        return $this;
-    }
-
-    /**
-     * Get pseudo
-     *
-     * @return string 
-     */
-    public function getPseudo()
-    {
-        return $this->pseudo;
     }
 
     /**
@@ -144,49 +118,49 @@ class User
     }
 
     /**
-     * Set email
+     * Set Date_naissance
      *
-     * @param string $email
+     * @param date $date_naissance
      * @return User
      */
-    public function setEmail($email)
+    public function setDateNaissance($date_naissance)
     {
-        $this->email = $email;
+        $this->date_naissance = $date_naissance;
 
         return $this;
     }
 
     /**
-     * Get email
+     * Get date_naissance
      *
-     * @return string 
+     * @return date 
      */
-    public function getEmail()
+    public function getDateNaissance()
     {
-        return $this->email;
+        return $this->date_naissance;
     }
 
     /**
-     * Set password
+     * Set niveau
      *
-     * @param string $password
+     * @param string $niveau
      * @return User
      */
-    public function setPassword($password)
+    public function setNiveau($niveau)
     {
-        $this->password = $password;
+        $this->niveau = $niveau;
 
         return $this;
     }
 
     /**
-     * Get password
+     * Get niveau
      *
      * @return string 
      */
-    public function getPassword()
+    public function getniveau()
     {
-        return $this->password;
+        return $this->niveau;
     }
 
     /**

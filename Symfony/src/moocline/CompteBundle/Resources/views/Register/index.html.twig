@@ -1,15 +1,83 @@
-{# src/moocline/CompteBundle/Resources/views/Register/index.html.twig #}
+{# src/moocline/CompteBundle/Resources/views/layout.html.twig #}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Page Test</title>
-  </head>
-  <body>
-    <h1>Hello {{ nom }}!</h1>
+  {% extends "::layout.html.twig" %}
 
-    <p>
-      Bonjour {{ prenom }} {{ nom }}, voici votre pseudo : {{ pseudo }}
-    </p>
-  </body>
-</html>
+  {% block title %}
+      {{ parent() }}
+  {% endblock %}
+
+  {% block body %}
+  
+    <!-- Main component for a primary marketing message or call to action -->
+    <!-- debut du contenu -->
+    <center>
+    <div class="container row-fluid">
+      <div class="col-md-2"></div>
+      <div class="col-md-7">    
+        <div class="row">
+          <div class="col-md-3 col-md-offset-1">
+            <img class="img-circle img-rounded" data-src="holder.js/alt=80x80" alt="80x80" src="{{ asset('images/infographie.jpg') }}"  style="height : 200px ; width : 200px">
+            <h3>Infographie</h3>
+            <p>Le graphisme de l'art.</p>
+            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+          </div>
+          <div class="col-md-3 col-md-offset-1">  
+             <img class="img-circle img-rounded" data-src="holder.js/alt=80x80" alt="80x80" src="{{ asset('images/mecaniquefluides.jpg') }}"  style="height : 200px ; width : 200px">
+              <h3>Mécanique des fluides</h3>
+              <p> Suivez le mouvement.</p>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+          </div>
+          <div class="col-md-3 col-md-offset-1">
+              <img class="img-circle img-rounded" data-src="holder.js/alt=80x80" alt="80x80" src="{{ asset('images/chimie.jpg') }}"  style="height : 200px ; width : 200px">
+              <h3>Chimie de démain</h3>
+              <p>La vie est faite de réaction.</p>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 col-md-offset-1">
+            <img class="img-circle img-rounded" data-src="holder.js/alt=80x80" alt="80x80" src="{{ asset('images/infographie.jpg') }}"  style="height : 200px ; width : 200px">
+            <h3>Infographie</h3>
+            <p>Le graphisme de l'art.</p>
+            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+          </div>
+          <div class="col-md-3 col-md-offset-1">  
+             <img class="img-circle img-rounded" data-src="holder.js/alt=80x80" alt="80x80" src="{{ asset('images/mecaniquefluides.jpg') }}"  style="height : 200px ; width : 200px">
+              <h3>Mécanique des fluides</h3>
+              <p> Suivez le mouvement.</p>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+          </div>
+          <div class="col-md-3 col-md-offset-1">
+              <img class="img-circle img-rounded" data-src="holder.js/alt=80x80" alt="80x80" src="{{ asset('images/chimie.jpg') }}"  style="height : 200px ; width : 200px">
+              <h3>Chimie de démain</h3>
+              <p>La vie est faite de réaction.</p>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 col-md-offset-1">
+            <img class="img-circle img-rounded" data-src="holder.js/alt=80x80" alt="80x80" src="{{ asset('images/infographie.jpg') }}"  style="height : 200px ; width : 200px">
+            <h3>Infographie</h3>
+            <p>Le graphisme de l'art.</p>
+            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+          </div>
+          <div class="col-md-3 col-md-offset-1">  
+             <img class="img-circle img-rounded" data-src="holder.js/alt=80x80" alt="80x80" src="{{ asset('images/mecaniquefluides.jpg') }}"  style="height : 200px ; width : 200px">
+              <h3>Mécanique des fluides</h3>
+              <p> Suivez le mouvement.</p>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+          </div>
+          <div class="col-md-3 col-md-offset-1">
+              <img class="img-circle img-rounded" data-src="holder.js/alt=80x80" alt="80x80" src="{{ asset('images/chimie.jpg') }}"  style="height : 200px ; width : 200px">
+              <h3>Chimie de démain</h3>
+              <p>La vie est faite de réaction.</p>
+              <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+          </div>
+        </div>
+      </div>
+        <!-- fin du contenu --> 
+    </div> <!-- /container -->
+    </center>
+  {% endblock %}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feuilleEx>
+<exercice>    
+{%for quest in exercice.questions %}    
+        <question>
+            <text>
+                {{quest.question}}
+           </text>
+           <tip></tip>
+            <answers>
+                <answer good="true">
+            {% for rep in quest.reponses %} 
+                {% if rep.correct == true %}
+                    <text>  {{ rep.reponse }} </text>    
+                {% endif %}
+            {% endfor %}
+                </answer>
+                <answer good="false">
+            {% for rep in quest.reponses %}
+                {% if rep.correct == false %}
+                    <text> {{ rep.reponse }} </text>
+                
+                {% endif %}
+            {% endfor %}
+                </answer>
+            </answers>
+        </question>   
+{% endfor %}
+</exercice>
+</feuilleEx>

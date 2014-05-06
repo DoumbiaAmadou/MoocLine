@@ -1,0 +1,37 @@
+{# src/moocline/CompteBundle/Resources/views/layout.html.twig #}
+
+{# On étend le layout principal #}
+{% extends "::layout.html.twig" %}
+
+{% block title %} 
+  {{ parent() }} - Compte
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  {% block container %}
+    
+    {% for type, messages in app.session.flashbag.all() %}
+      {% for message in messages %}
+        <div class="alert alert-{{ type }}">
+            {{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+      {% endfor %}
+    {% endfor %}
+
+    <div>
+      {% block fos_user_content %}
+      {% endblock fos_user_content %}
+    </div>
+
+  {% endblock %}
+
+{% endblock %}
+
+{%block javascripts %}
+   {{ parent() }}
+{%endblock%}   

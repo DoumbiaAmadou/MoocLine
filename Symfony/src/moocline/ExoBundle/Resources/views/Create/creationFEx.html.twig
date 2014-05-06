@@ -1,0 +1,39 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %} 
+  Création d'une feuille d'Exercices
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+        <div class="row centered-form">
+			<div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+			    		<h2 class="panel-title"> <strong> Creation de feuille d'exercice </strong> </small></h2>
+					</div>
+					<div class="panel-body">
+				
+				
+					
+					<form  method="POST" {{ form_enctype(form) }}>
+						
+						{{ form_label(form.titre) }}<br/>
+            {{ form_widget(form.titre) }}<br/><br/>
+						{{ form_label(form.type) }}<br/>
+            {{ form_widget(form.type) }}<br/><br/>
+
+            {{form_widget(form._token)}}
+           
+					  {{ form_row(form.valider) }} <br/>
+          
+          </form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+  {% endblock %}

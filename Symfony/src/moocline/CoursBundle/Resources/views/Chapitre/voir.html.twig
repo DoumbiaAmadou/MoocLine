@@ -1,0 +1,30 @@
+{# empty Twig template #}
+{# On étend le layout principal #}
+{% extends "::layout.html.twig" %}
+
+{% block title %} 
+  {{ parent() }} - Chapitre
+{% endblock %}
+
+{% block body %}
+    
+    <div class="container-fluid well">
+        
+         <div class="panel panel-default">
+            <div class="span4 offset1">
+            {{chapitre.contenu|raw }}
+            </div>
+        </div>
+    </div>
+   <form class="form-horizontal" method="POST" action="">    
+    <div class="form-group">
+        <div class="col-md-2" align="left">
+        <a href="{{ path('moocline_chapitre_edition', {'id':chapitre.id})}}" class="btn btn-block btn-lg btn-primary">Modifier</a>
+        </div>
+    </div>    
+   </form>
+        <br><br>
+    
+    
+ 
+ {% endblock %}

@@ -1,11 +1,31 @@
-mooc_exo_homepage:
-    pattern:  /
+moocline_exo_homepage:
+    pattern:  /exo/hello
     defaults: { _controller: mooclineExoBundle:Default:index }
 
-mooc_exo_cree:
-    pattern:  /cree
-    defaults: { _controller: mooclineExoBundle:Default:creeExo }
+moocline_exo_import:
+    path:  /exo/importxml
+    defaults: { _controller: mooclineExoBundle:ImpExp:import }
 
-mooc_exo_ajouter:
-    pattern:  /ajouter
-    defaults: { _controller: mooclineExoBundle:Default:ajouter }
+moocline_FEx_create:
+    path: /exo/createFEx
+    defaults: { _controller: mooclineExoBundle:CreateExo:createFeuilleEx }
+
+moocline_exo_create:
+    path:  /exo/createExo
+    defaults: { _controller: mooclineExoBundle:CreateExo:createTypeEx }
+
+moocline_exo_createExercice:
+    path:  /exo/createExo/{type}
+    defaults: { _controller: mooclineExoBundle:CreateExo:createExercice }
+
+moocline_exo_apercu:
+    path: /exo/createExo/{type}/apercu
+    defaults: { _controller: mooclineExoBundle:CreateExo:apercuExercice }
+
+moocline_exo_chooseFEx:
+    path: /exo/createExo/{type}/FEx
+    defaults: { _controller: mooclineExoBundle:CreateExo:chooseFeuilleEx }
+
+moocline_exo_importQuestion:
+    path:   /exo/importExo/
+    defaults: { _controller:mooclineExoBundle:CreateExo:importQuestion}

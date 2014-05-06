@@ -1,0 +1,33 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %} 
+  Importation d'Exercice
+{% endblock %}
+
+{% block body %}
+
+  <div class="container">
+        <div class="row centered-form">
+      <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h2 class="panel-title"> <strong> Importation d'exercice </strong> </small></h2>
+          </div>
+          <div class="panel-body">
+    <form  method="POST" {{ form_enctype(form) }}>     
+            {{ form_row(form.file) }}
+            {{form_widget(form._token)}} 
+            <br/><br/>
+            {{ form_row(form.sauvegarder) }} <br/>
+            <h5>Veuillez ne sélectionner qu'un seul fichier</h5><br/>
+            <a href="{{path('moocline_exo_create')}}"> Retour</a>
+          
+          </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}

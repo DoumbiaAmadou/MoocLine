@@ -12,4 +12,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class CoursRepository extends EntityRepository
 {
+   public function findOneByIdJoinedToCategory($id)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('
+                SELECT c, FROM mooclineCoursBundle:Cours c
+                WHERE c.user.id = :id'
+            )->setParameter('id', $id);
+
+        try {
+            return $query->getSingleResult();
+        } catch (\Doctrine\ORM\NoResultException $e) {
+            return null;
+        } 
+    }
 }
+

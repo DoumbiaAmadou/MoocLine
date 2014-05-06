@@ -12,4 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class ReponseRepository extends EntityRepository
 {
+
+public function findRepByIdOfQuestJoinedToQuest($id)
+	{
+		$query = $this->getEntityManager()
+			->createQuery(
+				'SELECT rep, quest FROM mooclineExoBundle:Reponse rep
+				JOIN rep.question quest
+				WHERE quest.id = :id'
+			)->setParameter('id', $id);
+
+		try {
+			return $query->getResult();
+		} catch (\Doctrine\ORM\NoResultException $e) {
+			return null;
+		}
+	}
+
 }
