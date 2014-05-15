@@ -1,0 +1,80 @@
+{# On étend le layout principal #}
+{% extends "::layout.html.twig" %}
+
+{% block title %} 
+  {{ parent() }} - Cours
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/cours.css') }}" type="text/css" />
+    {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="moocline-full-canvas moocline-catalog">
+            <div data-affix="data-affix" class="row-fluid moocline-catalog-toolbar">
+                <div class="span12"><div class="moocline-catalog-toolbar-body">
+                      <form class="form-horizontal" action="{{ path('moocline_cours_list') }}"  method="POST" >
+                        <label for="moocline-catalog-search-id" style="display:none;">Rechercher par nom du cours, catégorie, université ou enseignant</label>
+                        <input id="moocline-catalog-search-id" type="search" placeholder="Rechercher par nom du cours, catégorie, université ou enseignant" name="search" class="moocline-catalog-search input-large search-query">
+                       </form>
+                    </div>
+                        
+                </div>
+                    
+            </div>
+<div class="span9">
+   </div>
+ <div style="" class="moocline-catalog-container moocline-catalog-listings-courses-container">
+     <h2>Cours</h2>
+     
+     
+     <div class="moocline-catalog-listings">
+         {% for c in cours %}
+         <div data-topic-id="1" class="moocline-catalog-course-listing-box">
+             <div class="row-fluid">
+                 
+                 <div class="span2">
+                     <img src="" class="moocline-catalog-listing-thumbnail">
+                 </div>
+                 <div class="span7">
+                     <div class="moocline-catalog-listing-text">
+                         <div class="moocline-catalog-listing-primary">
+                             <span class="moocline-catalog-listing-university"> 
+                                <a href="" class="moocline-catalog-listing-secondary-link internal-home"> Université Paris Diderot
+                                  <span class="moocline-catalog-listing-secondary-link-target"></span>
+                                </a><span> </span></span>
+                             <span class="moocline-catalog-listing-coursename">
+                                 <a href="{{ path('moocline_cours_vueEtu',{'id': c.id}) }}" class="internal-home moocline-catalog-listing-secondary-link"> {{ c.nom }} </a>
+                                     <span class="moocline-catalog-listing-course-link-box"></span></a></span>
+                              <span class="moocline-catalog-listing-instructor">avec 
+                                  <a href="" class="internal-home moocline-catalog-listing-secondary-link"> {{ c.user.nom }}  {{ c.user.prenom }}
+                                     <span class="moocline-catalog-listing-secondary-link-target"></span></a><span></span></span>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="span3">
+                     <div class="moocline-catalog-listing-secondary"><span class="moocline-catalog-listing-secondary-item">avr. 30 2014</span>
+                         <span class="moocline-catalog-listing-secondary-item">5 weeks long</span>
+                </div>
+                </div>
+                  
+                                     <span></span>
+                                   
+           
+                 </div>
+                 
+             </div>
+                        {% endfor %}
+                                    
+         </div>
+                        <span></span>
+                         {% include 'mooclineCoursBundle:Default:pagination.html.twig' %} 
+     </div>
+ </div>
+        </div>
+    </div>
+           
+       
+{% endblock %}

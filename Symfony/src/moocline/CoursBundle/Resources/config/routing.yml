@@ -44,3 +44,9 @@ moocline_cours_edition:
     defaults: { _controller: mooclineCoursBundle:Cours:edition }
     requirements:
         id: \d+
+        
+moocline_cours_list:
+    path:  /list/{page}
+    defaults: { _controller: mooclineCoursBundle:Cours:list, page: 1 }
+    
+    

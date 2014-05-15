@@ -3,6 +3,7 @@
 namespace moocline\CoursBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * CoursRepository
@@ -26,5 +27,38 @@ class CoursRepository extends EntityRepository
             return null;
         } 
     }
+    /**
+     * Get the paginated list of published articles
+     *
+     * @param int $page
+     * @param int $maxperpage
+     * @param string $sortby
+     * @return Paginator
+     */
+   
+     public function getList($page=1, $maxperpage=2)
+    {
+        $q = $this->_em->createQueryBuilder()
+            ->select('cours')
+            ->from('mooclineCoursBundle:Cours','cours')
+        ;
+ 
+        $q->setFirstResult(($page-1) * $maxperpage)
+            ->setMaxResults($maxperpage);
+ 
+        return new Paginator($q);
+    }
+    
+    public function getTotal()
+    
+        
+    {
+        $qb = $this->createQueryBuilder('a')
+                   ->select('COUNT(a)');     // On sélectionne simplement COUNT(a)
+ 
+        return (int) $qb->getQuery()
+                         ->getSingleScalarResult(); // Utilisation de getSingleScalarResult pour avoir directement le résultat du COUNT
+    }
+    
 }
 

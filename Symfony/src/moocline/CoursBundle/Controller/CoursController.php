@@ -96,5 +96,41 @@ class CoursController extends Controller
     
     }
     
+   public function ListAction($page)
+    {
+        $maxCours =2;
+        $cours_count = $this->getDoctrine()
+                ->getRepository('mooclineCoursBundle:Cours')
+                ->getTotal();
+        $pagination = array(
+            'page' => $page,
+            'route' => 'moocline_cours_list',
+            'pages_count' => ceil($cours_count / $maxCours),
+            'route_params' => array()
+        );
+ 
+        $request = $this->get('request');
+ 
+    if( $request->getMethod() == 'POST' ) {
+        // Récupération de la valeur ici
+ 
+        $recherche=$request->get('moocline-catalog-search-id');
+           $cours= $this->RechercheCours($recherche);      
+      }
+      else {
+           $cours = $this->getDoctrine()->getRepository('mooclineCoursBundle:Cours')
+                ->getList($page, $maxCours);
+      }
+                 
+         return $this->render('mooclineCoursBundle:Cours:list.html.twig', array(
+            'cours' => $cours,
+            'pagination' => $pagination,
+             
+        ));
+    } 
    
+    public static function RechercheCours($recherche)
+    {
+        
+    }
 }
