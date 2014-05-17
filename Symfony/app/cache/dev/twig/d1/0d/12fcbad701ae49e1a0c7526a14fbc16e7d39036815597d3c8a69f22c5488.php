@@ -29,7 +29,7 @@ class __TwigTemplate_d10d12fcbad701ae49e1a0c7526a14fbc16e7d39036815597d3c8a69f22
     public function block_title($context, array $blocks = array())
     {
         echo " 
-  Apercu feuille d'Exercices
+  Mooc'Line - Exercice - Apercu Feuille
 ";
     }
 
@@ -38,9 +38,9 @@ class __TwigTemplate_d10d12fcbad701ae49e1a0c7526a14fbc16e7d39036815597d3c8a69f22
     {
         // line 8
         echo "
-  <div class=\"container\">
+  <div class=\"container\" >
         <div class=\"row centered-form\">
-      <div class=\"col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4\">
+      <div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-4 col-md-offset-3\">
         <div class=\"panel panel-default\">
           <div class=\"panel-heading\">
               <h2 class=\"panel-title\"> <strong>";
@@ -144,7 +144,7 @@ class __TwigTemplate_d10d12fcbad701ae49e1a0c7526a14fbc16e7d39036815597d3c8a69f22
             <a href=\"";
         // line 51
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("moocline_exo_create", array("type" => (isset($context["vtype"]) ? $context["vtype"] : $this->getContext($context, "vtype")))), "html", null, true);
-        echo "\">Reprendre</a>
+        echo "\">Retour</a>
           </div>
         </div>
       </div>

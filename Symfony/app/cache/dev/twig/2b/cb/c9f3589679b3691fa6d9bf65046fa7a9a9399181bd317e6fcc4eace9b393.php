@@ -30,7 +30,7 @@ class __TwigTemplate_2bcbc9f3589679b3691fa6d9bf65046fa7a9a9399181bd317e6fcc4eace
     public function block_title($context, array $blocks = array())
     {
         echo " 
-  Création ";
+  Mooc'Line - Exercice - Création ";
         // line 4
         echo twig_escape_filter($this->env, (isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")), "html", null, true);
         echo " n° ";

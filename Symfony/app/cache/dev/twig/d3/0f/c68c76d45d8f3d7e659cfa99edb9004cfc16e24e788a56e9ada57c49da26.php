@@ -29,7 +29,7 @@ class __TwigTemplate_d30fc68c76d45d8f3d7e659cfa99edb9004cfc16e24e788a56e9ada57c4
     public function block_title($context, array $blocks = array())
     {
         echo " 
-  Choisir une Feuille d'Exercices
+  Mooc'Line - Exercice - Enregistrer
 ";
     }
 
@@ -72,6 +72,10 @@ class __TwigTemplate_d30fc68c76d45d8f3d7e659cfa99edb9004cfc16e24e788a56e9ada57c4
         // line 27
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "valider"), 'row');
         echo " <br/>
+\t\t\t\t\t  ";
+        // line 28
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "exporter"), 'row');
+        echo " <br/>
           
           </form>
 
@@ -96,6 +100,6 @@ class __TwigTemplate_d30fc68c76d45d8f3d7e659cfa99edb9004cfc16e24e788a56e9ada57c4
 
     public function getDebugInfo()
     {
-        return array (  73 => 27,  68 => 25,  63 => 23,  59 => 22,  54 => 20,  40 => 8,  37 => 7,  29 => 3,);
+        return array (  77 => 28,  73 => 27,  68 => 25,  63 => 23,  59 => 22,  54 => 20,  40 => 8,  37 => 7,  29 => 3,);
     }
 }

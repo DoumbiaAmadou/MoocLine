@@ -36,11 +36,16 @@ class FeuilleEx
      */
     private $titre;
 	
-     /**
+	/**
+	* @ORM\ManyToOne(targetEntity="moocline\CoursBundle\Entity\Cours", cascade={"persist"})
+	* @ORM\JoinColumn(name="cours_id", referencedColumnName="id") 
+	*/
+	private $cours;
+	
+    /**
     * @ORM\OneToMany(targetEntity="Exercice",mappedBy="FeuilleEx", cascade={"persist"})
     */
     private $exercices;
-
 
     /**
      * Get id
@@ -105,6 +110,28 @@ class FeuilleEx
 		$this->titre = $titre;
     }
 
+	/**
+     * Get cours
+     *
+     * @return moocline\CoursBundle\Entity\Cours
+     */
+    public function getCours()
+    {
+        return $this->cours;
+    }
+	
+	/**
+     * Set cours
+     *
+     * @param moocline\CoursBundle\Entity\Cours $cours
+     * 
+     */
+    public function setCours(moocline\CoursBundle\Entity\Cours $cours)
+    {
+        $this->cours = $cours;
+    }
+	
+	
     /**
      * Get exercices
      *

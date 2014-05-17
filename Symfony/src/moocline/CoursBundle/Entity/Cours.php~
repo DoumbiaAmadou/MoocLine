@@ -53,6 +53,12 @@ class Cours
     * @ORM\OneToMany(targetEntity="moocline\CoursBundle\Entity\Chapitre",mappedBy="cours")
     */
     private $chapitres;
+    
+    /**
+    * @ORM\OneToOne(targetEntity="moocline\CoursBundle\Entity\Image", cascade={"persist"})
+    */
+    private $image;
+
     /**
      * Get id
      *

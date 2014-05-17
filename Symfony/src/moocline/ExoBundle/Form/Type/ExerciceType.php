@@ -4,8 +4,7 @@ namespace moocline\ExoBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use moocline\ExoBundle\Form\Type\QuestionType ; 
+use Symfony\Component\OptionsResolver\OptionsResolverInterface; 
 
 class ExerciceType extends AbstractType
 {
@@ -47,7 +46,6 @@ class ExerciceType extends AbstractType
 				 
         $builder
 				 ->add('valider','submit', array('label' => "Valider et Reprendre", 'attr' => array('class' => 'btn btn-primary')))
-				 ->add('exporter','submit', array('label' => "exporter Exercice", 'attr' => array('class' => 'btn btn-primary')))
 				 ->add('sauvegarder','submit', array('label' => "Sauver", 'attr' => array('class' => 'btn btn-primary')));
         
     }

@@ -98,7 +98,8 @@ class CoursController extends Controller
     
    public function ListAction($page)
     {
-        $maxCours =2;
+       $em = $this->getDoctrine()->getEntityManager();
+       $maxCours =2;
         $cours_count = $this->getDoctrine()
                 ->getRepository('mooclineCoursBundle:Cours')
                 ->getTotal();
@@ -112,10 +113,12 @@ class CoursController extends Controller
         $request = $this->get('request');
  
     if( $request->getMethod() == 'POST' ) {
+        
         // Récupération de la valeur ici
- 
         $recherche=$request->get('moocline-catalog-search-id');
-           $cours= $this->RechercheCours($recherche);      
+        
+           $cours= $this->RechercheCours($recherche,$em); 
+           
       }
       else {
            $cours = $this->getDoctrine()->getRepository('mooclineCoursBundle:Cours')
@@ -129,8 +132,28 @@ class CoursController extends Controller
         ));
     } 
    
-    public static function RechercheCours($recherche)
+    public static function RechercheCours($recherche,$em)
     {
-        
-    }
+     // la variable $mot est envoyée par le formulaire de recherche. 
+// je fractionne la recherche en mots $motrecherche(1) $motrecherche(2) ... 
+
+   $motrecherche=explode(" ",$recherche); 
+   $WHERE = "WHERE"; 
+   $count = 0; 
+   reset($motrecherche); 
+   while(list($key, $data) = each($motrecherche)) 
+      { 
+      $count = $count + 1; 
+      if ($count == 1)   $WHERE .= "   p.nom   LIKE '%" . $data . "%' ";  
+      else               $WHERE .= " AND p.nom LIKE '%" . $data . "%' ";  
+      } 
+
+$query = $em->createQuery(
+    'SELECT p FROM mooclineCoursBundle:Cours p ' . $WHERE . ' '
+);
+
+$cours = $query->getResult();
+ return $cours;
+    
+}
 }

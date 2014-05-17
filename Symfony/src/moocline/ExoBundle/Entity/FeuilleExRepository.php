@@ -12,4 +12,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class FeuilleExRepository extends EntityRepository
 {
+	public function findFeuillesExByIdOfCoursJoinedToCours($id)
+	{
+		$query = $this->getEntityManager()
+			->createQuery(
+				'SELECT feuille, c FROM mooclineExoBundle:Feuille feuille
+				JOIN feuille.cours c
+				WHERE c.id = :id'
+			)->setParameter('id', $id);
+
+		try {
+			return $query->getResult();
+		} catch (\Doctrine\ORM\NoResultException $e) {
+			return null;
+		}
+	}
 }

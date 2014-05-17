@@ -1,0 +1,60 @@
+
+{% extends "::layout.html.twig" %}
+
+{% block title %} 
+  Mooc'Line - Exercice - Resolve Feuille
+{% endblock %}
+
+{% block body %}
+
+  <div class="container" >
+        <div class="row centered-form">
+      <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-4 col-md-offset-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h2 class="panel-title"> <strong>{{titreFEx}} : {{type}} </strong> </small></h2>
+          </div>
+          <div class="panel-body">
+
+      {% block choice_widget %}
+         {% set i = 0 %}
+  <form class="form-horizontal" action=""  method="POST" {{ form_enctype(form) }}>
+          {% for child in form %}
+
+          
+            {% if i in list %}
+              <hr/>
+              <h4>Exercice  {{ i+1 }} </h4>
+              <hr/>
+            {% endif %}
+          
+            {% set i = i+1 %}
+               {% if "hidden" not in child.vars.block_prefixes %}
+                   <li>
+                   {{ form_label(child) }} <br/>
+                   {% if "choice" not in child.vars.block_prefixes %}
+                       {{ form_widget(child) }}
+                   {% elseif "choice" in child.vars.block_prefixes %}
+                   {%  for f in child %}
+                       {{ form_widget(f) }} 
+                        {{ form_label(f) }} <br/>
+                    
+                    {% endfor %}
+                    {% endif %}
+                   </li>
+                    <br/><hr/>
+               {% endif %}
+          {% endfor %}
+              
+             <input type="submit" class="btn btn-primary" value="Valider"> 
+             <input type="submit" class="btn btn-primary" value="Enregistrer"> 
+          </form>
+      {% endblock %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}

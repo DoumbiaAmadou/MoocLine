@@ -29,7 +29,7 @@ class __TwigTemplate_3c76a5e19e5e469711c1fa4854a8e4feaa29259c749ca5e61f0fe1caf41
     public function block_title($context, array $blocks = array())
     {
         echo " 
-  Création d'exercice
+  Mooc'Line - Exercice - Création
 ";
     }
 
@@ -64,7 +64,7 @@ class __TwigTemplate_3c76a5e19e5e469711c1fa4854a8e4feaa29259c749ca5e61f0fe1caf41
         echo "\">Créer un Exercice Type Libre</a><br/>
             \t\t\t<a href=\"";
         // line 21
-        echo $this->env->getExtension('routing')->getPath("moocline_exo_importQuestion");
+        echo $this->env->getExtension('routing')->getPath("moocline_exo_importExercice");
         echo "\"> Importer un Exercice</a></br>
 \t\t\t\t\t</div>
 

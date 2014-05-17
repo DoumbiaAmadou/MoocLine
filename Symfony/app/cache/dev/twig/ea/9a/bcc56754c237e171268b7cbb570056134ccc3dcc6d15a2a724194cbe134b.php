@@ -38,30 +38,30 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
     ";
         // line 10
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 15
+        // line 16
         echo "
   </head>
   
   <body>
     
     ";
-        // line 20
+        // line 21
         $this->displayBlock('navbar', $context, $blocks);
-        // line 98
+        // line 99
         echo "
     ";
-        // line 99
+        // line 100
         $this->displayBlock('body', $context, $blocks);
-        // line 109
+        // line 110
         echo " 
     <footer>
       <center><p>Mooc'Line © 2014 and Team Moocline UPD-7.</p></center>
     </footer>
 
     ";
-        // line 114
+        // line 115
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 118
+        // line 119
         echo "
   </body>
 </html>";
@@ -80,21 +80,22 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
         echo "      <link rel=\"stylesheet\" href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/bootstrap3/bootstrap.min.css"), "html", null, true);
         echo "\" type=\"text/css\" />
+      
       <link rel=\"stylesheet\" href=\"";
-        // line 12
+        // line 13
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/style.css"), "html", null, true);
         echo "\" type=\"text/css\" />
       <link rel=\"stylesheet\" href=\"";
-        // line 13
+        // line 14
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/fstyle.css"), "html", null, true);
         echo "\" type=\"text/css\" />
     ";
     }
 
-    // line 20
+    // line 21
     public function block_navbar($context, array $blocks = array())
     {
-        // line 21
+        // line 22
         echo "      <div class=\"navbar navbar-default navbar-static-top\" role=\"navigation\">
         <div class=\"container\">
           <div class=\"navbar-header\">
@@ -106,7 +107,7 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
             </button>
             <a class=\"navbar-brand\" href=\"#\">
               <img src=\"";
-        // line 31
+        // line 32
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("images/livre.jpg"), "html", null, true);
         echo "\" alt=\"Home\" href=\"#\" style=\"heigh:20px ; width : 40px\">'Line
             </a>
@@ -115,15 +116,15 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
             <ul class=\"nav navbar-nav\">
               <li class=\"active\"><span>         </span></li>
               <li class=\"active\"><a href=\"";
-        // line 37
+        // line 38
         echo $this->env->getExtension('routing')->getPath("home");
         echo "\">Accueil</a></li>
               <li><a href=\"";
-        // line 38
-        echo $this->env->getExtension('routing')->getPath("home");
+        // line 39
+        echo $this->env->getExtension('routing')->getPath("moocline_cours_list");
         echo "\">Cours</a></li>
               <li><a href=\"";
-        // line 39
+        // line 40
         echo $this->env->getExtension('routing')->getPath("home");
         echo "\">Institutions</a></li>
               <li class=\"dropdown\">
@@ -153,8 +154,8 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
               <li>
                <form class=\"navbar-form navbar-left\" role=\"search\">
         \t\t<div class=\"form-group\">
-        \t\t  <input type=\"text\" class=\"form-control\" placeholder=\"Search\">
-                          <button type=\"submit\" class=\"btn btn-default\">Submit</button>
+        \t\t  <input type=\"search\" class=\"form-control\" placeholder=\"Search\">
+                        <!--  <button type=\"submit\" class=\"btn btn-default\">Submit</button> -->
                         </div>
     \t\t
                </form>
@@ -163,16 +164,16 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
             <ul class=\"nav navbar-nav navbar-right\">
               <li><a><span style=​\"margin:​3px -5px 0px 2px;​​\">​|​</span></a></li>
             ";
-        // line 76
+        // line 77
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 77
+            // line 78
             echo "              <li class=\"dropdown\">
                 <a href=\"";
-            // line 78
+            // line 79
             echo $this->env->getExtension('routing')->getPath("home");
             echo "\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                   ";
-            // line 79
+            // line 80
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "username"), "html", null, true);
             echo "
                   <b class=\"caret\"></b>
@@ -180,32 +181,32 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
                 <ul class=\"dropdown-menu\">
                   <li><a href=\"#\">Tableau de bord</a></li>
                   <li><a href=\"";
-            // line 84
-            echo $this->env->getExtension('routing')->getPath("fos_user_profile_show");
+            // line 85
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vue_Etudiant", array("id" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "id"))), "html", null, true);
             echo "\">Profil</a></li>
                   <li><a href=\"";
-            // line 85
+            // line 86
             echo $this->env->getExtension('routing')->getPath("fos_user_profile_edit");
             echo "\">Edition Profil</a></li>
                 </ul>
               </li>
                 <li><a href=\"";
-            // line 88
+            // line 89
             echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
             echo "\">Déconnexion</a></li>
             ";
         } else {
-            // line 90
+            // line 91
             echo "              <li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
             echo "\">Connexion</a></li>
-              <li><a href=\"";
-            // line 91
+         x     <li><a href=\"";
+            // line 92
             echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
             echo "\">S'inscrire</a></li>
             ";
         }
-        // line 93
+        // line 94
         echo "            </ul> 
           </div><!--/.nav-collapse -->
         </div>
@@ -213,46 +214,46 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
     ";
     }
 
-    // line 99
+    // line 100
     public function block_body($context, array $blocks = array())
     {
-        // line 100
+        // line 101
         echo "       
       ";
-        // line 101
+        // line 102
         $this->displayBlock('container', $context, $blocks);
-        // line 107
+        // line 108
         echo "
     ";
     }
 
-    // line 101
+    // line 102
     public function block_container($context, array $blocks = array())
     {
-        // line 102
+        // line 103
         echo "        
         ";
-        // line 103
+        // line 104
         $this->displayBlock('fos_user_content', $context, $blocks);
-        // line 105
+        // line 106
         echo "    
       ";
     }
 
-    // line 103
+    // line 104
     public function block_fos_user_content($context, array $blocks = array())
     {
-        // line 104
+        // line 105
         echo "        ";
     }
 
-    // line 114
+    // line 115
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 115
+        // line 116
         echo "      <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js\"></script>
       <script type=\"text/javascript\" src=\"";
-        // line 116
+        // line 117
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap3/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     ";
@@ -265,6 +266,6 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
 
     public function getDebugInfo()
     {
-        return array (  256 => 116,  253 => 115,  250 => 114,  246 => 104,  243 => 103,  238 => 105,  236 => 103,  233 => 102,  230 => 101,  225 => 107,  223 => 101,  220 => 100,  217 => 99,  209 => 93,  204 => 91,  199 => 90,  194 => 88,  188 => 85,  184 => 84,  176 => 79,  172 => 78,  169 => 77,  167 => 76,  127 => 39,  123 => 38,  119 => 37,  110 => 31,  98 => 21,  95 => 20,  89 => 13,  85 => 12,  80 => 11,  77 => 10,  71 => 8,  65 => 118,  63 => 114,  56 => 109,  54 => 99,  51 => 98,  49 => 20,  42 => 15,  35 => 8,  26 => 1,  75 => 28,  69 => 25,  62 => 21,  53 => 15,  43 => 9,  40 => 10,  34 => 5,  29 => 4,);
+        return array (  257 => 117,  254 => 116,  251 => 115,  247 => 105,  244 => 104,  239 => 106,  237 => 104,  234 => 103,  231 => 102,  226 => 108,  224 => 102,  221 => 101,  218 => 100,  210 => 94,  205 => 92,  200 => 91,  195 => 89,  189 => 86,  185 => 85,  177 => 80,  173 => 79,  170 => 78,  168 => 77,  128 => 40,  124 => 39,  111 => 32,  99 => 22,  96 => 21,  90 => 14,  86 => 13,  80 => 11,  77 => 10,  71 => 8,  65 => 119,  63 => 115,  56 => 110,  51 => 99,  49 => 21,  42 => 16,  35 => 8,  26 => 1,  136 => 68,  126 => 61,  120 => 38,  110 => 53,  105 => 51,  102 => 50,  98 => 49,  89 => 43,  76 => 33,  66 => 26,  54 => 100,  43 => 10,  40 => 10,  34 => 5,  29 => 4,);
     }
 }

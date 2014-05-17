@@ -181,6 +181,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_cours_edition')), array (  '_controller' => 'moocline\\CoursBundle\\Controller\\CoursController::editionAction',));
             }
 
+            // moocline_cours_list
+            if (0 === strpos($pathinfo, '/cours/list') && preg_match('#^/cours/list(?:/(?P<page>[^/]++))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_cours_list')), array (  '_controller' => 'moocline\\CoursBundle\\Controller\\CoursController::listAction',  'page' => 1,));
+            }
+
         }
 
         // home
@@ -201,6 +206,64 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // inscription_Etudiant
             if ($pathinfo === '/inscription-etudiant') {
                 return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegisterController::inscrEtudiantAction',  '_route' => 'inscription_Etudiant',);
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/modificationE')) {
+            // modification_Etudiant
+            if (0 === strpos($pathinfo, '/modificationEtudiant') && preg_match('#^/modificationEtudiant/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'modification_Etudiant')), array (  '_controller' => 'moocline\\CompteBundle\\Controller\\ModificationController::modificationEtuAction',));
+            }
+
+            // modification_Enseignant
+            if (0 === strpos($pathinfo, '/modificationEnseignant') && preg_match('#^/modificationEnseignant/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'modification_Enseignant')), array (  '_controller' => 'moocline\\CompteBundle\\Controller\\ModificationController::modificationEnsAction',));
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/vueE')) {
+            // vue_Etudiant
+            if (0 === strpos($pathinfo, '/vueEtudiant') && preg_match('#^/vueEtudiant/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_vue_Etudiant;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'vue_Etudiant')), array (  '_controller' => 'moocline\\CompteBundle\\Controller\\ModificationController::voirEtuAction',));
+            }
+            not_vue_Etudiant:
+
+            // vue_Enseignant
+            if (0 === strpos($pathinfo, '/vueEnseignant') && preg_match('#^/vueEnseignant/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'vue_Enseignant')), array (  '_controller' => 'moocline\\CompteBundle\\Controller\\ModificationController::voirEnsAction',));
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/dashboardE')) {
+            if (0 === strpos($pathinfo, '/dashboardEtudiant')) {
+                // dashboard_Etudiant_listCours
+                if (0 === strpos($pathinfo, '/dashboardEtudiantListCours') && preg_match('#^/dashboardEtudiantListCours/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'dashboard_Etudiant_listCours')), array (  '_controller' => 'mooclineCompteBundle:Dashboard:dashboardEtu_LC',));
+                }
+
+                // dashboard_Etudiant_radierCours
+                if (0 === strpos($pathinfo, '/dashboardEtudiantRadierCours') && preg_match('#^/dashboardEtudiantRadierCours/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'dashboard_Etudiant_radierCours')), array (  '_controller' => 'mooclineCompteBundle:Dashboard:dashboardEtu_RC',));
+                }
+
+                // dashboard_Etudiant_platformCours
+                if (0 === strpos($pathinfo, '/dashboardEtudiantPlatformCours') && preg_match('#^/dashboardEtudiantPlatformCours/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'dashboard_Etudiant_platformCours')), array (  '_controller' => 'mooclineCompteBundle:Dashboard:dashboardEtu_PC',));
+                }
+
+            }
+
+            // dashboard_Enseignant
+            if (0 === strpos($pathinfo, '/dashboardEnseignant') && preg_match('#^/dashboardEnseignant/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'dashboard_Enseignant')), array (  '_controller' => 'mooclineCompteBundle:Dashboard:dashboardEns',));
             }
 
         }
@@ -247,13 +310,14 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
-            // moocline_exo_importQuestion
-            if (rtrim($pathinfo, '/') === '/exo/importExo') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'moocline_exo_importQuestion');
-                }
+            // moocline_exo_importExercice
+            if ($pathinfo === '/exo/importExo') {
+                return array (  '_controller' => 'moocline\\ExoBundle\\Controller\\CreateExoController::importExerciceAction',  '_route' => 'moocline_exo_importExercice',);
+            }
 
-                return array (  '_controller' => 'moocline\\ExoBundle\\Controller\\CreateExoController::importQuestionAction',  '_route' => 'moocline_exo_importQuestion',);
+            // moocline_exo_resolveFEx
+            if ($pathinfo === '/exo/resolveFEx') {
+                return array (  '_controller' => 'moocline\\ExoBundle\\Controller\\CorrExoController::resolveFExAction',  '_route' => 'moocline_exo_resolveFEx',);
             }
 
         }

@@ -1,0 +1,89 @@
+{# On étend le layout principal #}
+{% extends "::layout.html.twig" %}
+
+{% block title %} 
+  {{ parent() }} - Profil
+{% endblock %}
+
+ 
+{% block body %}
+ <div class="container">
+        <div class="row centered-form">
+      <div class="col-xs-10 col-sm-5 col-md-8 col-sm-offset-4 col-md-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h2 class="panel-title"> <strong>Mon compte</strong> </small></h2>
+          </div>
+          <div class="panel-body">
+
+<form class="form-horizontal" action="{{ path('modification_Etudiant', {'id':user.id}) }}"  method="POST" {{ form_enctype(form) }}>
+
+
+
+<div class="form-group">
+  <label class="col-md-5 control-label">Nom</label>  
+  <div class="col-md-3">
+  {{ form_widget(form.nom) }} <p>(max 25 caractères)</p>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-5 control-label">Prenom</label>  
+  <div class="col-md-3">
+  {{ form_widget(form.prenom) }} <p>(max 25 caractères)</p>
+  </div>
+</div>
+
+
+
+
+  <div class="form-group">
+  <label class="col-md-5 control-label">Date de naissance</label>  
+  <div class="col-md-3">
+  {{ form_widget(form.date_naissance) }}
+  </div>  
+</div>
+
+<div class="form-group">
+    
+    {% for child in form.password %}
+        <div class="form-group">
+        <label class="col-md-5 control-label">{{ form_label(child) }}</label>
+        <div class="col-md-3">
+        {{ form_widget(child) }}
+        </div>
+        </div>
+    {% endfor %}
+
+
+
+
+{{ form_widget(form._token) }}
+  <div class="col-md-5">
+   <input type="submit" class="btn btn-primary" value="Sauvegarder">   
+  </div>
+
+<!--   <fieldset>
+  <legend style="" align="center">Mon compte</legend>
+  {{ form_widget(form) }}
+<input type="submit" class="btn btn-primary" value="Sauvegarder">
+</fieldset> -->
+
+</fieldset>
+</form>
+
+
+</div>    
+</div>
+</div>
+</div>
+        </div>
+
+
+
+
+	  <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  
+    {% endblock %}

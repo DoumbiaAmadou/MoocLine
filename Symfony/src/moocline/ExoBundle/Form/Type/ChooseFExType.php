@@ -25,7 +25,8 @@ class ChooseFExType extends AbstractType
 					'label' => "Feuilles d'exercice",
 					'class' => 'mooclineExoBundle:FeuilleEx',
 					'choices' => $this->feuilles))
-				 ->add('valider','submit', array('label' => "Valider", 'attr' => array('class' => 'btn btn-primary')));
+				 ->add('valider','submit', array('label' => "Ajouter à la feuille", 'attr' => array('class' => 'btn btn-primary')))
+				 ->add('exporter','submit',array('label' => "Exporter", 'attr' => array('class' => 'btn btn-primary')));
     }
     
     /**

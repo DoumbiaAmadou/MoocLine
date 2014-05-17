@@ -9,3 +9,39 @@ inscription_Enseignant:
 inscription_Etudiant:
     path:  /inscription-etudiant
     defaults: { _controller: mooclineCompteBundle:Register:inscrEtudiant }
+
+modification_Etudiant:
+    path:     /modificationEtudiant/{id}
+    defaults: { _controller: mooclineCompteBundle:Modification:modificationEtu }
+
+modification_Enseignant:
+    path:     /modificationEnseignant/{id}
+    defaults: { _controller: mooclineCompteBundle:Modification:modificationEns }
+
+vue_Etudiant:
+    path:     /vueEtudiant/{id}
+    defaults: { _controller: mooclineCompteBundle:Modification:voirEtu }
+    requirements:
+        _method:  GET
+        id: \d+
+
+vue_Enseignant:
+    path:     /vueEnseignant/{id}
+    defaults: { _controller: mooclineCompteBundle:Modification:voirEns }
+
+
+dashboard_Etudiant_listCours:
+    path:  /dashboardEtudiantListCours/{id}
+    defaults: { _controller: mooclineCompteBundle:Dashboard:dashboardEtu_LC }
+
+dashboard_Etudiant_radierCours:
+    path:  /dashboardEtudiantRadierCours/{id}
+    defaults: { _controller: mooclineCompteBundle:Dashboard:dashboardEtu_RC }
+
+dashboard_Etudiant_platformCours:
+    path:  /dashboardEtudiantPlatformCours/{id}
+    defaults: { _controller: mooclineCompteBundle:Dashboard:dashboardEtu_PC }
+
+dashboard_Enseignant:
+    path:  /dashboardEnseignant/{id}
+    defaults: { _controller: mooclineCompteBundle:Dashboard:dashboardEns }

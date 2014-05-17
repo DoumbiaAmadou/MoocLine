@@ -53,6 +53,9 @@ class Cours
     * @ORM\OneToMany(targetEntity="moocline\CoursBundle\Entity\Chapitre",mappedBy="cours")
     */
     private $chapitres;
+    
+    
+
     /**
      * Get id
      *
@@ -205,5 +208,28 @@ class Cours
     public function getChapitres()
     {
         return $this->chapitres;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \moocline\CoursBundle\Entity\Image $image
+     * @return Cours
+     */
+    public function setImage(\moocline\CoursBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+    
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \moocline\CoursBundle\Entity\Image 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

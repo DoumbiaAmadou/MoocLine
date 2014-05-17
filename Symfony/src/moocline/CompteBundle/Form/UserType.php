@@ -38,7 +38,7 @@ class UserType extends AbstractType
             ->add('password', 'repeated', array(
                                                         'type' => 'password',
                                                         'invalid_message' => 'Les mots de passe doivent correspondre',
-                                                        'options' => array('required' => true),
+                                                        'options' => array('required' => false),
                                                         'first_options'  => array('label' => 'Mot de passe'),
                                                         'second_options' => array('label' => 'Mot de passe (validation)'),
                                                 ));

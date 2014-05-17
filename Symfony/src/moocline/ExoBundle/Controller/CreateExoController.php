@@ -16,7 +16,7 @@ use moocline\ExoBundle\Form\Type\QCMType;
 use moocline\ExoBundle\Form\Type\QRFType;
 use moocline\ExoBundle\Form\Type\QPType;
 use moocline\ExoBundle\Form\Type\QLType;
-use moocline\ExoBundle\Form\Type\ImportQuestionType;
+use moocline\ExoBundle\Form\Type\ImportExerciceType;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -141,46 +141,7 @@ class CreateExoController extends Controller
 					if($form->get('sauvegarder')->isClicked()){
 						return $this->redirect($this->generateUrl('moocline_exo_chooseFEx', array('type' => $type)));
 					}
-					else if($form->get('exporter')->isClicked()){
-
-						/* $data =$exercice; 
-						 	$filename = "export_".date("Y_m_d_His").".csv"; 
-    
-					    	$response = $this->render('AcmeTestBundle:Default:adminCsv.html.twig', array('data' => $data)); 
-					 
-						    $response->setStatusCode(200);
-						    $response->headers->set('Content-Type', 'text/csv');
-						    $response->headers->set('Content-Description', 'Submissions Export');
-						    $response->headers->set('Content-Disposition', 'attachment; filename='.$filename);
-						    $response->headers->set('Content-Transfer-Encoding', 'binary');
-						    $response->headers->set('Pragma', 'no-cache');
-						    $response->headers->set('Expires', '0');
-						 
-						    $response->prepare();
-						    $response->sendHeaders();
-						    $response->sendContent();
-					  	*/
-					    		
-					    $filename = "export_".date("file_Y_m_d_His").".xml"; 
-						$response = $this->render('mooclineExoBundle:Create:apercuexport.xml.twig', 
-						array('exercice' => $exercice, 
-							'nomEx' => $exercice->getIntitule(), 
-							'vtype' => $type, 
-							'type' => $exercice->getType(), 
-							'Questions' => $exercice->getQuestions(), 
-							'numbQuestion' => $exercice->getQuestions()->count(), 
-							'form' => $form->createView()
-							)
-						);
-						$response->setStatusCode(200);
-						$response->headers->set('Content-Type', 'txt/xml');
-						$response->headers->set('Content-Disposition', ' filename='.$filename);
-
-						return $response ; 
-					}
-					else{					
-						return $this->redirect($this->generateUrl('moocline_exo_createExercice',array('type' => $type)));
-					}
+					return $this->redirect($this->generateUrl('moocline_exo_createExercice',array('type' => $type)));
 				}
 			}					
 			return $this->render('mooclineExoBundle:Create:apercuEx.html.twig', array('exercice' => $exercice, 'nomEx' => $exercice->getIntitule(), 'vtype' => $type, 'type' => $exercice->getType(), 'Questions' => $exercice->getQuestions(), 'numbQuestion' => $exercice->getQuestions()->count(), 'form' => $form->createView()));
@@ -198,49 +159,102 @@ class CreateExoController extends Controller
 		{
 			$exercice = $session->get('exercice');
 			$em = $this->getDoctrine()->getManager();
-			$feuilles = $em->getRepository('mooclineExoBundle:FeuilleEx')->findAll();
+			$feuilles = $em->getRepository('mooclineExoBundle:FeuilleEx')->findAll();//findFeuillesExByIdOfCoursJoinedToCours($cours->getId());
 			$form = $this->createForm(new ChooseFExType($feuilles));
 			if ($request->isMethod('POST'))
 			{
 				$form->bind($request);
 				if ($form->isValid())
 				{
-					$data = $this->getRequest()->request->get('mooc_exobundle_chooseFEx');
-					$id = intval($data['feuilles']) - 1;
-					$dbId = $feuilles[$id]->getId();
-									
-					$feuille = $em->getRepository('mooclineExoBundle:FeuilleEx')->find($dbId);
-					$intitule = "Exercice";
-					$exercice->setIntitule($intitule);
-					$feuille->addExercice($exercice);
-					$em->flush();
-					
-					$exercices = new ArrayCollection();
-					$exercices = $em->getRepository('mooclineExoBundle:Exercice')->findExByIdOfFExJoinedToFEx($dbId);
-					$exercicesCol = new ArrayCollection();
-					foreach($exercices as $ex){
-						$ex->setQuestions(new ArrayCollection());
-						
-						$questions = $em->getRepository('mooclineExoBundle:Question')->findQuestByIdOfExJoinedToEx($ex->getId());
-							
-						foreach($questions as $quest){	
-							
-							$quest->setReponses(new ArrayCollection());
-							
-							$reponses = $em->getRepository('mooclineExoBundle:Reponse')->findRepByIdOfQuestJoinedToQuest($quest->getId());
-							
-							foreach ($reponses as $rep){
-								$quest->addReponse($rep);
-							}
-							$ex->addQuestion($quest);	
+					if($form->get('exporter')->isClicked()){
+						//
+						/* $data =$exercice; 
+						 	$filename = "export_".date("Y_m_d_His").".csv"; 
+    
+					    	$response = $this->render('AcmeTestBundle:Default:adminCsv.html.twig', array('data' => $data)); 
+					 
+						    $response->setStatusCode(200);
+						    $response->headers->set('Content-Type', 'text/csv');
+						    $response->headers->set('Content-Description', 'Submissions Export');
+						    $response->headers->set('Content-Disposition', 'attachment; filename='.$filename);
+						    $response->headers->set('Content-Transfer-Encoding', 'binary');
+						    $response->headers->set('Pragma', 'no-cache');
+						    $response->headers->set('Expires', '0');
+						 
+						    $response->prepare();
+						    $response->sendHeaders();
+						    $response->sendContent();
+					  	*/
+						//
+						if($exercice->getType() == "QCM"){
+							$xmltype = "qcm";
 						}
-						$exercicesCol->add($ex);
-					}
-					
-					$feuille->setExercices($exercicesCol);
+						else if ($exercice->getType() == "QRF"){
+							$xmltype = "qrf";
+						}
+						else if ($exercice->getType() == "Programme"){
+							$xmltype = "p";
+						}
+						else {
+							$xmltype = "l";
+						}
+							
+					    $filename = "export_".date("file_Y_m_d_His").".xml"; 
+						$response = $this->render('mooclineExoBundle:Create:apercuexport.xml.twig', 
+						array('exercice' => $exercice, 
+							'nomEx' => $exercice->getIntitule(), 
+							'vtype' => $type, 
+							'xmltype' => $xmltype, 
+							'type' => $exercice->getType(), 
+							'Questions' => $exercice->getQuestions(), 
+							'numbQuestion' => $exercice->getQuestions()->count(), 
+							'form' => $form->createView()
+							)
+						);
+						$response->setStatusCode(200);
+						$response->headers->set('Content-Type', 'txt/xml');
+						$response->headers->set('Content-Disposition', ' filename='.$filename);
 
-					$session->set('exercice', null);
-					return $this->render('mooclineExoBundle:Create:apercuFEx.html.twig', array('feuille' => $feuille, 'exercices' => $feuille->getExercices(), 'titreFEx' => $feuille->getTitre(), 'type' => $feuille->getType(), 'vtype' => $type, 'numbEx' => $feuille->getExercices()->count()/*, 'form' => $form->createView()*/));
+						return $response ;
+					}
+					else{
+						$data = $this->getRequest()->request->get('mooc_exobundle_chooseFEx');
+						$id = intval($data['feuilles']) - 1;
+						$dbId = $feuilles[$id]->getId();
+						
+						$feuille = $em->getRepository('mooclineExoBundle:FeuilleEx')->find($dbId);
+						$intitule = "Exercice";
+						$exercice->setIntitule($intitule);
+						$feuille->addExercice($exercice);
+						$em->flush();
+						
+						$exercices = new ArrayCollection();
+						$exercices = $em->getRepository('mooclineExoBundle:Exercice')->findExByIdOfFExJoinedToFEx($dbId);
+						$exercicesCol = new ArrayCollection();
+						foreach($exercices as $ex){
+							$ex->setQuestions(new ArrayCollection());
+						
+							$questions = $em->getRepository('mooclineExoBundle:Question')->findQuestByIdOfExJoinedToEx($ex->getId());
+							
+							foreach($questions as $quest){	
+							
+								$quest->setReponses(new ArrayCollection());
+							
+								$reponses = $em->getRepository('mooclineExoBundle:Reponse')->findRepByIdOfQuestJoinedToQuest($quest->getId());
+							
+								foreach ($reponses as $rep){
+									$quest->addReponse($rep);
+								}
+								$ex->addQuestion($quest);	
+							}
+							$exercicesCol->add($ex);
+						}
+					
+						$feuille->setExercices($exercicesCol);
+
+						$session->set('exercice', null);
+						return $this->render('mooclineExoBundle:Create:apercuFEx.html.twig', array('feuille' => $feuille, 'exercices' => $feuille->getExercices(), 'titreFEx' => $feuille->getTitre(), 'type' => $feuille->getType(), 'vtype' => $type, 'numbEx' => $feuille->getExercices()->count()/*, 'form' => $form->createView()*/));
+					}
 				}
 			}
 			return $this->render('mooclineExoBundle:Create:chooseFEx.html.twig', array('form' => $form->createView()));
@@ -256,16 +270,16 @@ class CreateExoController extends Controller
         return __DIR__.'/../../../../web/uploads/documents/importation';
     }
 		
-	public function importQuestionAction (Request $request  ){
+	public function importExerciceAction (Request $request){
 			
-        $form = $this->createForm(new ImportQuestionType()); 
+        $form = $this->createForm(new ImportExerciceType()); 
            
         if ($request->isMethod('POST')) {
 			$form->bind($request);
            	if ($form->isValid()) {
                 if($form->get('sauvegarder')->isClicked()){
 					//    $data = $request->
-					//$data = $request->getRequest('mooc_exobundle_import_Question')->files->get('file');
+					//$data = $request->getRequest('mooc_exobundle_import_Exercice')->files->get('file');
 					$data = $form['file']->getData();
 					//$form['attachment']->getData();
 					//$file = $data['file'] ; 

@@ -26,6 +26,10 @@ moocline_exo_chooseFEx:
     path: /exo/createExo/{type}/FEx
     defaults: { _controller: mooclineExoBundle:CreateExo:chooseFeuilleEx }
 
-moocline_exo_importQuestion:
-    path:   /exo/importExo/
-    defaults: { _controller:mooclineExoBundle:CreateExo:importQuestion}
+moocline_exo_importExercice:
+    path: /exo/importExo
+    defaults: { _controller:mooclineExoBundle:CreateExo:importExercice }
+
+moocline_exo_resolveFEx:
+    path: /exo/resolveFEx
+    defaults: { _controller:mooclineExoBundle:CorrExo:resolveFEx }

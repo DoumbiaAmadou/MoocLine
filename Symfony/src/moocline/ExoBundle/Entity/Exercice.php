@@ -42,7 +42,7 @@ class Exercice
     */
     private $feuilleEx;
 	
-     /**
+    /**
     * @ORM\OneToMany(targetEntity="Question",mappedBy="Exercice", cascade={"persist"})
     */
     protected $questions;
@@ -107,6 +107,16 @@ class Exercice
     }
 
 	/**
+     * Get feuilleEx
+     *
+     * @return FeuilleEx
+     */
+    public function getFeuilleEx()
+    {
+        return $this->feuilleEx;
+    }
+	
+	/**
      * Set feuilleEx
      *
      * @param FeuilleEx $feuilleEx
@@ -117,16 +127,6 @@ class Exercice
         $this->feuilleEx = $feuilleEx;
     }
 
-    /**
-     * Get feuilleEx
-     *
-     * @return FeuilleEx
-     */
-    public function getFeuilleEx()
-    {
-        return $this->feuilleEx;
-    }
-	
     /**
      * Get questions
      *
