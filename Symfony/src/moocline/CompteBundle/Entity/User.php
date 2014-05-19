@@ -57,10 +57,12 @@ class User extends BaseUser
     */
     protected $image;
 
-   /*function __construct() {
-
-    }*/
-
+    /**
+    * @ORM\ManyToMany(targetEntity="moocline\CoursBundle\Entity\Cours")
+	* @ORM\JoinColumn(nullable=false)
+    */
+    private $cours;
+	
     /**
      * Get id
      *
@@ -185,5 +187,46 @@ class User extends BaseUser
     public function getImage()
     {
         return $this->image;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cours = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    
+    /**
+     * Add cours
+     *
+     * @param \moocline\CoursBundle\Entity\Cours $cours
+     * @return User
+     */
+    public function addCour(\moocline\CoursBundle\Entity\Cours $cours)
+    {
+        $this->cours[] = $cours;
+    
+        return $this;
+    }
+
+    /**
+     * Remove cours
+     *
+     * @param \moocline\CoursBundle\Entity\Cours $cours
+     */
+    public function removeCour(\moocline\CoursBundle\Entity\Cours $cours)
+    {
+        $this->cours->removeElement($cours);
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCours()
+    {
+        return $this->cours;
     }
 }

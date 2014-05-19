@@ -47,21 +47,21 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
     ";
         // line 21
         $this->displayBlock('navbar', $context, $blocks);
-        // line 99
+        // line 75
         echo "
     ";
-        // line 100
+        // line 76
         $this->displayBlock('body', $context, $blocks);
-        // line 110
+        // line 86
         echo " 
     <footer>
       <center><p>Mooc'Line © 2014 and Team Moocline UPD-7.</p></center>
     </footer>
 
     ";
-        // line 115
+        // line 91
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 119
+        // line 95
         echo "
   </body>
 </html>";
@@ -127,31 +127,7 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
         // line 40
         echo $this->env->getExtension('routing')->getPath("home");
         echo "\">Institutions</a></li>
-              <li class=\"dropdown\">
-                <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">Spécialité <b class=\"caret\"></b></a>
-                <ul class=\"dropdown-menu\">
-                  <li class=\"divider\"></li>
-                  <li class=\"dropdown-header\">Science</li>
-                  <li><a href=\"#\">Mathématique</a></li>
-                  <li><a href=\"#\">Physique</a></li>
-                  <li><a href=\"#\">Chimie</a></li>
-                  <li><a href=\"#\">Informatique</a></li>
-                  <li><a href=\"#\">Science et vie de la Terre</a></li>
-                  <li class=\"divider\"></li>
-                  <li class=\"dropdown-header\">Langue</li>
-                  <li><a href=\"#\">Anglais</a></li>
-                  <li><a href=\"#\">Français</a></li>
-                  <li><a href=\"#\">Espagnol</a></li>
-                  <li><a href=\"#\">Chinois</a></li>
-                  <li><a href=\"#\">Arabe</a></li>
-                  <li class=\"divider\"></li>
-                  <li class=\"dropdown-header\">Economie</li>
-                  <li><a href=\"#\">Marketing</a></li>
-                  <li><a href=\"#\">Communication</a></li>
-                  <li><a href=\"#\">Management</a></li>
-                </ul>
-              </li>
-              <li>
+              
                <form class=\"navbar-form navbar-left\" role=\"search\">
         \t\t<div class=\"form-group\">
         \t\t  <input type=\"search\" class=\"form-control\" placeholder=\"Search\">
@@ -164,49 +140,52 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
             <ul class=\"nav navbar-nav navbar-right\">
               <li><a><span style=​\"margin:​3px -5px 0px 2px;​​\">​|​</span></a></li>
             ";
-        // line 77
+        // line 53
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 78
+            // line 54
             echo "              <li class=\"dropdown\">
                 <a href=\"";
-            // line 79
+            // line 55
             echo $this->env->getExtension('routing')->getPath("home");
             echo "\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                   ";
-            // line 80
+            // line 56
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "username"), "html", null, true);
             echo "
                   <b class=\"caret\"></b>
                 </a>
                 <ul class=\"dropdown-menu\">
-                  <li><a href=\"#\">Tableau de bord</a></li>
                   <li><a href=\"";
-            // line 85
+            // line 60
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("dashboard_Etudiant", array("id" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "id"))), "html", null, true);
+            echo "\">Tableau de bord</a></li>
+                  <li><a href=\"";
+            // line 61
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vue_Etudiant", array("id" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "id"))), "html", null, true);
             echo "\">Profil</a></li>
                   <li><a href=\"";
-            // line 86
-            echo $this->env->getExtension('routing')->getPath("fos_user_profile_edit");
+            // line 62
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("modification_Etudiant", array("id" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "id"))), "html", null, true);
             echo "\">Edition Profil</a></li>
                 </ul>
               </li>
                 <li><a href=\"";
-            // line 89
+            // line 65
             echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
             echo "\">Déconnexion</a></li>
             ";
         } else {
-            // line 91
+            // line 67
             echo "              <li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
             echo "\">Connexion</a></li>
-         x     <li><a href=\"";
-            // line 92
+             <li><a href=\"";
+            // line 68
             echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
             echo "\">S'inscrire</a></li>
             ";
         }
-        // line 94
+        // line 70
         echo "            </ul> 
           </div><!--/.nav-collapse -->
         </div>
@@ -214,46 +193,46 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
     ";
     }
 
-    // line 100
+    // line 76
     public function block_body($context, array $blocks = array())
     {
-        // line 101
+        // line 77
         echo "       
       ";
-        // line 102
+        // line 78
         $this->displayBlock('container', $context, $blocks);
-        // line 108
+        // line 84
         echo "
     ";
     }
 
-    // line 102
+    // line 78
     public function block_container($context, array $blocks = array())
     {
-        // line 103
+        // line 79
         echo "        
         ";
-        // line 104
+        // line 80
         $this->displayBlock('fos_user_content', $context, $blocks);
-        // line 106
+        // line 82
         echo "    
       ";
     }
 
-    // line 104
+    // line 80
     public function block_fos_user_content($context, array $blocks = array())
     {
-        // line 105
+        // line 81
         echo "        ";
     }
 
-    // line 115
+    // line 91
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 116
+        // line 92
         echo "      <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js\"></script>
       <script type=\"text/javascript\" src=\"";
-        // line 117
+        // line 93
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap3/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     ";
@@ -266,6 +245,6 @@ class __TwigTemplate_ea9abcc56754c237e171268b7cbb570056134ccc3dcc6d15a2a724194cb
 
     public function getDebugInfo()
     {
-        return array (  257 => 117,  254 => 116,  251 => 115,  247 => 105,  244 => 104,  239 => 106,  237 => 104,  234 => 103,  231 => 102,  226 => 108,  224 => 102,  221 => 101,  218 => 100,  210 => 94,  205 => 92,  200 => 91,  195 => 89,  189 => 86,  185 => 85,  177 => 80,  173 => 79,  170 => 78,  168 => 77,  128 => 40,  124 => 39,  111 => 32,  99 => 22,  96 => 21,  90 => 14,  86 => 13,  80 => 11,  77 => 10,  71 => 8,  65 => 119,  63 => 115,  56 => 110,  51 => 99,  49 => 21,  42 => 16,  35 => 8,  26 => 1,  136 => 68,  126 => 61,  120 => 38,  110 => 53,  105 => 51,  102 => 50,  98 => 49,  89 => 43,  76 => 33,  66 => 26,  54 => 100,  43 => 10,  40 => 10,  34 => 5,  29 => 4,);
+        return array (  236 => 93,  233 => 92,  230 => 91,  226 => 81,  223 => 80,  218 => 82,  216 => 80,  213 => 79,  210 => 78,  205 => 84,  203 => 78,  200 => 77,  197 => 76,  189 => 70,  184 => 68,  179 => 67,  174 => 65,  168 => 62,  164 => 61,  160 => 60,  153 => 56,  149 => 55,  146 => 54,  144 => 53,  128 => 40,  124 => 39,  120 => 38,  111 => 32,  99 => 22,  96 => 21,  90 => 14,  86 => 13,  80 => 11,  77 => 10,  71 => 8,  65 => 95,  63 => 91,  56 => 86,  54 => 76,  51 => 75,  49 => 21,  42 => 16,  40 => 10,  35 => 8,  26 => 1,);
     }
 }

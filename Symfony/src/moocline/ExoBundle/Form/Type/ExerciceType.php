@@ -8,11 +8,11 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ExerciceType extends AbstractType
 {
-	private $ctype;
+	private $type;
 	
 	public function __construct($type)
     {
-        $this->ctype = $type;
+        $this->type = $type;
     }
 
         /**
@@ -23,22 +23,22 @@ class ExerciceType extends AbstractType
     {
         $builder->add('intitule', 'text');
 
-		if($this->ctype=="QCM"){
+		if($this->type=="qcm"){
 			$builder->add('Questions', 'collection', array('type'   => new QCMType(),
                                                   'allow_add'    => true,
                                                   'allow_delete' => true));
 		}
-		if($this->ctype=="QRF"){
+		if($this->type=="qrf"){
 			$builder->add('Questions', 'collection', array('type'   => new QRFType(),
                                                   'allow_add'    => true,
                                                   'allow_delete' => true));
 		}
-		if($this->ctype=="QP"){
+		if($this->type=="p"){
 			$builder->add('Questions', 'collection', array('type'   => new QPType(),
                                                   'allow_add'    => true,
                                                   'allow_delete' => true));
 		}
-		if($this->ctype=="QL"){
+		if($this->type=="l"){
 			$builder->add('Questions', 'collection', array('type'   => new QLType(),
                                                   'allow_add'    => true,
                                                   'allow_delete' => true));

@@ -22,7 +22,7 @@ class ChapitreController extends Controller
          $query = $em->createQuery(
         'SELECT p
          FROM mooclineCoursBundle:Cours p
-        WHERE p.user = '. $user->getId() .''
+        WHERE p.enseignant = '. $user->getId() .''
         );
 
         $cours = $query->getResult();
@@ -83,7 +83,7 @@ class ChapitreController extends Controller
     $query = $em->createQuery(
     'SELECT p
     FROM mooclineCoursBundle:Cours p
-    WHERE p.user = '. $user->getId() .''
+    WHERE p.enseignant = '. $user->getId() .''
     );
 
     $cours = $query->getResult();

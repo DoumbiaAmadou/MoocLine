@@ -86,7 +86,7 @@ class __TwigTemplate_d10d12fcbad701ae49e1a0c7526a14fbc16e7d39036815597d3c8a69f22
                     
                     ";
                 // line 30
-                if ((($this->getAttribute((isset($context["ex"]) ? $context["ex"] : $this->getContext($context, "ex")), "type") == "QCM") || ($this->getAttribute((isset($context["ex"]) ? $context["ex"] : $this->getContext($context, "ex")), "type") == "QRF"))) {
+                if ((($this->getAttribute((isset($context["ex"]) ? $context["ex"] : $this->getContext($context, "ex")), "type") == "qcm") || ($this->getAttribute((isset($context["ex"]) ? $context["ex"] : $this->getContext($context, "ex")), "type") == "qrf"))) {
                     // line 31
                     echo "
                         <h4>Reponses</h4>
@@ -143,7 +143,7 @@ class __TwigTemplate_d10d12fcbad701ae49e1a0c7526a14fbc16e7d39036815597d3c8a69f22
         echo "
             <a href=\"";
         // line 51
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("moocline_exo_create", array("type" => (isset($context["vtype"]) ? $context["vtype"] : $this->getContext($context, "vtype")))), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("moocline_exo_create", array("type" => (isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")))), "html", null, true);
         echo "\">Retour</a>
           </div>
         </div>

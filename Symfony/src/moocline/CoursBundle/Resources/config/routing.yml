@@ -1,8 +1,8 @@
 moocline_cours_creation:
     pattern:  /creation
     defaults: { _controller: mooclineCoursBundle:Cours:creer }
-    
-        
+
+
 moocline_cours_vue:
     path:     /vuecours/{id}
     defaults: { _controller: mooclineCoursBundle:Cours:voir }
@@ -20,7 +20,7 @@ moocline_cours_vueEtu:
     defaults: { _controller: mooclineCoursBundle:Cours:voirEtudiant }
     requirements:
         id: \d+
-    
+
 moocline_cours_chapitre:
     pattern:  /chapitre/creation
     defaults: { _controller: mooclineCoursBundle:Chapitre:creer }

@@ -49,11 +49,7 @@ class Organisation
      */
     private $adresse;
 
-    /**
-* @ORM\OneToMany(targetEntity="moocline\COmpteBundle\Entity\Enseignant", mappedBy="Organisation")
-    **/
-
-    private $Enseignants;
+  
 
     /**
      * Get id
@@ -156,44 +152,5 @@ class Organisation
     {
         return $this->adresse;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->Enseignants = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add Enseignants
-     *
-     * @param \moocline\COmpteBundle\Entity\Enseignant $enseignants
-     * @return Organisation
-     */
-    public function addEnseignant(\moocline\COmpteBundle\Entity\Enseignant $enseignants)
-    {
-        $this->Enseignants[] = $enseignants;
-        $enseignants->setOrganisation($this);
-        return $this;
-    }
-
-    /**
-     * Remove Enseignants
-     *
-     * @param \moocline\COmpteBundle\Entity\Enseignant $enseignants
-     */
-    public function removeEnseignant(\moocline\COmpteBundle\Entity\Enseignant $enseignants)
-    {
-        $this->Enseignants->removeElement($enseignants);
-    }
-
-    /**
-     * Get Enseignants
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getEnseignants()
-    {
-        return $this->Enseignants;
-    }
+    
 }

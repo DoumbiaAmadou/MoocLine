@@ -19,7 +19,7 @@ class RegistrationFormType extends BaseType
             ->add('email',            'email')
             //->add('date_naissance',   'date')
             ->add('date_naissance', 'date', array(
-                                            'years' => range(date('Y'), date('Y')-70),
+                                            'years' => range(date('Y'), date('Y')-114),
                                             'input'  => 'datetime',
                                             'widget' => 'choice',
                                             'format' => 'yyyy MM dd',

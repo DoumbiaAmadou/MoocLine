@@ -64,10 +64,10 @@ class User extends \moocline\CompteBundle\Entity\User implements \Doctrine\ORM\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'nom', 'prenom', 'date_naissance', 'niveau', 'image', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
+            return array('__isInitialized__', 'id', 'nom', 'prenom', 'date_naissance', 'niveau', 'image', 'cours', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
         }
 
-        return array('__isInitialized__', 'id', 'nom', 'prenom', 'date_naissance', 'niveau', 'image', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
+        return array('__isInitialized__', 'id', 'nom', 'prenom', 'date_naissance', 'niveau', 'image', 'cours', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt');
     }
 
     /**
@@ -296,6 +296,39 @@ class User extends \moocline\CompteBundle\Entity\User implements \Doctrine\ORM\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImage', array());
 
         return parent::getImage();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addCour(\moocline\CoursBundle\Entity\Cours $cours)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCour', array($cours));
+
+        return parent::addCour($cours);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeCour(\moocline\CoursBundle\Entity\Cours $cours)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCour', array($cours));
+
+        return parent::removeCour($cours);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCours()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCours', array());
+
+        return parent::getCours();
     }
 
     /**

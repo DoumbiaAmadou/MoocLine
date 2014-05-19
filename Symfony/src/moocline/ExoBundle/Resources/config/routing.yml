@@ -30,6 +30,14 @@ moocline_exo_importExercice:
     path: /exo/importExo
     defaults: { _controller:mooclineExoBundle:CreateExo:importExercice }
 
+moocline_exo_validImportExercice:
+    path: /exo/validImportExo
+    defaults: { _controller:mooclineExoBundle:CreateExo:validImportExercice }
+
 moocline_exo_resolveFEx:
-    path: /exo/resolveFEx
+    path: /exo/resolveFEx/{id}
     defaults: { _controller:mooclineExoBundle:CorrExo:resolveFEx }
+    
+moocline_exo_resolveLibre:
+    path: /exo/resolveExoLibre
+    defaults: { _controller:mooclineExoBundle:CorrExo:CorrectionLibre }

@@ -1,7 +1,3 @@
-moocline_forum:
-    resource: "@mooclineForumBundle/Resources/config/routing.yml"
-    prefix:   /forum
-
 moocline_cours:
     resource: "@mooclineCoursBundle/Resources/config/routing.yml"
     prefix:   /cours

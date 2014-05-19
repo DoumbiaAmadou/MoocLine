@@ -11,7 +11,7 @@
       <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
         <div class="panel panel-default">
           <div class="panel-heading">
-              <h2 class="panel-title"> <strong>{{nomEx}} type : {{type}} <br/>nombre de Questions : {{numbQuestion}} </strong> </small></h2>
+              <h2 class="panel-title"> <strong>{{nomEx}} type : {{ctype}} <br/>nombre de Questions : {{numbQuestion}} </strong> </small></h2>
           </div>
           <div class="panel-body">
             
@@ -24,10 +24,12 @@
             {%for quest in form.Questions %}
 
 
-            <h4>{{ form_label(quest.question) }}</h4><br/>
-            {{ form_widget(quest.question) }}
+            {{ form_label(quest.question) }}
+                                                 <span class="col-md-offset-6"> {{ form_widget(quest.point, { 'attr':{ 'maxlength' : 5 , 'size' : 3  } }) }} points </span> 
+                                                 <br/><br/>
+            {{ form_widget(quest.question, { 'attr':{'rows' : 2 , 'cols' : 40 } }) }}
 
-            {% if vtype == "QCM" or vtype == "QRF" %}
+            {% if type == "qcm" or type == "qrf" %}
                 <h4>Reponses</h4>
                 <ul class="Reponses">
                 {% for rep in quest.Reponses %}
@@ -40,12 +42,17 @@
             {%endfor%}
 
             {{form_widget(form._token)}}
-           
-            {{ form_row(form.valider) }} <br/>
-            {{ form_row(form.sauvegarder) }} <br/>
+           {% if not import %}
+				{{ form_row(form.valider) }} <br/>
+           {% endif %}
+			{{ form_row(form.sauvegarder) }} <br/>
 
             </form>
-            <a href="{{path('moocline_exo_createExercice',{'type': vtype } )}}">Reprendre</a>
+			{% if import %}
+				<a href="{{path('moocline_exo_create' )}}">Retour</a>
+			{% else %}
+				<a href="{{path('moocline_exo_createExercice',{'type': type } )}}">Reprendre</a>
+			{% endif %}
           </div>
         </div>
       </div>

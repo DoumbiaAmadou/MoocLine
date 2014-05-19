@@ -3,7 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/Symfony/src/moocline/CoursBundle/Controller/CoursController.php</file>
+            <file>file:/C:/wamp/www/Symfony/src/moocline/CompteBundle/Resources/views/Dashboard/EtuDashboard.html.twig</file>
+            <file>file:/C:/wamp/www/Symfony/src/moocline/CompteBundle/Entity/Organisation.php</file>
+            <file>file:/C:/wamp/www/Symfony/src/moocline/CompteBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/wamp/www/Symfony/src/moocline/CompteBundle/Controller/DashboardController.php</file>
+            <file>file:/C:/wamp/www/Symfony/src/moocline/ExoBundle/Entity/FeuilleEx.php</file>
+            <file>file:/C:/wamp/www/Symfony/src/moocline/CompteBundle/Entity/User.php</file>
+            <file>file:/C:/wamp/www/Symfony/src/moocline/CoursBundle/Resources/config/routing.yml</file>
         </group>
     </open-files>
 </project-private>

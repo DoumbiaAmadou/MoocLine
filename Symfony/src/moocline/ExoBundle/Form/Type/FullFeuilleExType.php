@@ -20,7 +20,7 @@ class FullFeuilleExType extends AbstractType
 		$this->feuille->setType($FEx->getType());
 		$this->feuille->setTitre($FEx->getTitre());
         $this->feuille->setExercices($FEx->getExercices());
-		//$feuille->setCours($FEx->getCours());
+		$this->feuille->setCours($FEx->getCours());
     }
 
         /**
@@ -30,82 +30,40 @@ class FullFeuilleExType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 		$i = 1;
-		$j = 1;
+		//$j = 1;
 		
 		foreach($this->feuille->getExercices() as $exercice)
 		{	
 			
 			foreach($exercice->getQuestions() as $question)
 			{
-				$id = $question->getId();
-				if($exercice->getType() == "QCM")
+				if($exercice->getType() == "qcm")
 				{
-					$builder->add('rep'.$i.'_'.$j, 'entity', array(
+					$builder->add($i, 'entity', array(
 						'label' => $question->getQuestion(),
 						'class' => 'mooclineExoBundle:Reponse',
 						'choices' => $question->getReponses(), 'multiple' => true, 'expanded' => true));			
 				}
 				
-				else if($exercice->getType() == "QRF")
+				else if($exercice->getType() == "qrf")
 				{
-					$builder->add('rep'.$i.'_'.$j, 'text', array('label' => $question->getQuestion(), 'required' => false, 'attr' => array('placeholder' => 'Entrez la reponse')));
+					$builder->add($i, 'text', array('label' => $question->getQuestion(), 'required' => false, 'attr' => array('placeholder' => 'Entrez la reponse')));
 				}
 				
-				else if($exercice->getType() == "Programme")
+				else if($exercice->getType() == "p")
 				{
-					$builder->add('rep'.$i.'_'.$j, 'file',array('label' => $question->getQuestion(),'required' => false));
+					$builder->add($i, 'file',array('label' => $question->getQuestion(),'required' => false));
 				}
 				
-				else if($exercice->getType() == "Question libre")
+				else if($exercice->getType() == "l")
 				{
-					$builder->add('rep'.$i.'_'.$j, 'textarea', array('label' => $question->getQuestion(), 'required' => false, 'attr' => array('placeholder' => 'Entrez la reponse')));
+					$builder->add($i, 'textarea', array('label' => $question->getQuestion(), 'required' => false, 'attr' => array('placeholder' => 'Entrez la reponse')));
 				}
-				$j++;
+				$i++;
 			}
-			$i++;
+			//$i++;
 		}	
-		
-			/*	
-			if($exercice->getType() == "QCM")
-			{
-					$builder->add('Questions', 'collection', array('type'   => new CQCMType(),
-                                                  'allow_add'    => true,
-                                                  'allow_delete' => true));
-			}
-			else if($exercice->getType() == "QRF")
-			{
-				$builder->add('Questions', 'collection', array('type'   => new CQRFType(),
-                                                  'allow_add'    => true,
-                                                  'allow_delete' => true));
-			}
-			else if($exercice->getType() == "Programme")
-			{
-				$builder->add('Questions', 'collection', array('type'   => new CQPType(),
-                                                  'allow_add'    => true,
-                                                  'allow_delete' => true));
-			}
-			else if($exercice->getType() == "Question libre")
-			{
-				$builder->add('Questions', 'collection', array('type'   => new CQLType(),
-                                                  'allow_add'    => true,
-                                                  'allow_delete' => true));
-			}
-			
-		}
-		//
-		//$exercicesForm = new ArrayCollection();
-		
-		/*foreach($this->feuille->getExercices() as $exercice)
-		{*/
-				///*$exercicesForm*/$builder->add('exercices', new CExerciceType($exercice, $exercice->getType()));
-			//	$builder->add('exercices','text', array('read_only' => true, 'label' => $this->feuille->getExercices()->count(), 'required' => false, 'attr' => array('placeholder' => 'Entrez la reponse')));
-				
-		//}
-
-		//
-		//$builder->add('exercices', $exercicesForm);
-		//
-
+		$builder->add('valider','submit', array('label' => "soumettre", 'attr' => array('class' => 'btn btn-primary')));
     }
 
     /**

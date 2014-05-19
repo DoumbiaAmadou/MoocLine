@@ -49,14 +49,14 @@
                                  <a href="{{ path('moocline_cours_vueEtu',{'id': c.id}) }}" class="internal-home moocline-catalog-listing-secondary-link"> {{ c.nom }} </a>
                                      <span class="moocline-catalog-listing-course-link-box"></span></a></span>
                               <span class="moocline-catalog-listing-instructor">avec 
-                                  <a href="" class="internal-home moocline-catalog-listing-secondary-link"> {{ c.user.nom }}  {{ c.user.prenom }}
+                                  <a href="" class="internal-home moocline-catalog-listing-secondary-link"> {{ c.enseignant.nom }}  {{ c.enseignant.prenom }}
                                      <span class="moocline-catalog-listing-secondary-link-target"></span></a><span></span></span>
                          </div>
                      </div>
                  </div>
                  <div class="span3">
-                     <div class="moocline-catalog-listing-secondary"><span class="moocline-catalog-listing-secondary-item">avr. 30 2014</span>
-                         <span class="moocline-catalog-listing-secondary-item">5 weeks long</span>
+                     <div class="moocline-catalog-listing-secondary"><span class="moocline-catalog-listing-secondary-item"> debut de session: {{ c.datedebut|date('d-m-Y') }}</span>
+                         <span class="moocline-catalog-listing-secondary-item">fin de session : {{ c.datefin|date('d-m-Y') }} </span>
                 </div>
                 </div>
                   

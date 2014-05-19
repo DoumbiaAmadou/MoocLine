@@ -52,6 +52,14 @@ class Question
      * @Assert\File(maxSize="6000000")
      */
     public $file;
+    
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="point", type="float")
+     */
+    public $point;
 	
     /**
      * Get id
@@ -247,10 +255,48 @@ class Question
 	
 	
 	
+	/**
+     * Get point
+     *
+     * @return point
+     */
+    public function getPoint()
+    {
+        return $this->point;
+    }
 	
 	
+    /**
+     * set point
+     *
+     */
+    public function setPoint($point)
+    {
+        return $this->point = $point;
+    }
 	
 	
+	public function getNbGoodQuestion()
+    {
+       $i = 0 ; 
+       foreach ($this->reponses as $value) {
+          
+          if( $value->getCorrect()==true) 
+           $i++; 
+       }
+        return $i;
+    }
+    
+	public function getNbBadQuestion()
+    {
+       $i = 0 ; 
+       foreach ($this->reponses as $value) {
+          
+          if( $value->getCorrect()==false)
+           $i++; 
+       }
+        return $i;
+    }
 	
 	
 	

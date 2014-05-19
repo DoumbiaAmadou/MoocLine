@@ -39,7 +39,7 @@ class Cours
     * @ORM\ManyToOne(targetEntity="moocline\CompteBundle\Entity\User",
     cascade={"persist"})
     */
-    private $user;
+    private $enseignant;
 
     /**
      * @var string
@@ -54,10 +54,28 @@ class Cours
     */
     private $chapitres;
     
-    /**
-    * @ORM\OneToOne(targetEntity="moocline\CoursBundle\Entity\Image", cascade={"persist"})
+     /**
+    * @ORM\ManyToMany(targetEntity="moocline\CompteBundle\Entity\User",mappedBy="cours")
     */
-    private $image;
+    private $etudiants;
+    
+     /**
+    * @ORM\OneToMany(targetEntity="moocline\ExoBundle\Entity\FeuilleEx",mappedBy="cours")
+    */
+    private $feuilles;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_debut", type="date")
+     */
+    private $dateDebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_fin", type="date")
+     */
+    private $dateFin;
 
     /**
      * Get id
@@ -121,28 +139,7 @@ class Cours
         return (string)$this->getNom();
     }
 
-    /**
-     * Set user
-     *
-     * @param \moocline\CompteBundle\Entity\User $user
-     * @return Cours
-     */
-    public function setUser(\moocline\CompteBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \moocline\CompteBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
+  
 
     /**
      * Set presentation
@@ -211,5 +208,97 @@ class Cours
     public function getChapitres()
     {
         return $this->chapitres;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \moocline\CoursBundle\Entity\Image $image
+     * @return Cours
+     */
+    public function setImage(\moocline\CoursBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+    
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \moocline\CoursBundle\Entity\Image 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set dateDebut
+     *
+     * @param \DateTime $dateDebut
+     * @return Cours
+     */
+    public function setDateDebut($dateDebut)
+    {
+        $this->dateDebut = $dateDebut;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateDebut
+     *
+     * @return \DateTime 
+     */
+    public function getDateDebut()
+    {
+        return $this->dateDebut;
+    }
+
+    /**
+     * Set dateFin
+     *
+     * @param \DateTime $dateFin
+     * @return Cours
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateFin
+     *
+     * @return \DateTime 
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
+
+    /**
+     * Set enseignant
+     *
+     * @param \moocline\CompteBundle\Entity\User $enseignant
+     * @return Cours
+     */
+    public function setEnseignant(\moocline\CompteBundle\Entity\User $enseignant = null)
+    {
+        $this->enseignant = $enseignant;
+    
+        return $this;
+    }
+
+    /**
+     * Get enseignant
+     *
+     * @return \moocline\CompteBundle\Entity\User 
+     */
+    public function getEnseignant()
+    {
+        return $this->enseignant;
     }
 }

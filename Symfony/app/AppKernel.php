@@ -19,7 +19,6 @@ class AppKernel extends Kernel
 
             new moocline\CompteBundle\mooclineCompteBundle(),
             new moocline\CoursBundle\mooclineCoursBundle(),
-            new moocline\ForumBundle\mooclineForumBundle(),
             new moocline\ExoBundle\mooclineExoBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),

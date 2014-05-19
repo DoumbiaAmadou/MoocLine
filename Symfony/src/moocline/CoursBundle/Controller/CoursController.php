@@ -25,7 +25,7 @@ class CoursController extends Controller
 // On l'enregistre notre objet $article dans la base de
 
 		$cours=$form->getData();
-                $cours->setUser($enseignant);
+                $cours->setEnseignant($enseignant);
                 
                 
                 // rajouter l'id de l'enseignant 
@@ -156,4 +156,22 @@ $cours = $query->getResult();
  return $cours;
     
 }
+
+public function inscriptionAction($id)
+    {
+         $cours=$this->getDoctrine()
+                ->getRepository('moocline\CoursBundle\Entity\Cours')
+                ->find($id);
+         $etudiant=$this->container->get('security.context')->getToken()->getUser();
+         $etudiant->addCour($cours);
+         $em=$this->getDoctrine()->getManager();
+         $em->flush();
+		return $this->redirect($this->generateUrl("dashboard_Etudiant", array('id' => $etudiant->getId())));
+        }
+
+      
+
+
+    
+    
 }

@@ -27,7 +27,7 @@
                     
                       {{ quest.question }}<br/>
                     
-                    {% if ex.type == "QCM" or ex.type == "QRF" %}
+                    {% if ex.type == "qcm" or ex.type == "qrf" %}
 
                         <h4>Reponses</h4>
 
@@ -35,9 +35,12 @@
               
                             {% for rep in quest.reponses %}
                                 <li>
-                                  {% if rep.correct == "true" %}<div style="color:green">
-                                  {% else %}<div style="color:red">{% endif %}
-                                  {{ rep.reponse }}</div>
+                                  {% if rep.correct == "true" and ex.type == "qcm" %}<div style="color:green">
+                                  {% elseif rep.correct == "false" and ex.type == "qcm" %}<div style="color:red">{% endif %}
+                                  {{ rep.reponse }}
+								  {% if ex.type == "qcm" %}
+								  </div>
+								  {% endif %}
                                 </li>
                             {% endfor %}
                         </ul>
@@ -48,7 +51,7 @@
                 <hr/>
             {%endfor%}
 
-            <a href="{{path('moocline_exo_create',{'type': vtype } )}}">Retour</a>
+            <a href="{{path('moocline_exo_create',{'type': type } )}}">Retour</a>
           </div>
         </div>
       </div>

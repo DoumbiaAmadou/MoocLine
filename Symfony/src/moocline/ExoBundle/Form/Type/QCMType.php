@@ -18,13 +18,14 @@ class QCMType extends AbstractType
         $builder
          
          ->add('question', 'textarea', array('attr' => array('placeholder' =>'Entrez la question')))
+         ->add('point','number')       
          ->add('Reponses', 'collection', array('type'         => new ReponseQCMType(),
                                                   'allow_add'    => true,
                                                   'allow_delete' => true,
                                                   'by_reference' => false,
                                                 ))
-		 ->add('valider','submit', array('label' => "Valider et Ajouter",'attr' => array('class' => 'btn btn-primary')))
-		 ->add('sauvegarder','submit', array('label' => "Valider et Sauver", 'attr' => array('class' => 'btn btn-primary')));
+		 ->add('valider','submit', array('label' => "Ajouter",'attr' => array('class' => 'btn btn-primary')))
+		 ->add('sauvegarder','submit', array('label' => "Sauver", 'attr' => array('class' => 'btn btn-primary')));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

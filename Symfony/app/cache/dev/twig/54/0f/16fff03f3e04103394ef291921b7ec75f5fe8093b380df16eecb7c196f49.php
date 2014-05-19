@@ -108,17 +108,23 @@ class __TwigTemplate_540f16fff03f3e04103394ef291921b7ec75f5fe8093b380df16eecb7c1
                               <span class=\"moocline-catalog-listing-instructor\">avec 
                                   <a href=\"\" class=\"internal-home moocline-catalog-listing-secondary-link\"> ";
             // line 52
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["c"]) ? $context["c"] : $this->getContext($context, "c")), "user"), "nom"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["c"]) ? $context["c"] : $this->getContext($context, "c")), "enseignant"), "nom"), "html", null, true);
             echo "  ";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["c"]) ? $context["c"] : $this->getContext($context, "c")), "user"), "prenom"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["c"]) ? $context["c"] : $this->getContext($context, "c")), "enseignant"), "prenom"), "html", null, true);
             echo "
                                      <span class=\"moocline-catalog-listing-secondary-link-target\"></span></a><span></span></span>
                          </div>
                      </div>
                  </div>
                  <div class=\"span3\">
-                     <div class=\"moocline-catalog-listing-secondary\"><span class=\"moocline-catalog-listing-secondary-item\">avr. 30 2014</span>
-                         <span class=\"moocline-catalog-listing-secondary-item\">5 weeks long</span>
+                     <div class=\"moocline-catalog-listing-secondary\"><span class=\"moocline-catalog-listing-secondary-item\"> debut de session: ";
+            // line 58
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["c"]) ? $context["c"] : $this->getContext($context, "c")), "datedebut"), "d-m-Y"), "html", null, true);
+            echo "</span>
+                         <span class=\"moocline-catalog-listing-secondary-item\">fin de session : ";
+            // line 59
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["c"]) ? $context["c"] : $this->getContext($context, "c")), "datefin"), "d-m-Y"), "html", null, true);
+            echo " </span>
                 </div>
                 </div>
                   
@@ -162,6 +168,6 @@ class __TwigTemplate_540f16fff03f3e04103394ef291921b7ec75f5fe8093b380df16eecb7c1
 
     public function getDebugInfo()
     {
-        return array (  142 => 73,  137 => 70,  111 => 52,  103 => 49,  87 => 35,  83 => 34,  64 => 18,  58 => 14,  55 => 13,  49 => 10,  44 => 9,  41 => 8,  35 => 5,  30 => 4,);
+        return array (  148 => 73,  143 => 70,  126 => 59,  122 => 58,  111 => 52,  103 => 49,  87 => 35,  83 => 34,  64 => 18,  58 => 14,  55 => 13,  49 => 10,  44 => 9,  41 => 8,  35 => 5,  30 => 4,);
     }
 }

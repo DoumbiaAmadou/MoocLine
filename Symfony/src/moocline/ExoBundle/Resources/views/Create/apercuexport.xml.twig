@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feuilleEx>
-<exercice type="{{xmltype}}">
-{%for quest in exercice.questions %}    
+<exercice type="{{type}}">
+
+	{%for quest in exercice.questions %}    
         <question>
             <text>
                 {{quest.question}}
            </text>
            <tip></tip>
-            <answers>
-                <answer good="true">
-            {% for rep in quest.reponses %} 
-                {% if rep.correct == true %}
-                    <text>  {{ rep.reponse }} </text>    
-                {% endif %}
-            {% endfor %}
-                </answer>
-                <answer good="false">
-            {% for rep in quest.reponses %}
-                {% if rep.correct == false %}
-                    <text> {{ rep.reponse }} </text>
-                
-                {% endif %}
-            {% endfor %}
+		   {% if type=="qcm" %}
+				<answers>
+					<answer good="true">
+					{% for rep in quest.reponses %} 
+						{% if rep.correct == true %}
+							<text>  {{ rep.reponse }} </text>    
+						{% endif %}
+					{% endfor %}
+					</answer>
+					<answer good="false">
+					{% for rep in quest.reponses %}
+						{% if rep.correct == false %}
+							<text> {{ rep.reponse }} </text>
+						{% endif %}
+					{% endfor %}
+			
+			{% endif %}
                 </answer>
             </answers>
         </question>   
-{% endfor %}
+	{% endfor %}
+
 </exercice>
 </feuilleEx>

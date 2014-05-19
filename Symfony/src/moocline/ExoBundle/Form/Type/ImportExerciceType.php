@@ -16,8 +16,7 @@ class ImportExerciceType extends AbstractType
     {
         $builder
 		 ->add('file', 'file',array('label' => "Charger un fichier XML",'required' => true))
-		 ->add('valider','submit', array('label' => "Valider et Ajouter",'attr' => array('class' => 'btn btn-primary')))
-		 ->add('sauvegarder','submit', array('label' => "Valider et Sauver", 'attr' => array('class' => 'btn btn-primary')));
+		 ->add('sauver','submit', array('label' => "Visionner", 'attr' => array('class' => 'btn btn-primary')));
         
     }
 

@@ -19,8 +19,9 @@ class QLType extends AbstractType
         $builder
          
          ->add('question', 'textarea', array('attr' => array('placeholder' =>'Entrez la question')))
-		 ->add('valider','submit', array('label' => "Valider et Ajouter",'attr' => array('class' => 'btn btn-primary')))
-		 ->add('sauvegarder','submit', array('label' => "Valider et Sauver", 'attr' => array('class' => 'btn btn-primary')));
+                ->add('point','number')   
+		 ->add('valider','submit', array('label' => "Ajouter",'attr' => array('class' => 'btn btn-primary')))
+		 ->add('sauvegarder','submit', array('label' => "Sauver", 'attr' => array('class' => 'btn btn-primary')));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

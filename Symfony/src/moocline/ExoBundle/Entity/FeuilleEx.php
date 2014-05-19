@@ -29,6 +29,13 @@ class FeuilleEx
 	*/
 	private $type;
 	
+	/**
+	*@var string
+	*
+	*@ORM\Column(name="statut", type="text", nullable= true)
+	*/
+	private $statut;
+	
      /**
      * @var string
      *
@@ -36,16 +43,25 @@ class FeuilleEx
      */
     private $titre;
 	
-	/**
-	* @ORM\ManyToOne(targetEntity="moocline\CoursBundle\Entity\Cours", cascade={"persist"})
-	* @ORM\JoinColumn(name="cours_id", referencedColumnName="id") 
-	*/
-	private $cours;
+	 /**
+    * @ORM\ManyToOne(targetEntity="moocline\CoursBundle\Entity\Cours",
+    cascade={"persist"})
+    */
+    private $cours;
 	
     /**
     * @ORM\OneToMany(targetEntity="Exercice",mappedBy="FeuilleEx", cascade={"persist"})
     */
     private $exercices;
+    
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="visible", type="boolean")
+     */
+    private $visible;
+    
 
     /**
      * Get id
@@ -91,6 +107,25 @@ class FeuilleEx
 		$this->type = $type;
     }
 	
+	/**
+     * Get statut
+     *
+     * @return string 
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+	
+    /**
+     * Set statut
+     *
+     *@param string $statut
+     */
+    public function setStatut($statut){
+		$this->statut = $statut;
+    }
+	
     /**
      * Get titre
      *
@@ -110,26 +145,7 @@ class FeuilleEx
 		$this->titre = $titre;
     }
 
-	/**
-     * Get cours
-     *
-     * @return moocline\CoursBundle\Entity\Cours
-     */
-    public function getCours()
-    {
-        return $this->cours;
-    }
 	
-	/**
-     * Set cours
-     *
-     * @param moocline\CoursBundle\Entity\Cours $cours
-     * 
-     */
-    public function setCours(moocline\CoursBundle\Entity\Cours $cours)
-    {
-        $this->cours = $cours;
-    }
 	
 	
     /**
@@ -191,10 +207,65 @@ class FeuilleEx
 	 {
 		foreach ($this->getExercices() as $ex)
 		{
-			if($ex->getType=="QP")
+			if($ex->getType=="p")
 			{
 				$ex->uploadFile();
 			}
 		}
 	 }
+
+    /**
+     * Set cours
+     *
+     * @param \moocline\CoursBundle\Entity\Cours $cours
+     * @return FeuilleEx
+     */
+    public function setCours(\moocline\CoursBundle\Entity\Cours $cours = null)
+    {
+        $this->cours = $cours;
+    
+        return $this;
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \moocline\CoursBundle\Entity\Cours 
+     */
+    public function getCours()
+    {
+        return $this->cours;
+    }
+	
+	public function getTotalPoint() {
+        $i = 0; 
+        foreach($this->exercices as $exo)
+            foreach ($exo->getQuestions() as  $question) {
+                $i += $question->getPoint();
+            }
+        return $i ; 
+     }
+
+    /**
+     * Set visible
+     *
+     * @param boolean $visible
+     * @return FeuilleEx
+     */
+    public function setVisible($visible)
+    {
+        $this->visible = $visible;
+    
+        return $this;
+    }
+
+    /**
+     * Get visible
+     *
+     * @return boolean 
+     */
+    public function getVisible()
+    {
+        return $this->visible;
+    }
 }

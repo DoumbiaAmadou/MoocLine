@@ -19,6 +19,18 @@ class CoursType extends AbstractType
         $builder
             ->add('nom', 'text',array('label' => 'Nom: ', 'required' => false))
             ->add('categorie', 'text', array('label' => 'Categorie: ', 'required' => false))
+             ->add('date_debut', 'date',array(
+                                                'years' => range(date('Y'), date('Y')+5),
+                                                'input' => 'datetime',
+                                                'format' => 'dd/MM/yyyy',
+                                                'attr' => array('class' => 'date')
+                                                ))
+             ->add('date_fin', 'date',array(
+                                                'years' => range(date('Y'), date('Y')+5),
+                                                'input' => 'datetime',
+                                                'format' => 'dd/MM/yyyy',
+                                                'attr' => array('class' => 'date')
+                                                ))
             ->add('presentation', 'ckeditor', array('label' => 'présentation: ' ,'config_name' => 'my_config'))
         ;
     }

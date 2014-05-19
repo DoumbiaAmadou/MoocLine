@@ -29,6 +29,11 @@ vue_Enseignant:
     path:     /vueEnseignant/{id}
     defaults: { _controller: mooclineCompteBundle:Modification:voirEns }
 
+dashboard_Etudiant:
+    path:  /dashboard/{id}
+    defaults: { _controller: mooclineCompteBundle:Dashboard:DashboardEtu }
+    requirements:
+        id: \d+
 
 dashboard_Etudiant_listCours:
     path:  /dashboardEtudiantListCours/{id}

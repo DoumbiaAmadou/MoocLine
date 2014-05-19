@@ -26,10 +26,10 @@ class ModificationController extends Controller // name of controlle file
       $request = $this->get('request');
 
       if ($request->getMethod() == 'POST'){
-        echo ('123');
+       
         $form->bind($request);
         if ($form->isValid()){
-          echo ('124');
+       
      //     $user->getImage()->upload();
           $em = $this->getDoctrine()->getManager();
 

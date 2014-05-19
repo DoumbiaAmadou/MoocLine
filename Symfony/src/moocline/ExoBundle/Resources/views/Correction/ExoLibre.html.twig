@@ -1,0 +1,64 @@
+{# empty Twig template #}
+{% extends "::layout.html.twig" %}
+
+{% block title %} 
+  Mooc'Line - Exercice - Correction
+{% endblock %}
+
+{% block body %}
+
+  <div class="container">
+        <div class="row centered-form">
+      <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h2 class="panel-title"> <strong> Correction Exercice Libre</strong> </small></h2>
+          </div>
+          <div class="panel-body">
+            
+
+
+            <form  method="POST" {{ form_enctype(form) }}>
+                <fieldset>
+            
+
+              <div class="form-group">
+  <label class="col-md-5 control-label" for=""></label>  
+  <div class="col-md-3">
+  {{ form_widget(form.responseEu) }}
+  </div>
+</div>
+  
+  <div class="form-group">
+  <label class="col-md-5 control-label" >remaque</label>  
+  <div class="col-md-3">
+  {{ form_widget(form.remarque) }} 
+  </div>
+</div>
+
+  <div class="well">
+  {{ form_widget(form.note) }} 
+</div>
+
+            
+            
+            {{ form_widget(formb._token) }}
+
+  <div class="col-md-2" align="right">
+      <a href="{{path('dashboard_Enseignant',{'id': app.user )}}">Retour</a>
+      <input type="submit" class="btn btn-block btn-lg btn-primary"  value="Valider"/>
+  </div>
+			
+
+</fieldset>
+</form>				
+			
+				
+			
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}

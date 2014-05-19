@@ -89,7 +89,7 @@
             <li><a><span style=​"margin:​3px -5px 0px 2px;​​">​|​</span></a></li>
             
               {%if(auth::islogged())%}
-		        <li>{{_SESSION['Auth']['pseudo'] }}</li>";
+		        <li>{{_SESSION['Auth']['pseudo'] }}</li>;
 		    
 		      {%else%} 
 		              <li>{{ <a href="login.php">Se connecter</a>}} </li>

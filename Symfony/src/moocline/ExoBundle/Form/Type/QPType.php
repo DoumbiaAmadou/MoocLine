@@ -19,9 +19,10 @@ class QPType extends AbstractType
         $builder
          
          ->add('question', 'textarea', array('attr' => array('placeholder' =>'Entrez la question')))
+               ->add('point','number')  
 		 ->add('file', 'file',array('label' => "Charger un fichier",'required' => false))
-		 ->add('valider','submit', array('label' => "Valider et Ajouter",'attr' => array('class' => 'btn btn-primary')))
-		 ->add('sauvegarder','submit', array('label' => "Valider et Sauver", 'attr' => array('class' => 'btn btn-primary')));
+		 ->add('valider','submit', array('label' => "Ajouter",'attr' => array('class' => 'btn btn-primary')))
+		 ->add('sauvegarder','submit', array('label' => "Sauver", 'attr' => array('class' => 'btn btn-primary')));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

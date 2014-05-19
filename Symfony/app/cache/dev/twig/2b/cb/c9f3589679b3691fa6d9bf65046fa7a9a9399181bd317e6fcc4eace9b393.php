@@ -32,7 +32,7 @@ class __TwigTemplate_2bcbc9f3589679b3691fa6d9bf65046fa7a9a9399181bd317e6fcc4eace
         echo " 
   Mooc'Line - Exercice - Création ";
         // line 4
-        echo twig_escape_filter($this->env, (isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["ctype"]) ? $context["ctype"] : $this->getContext($context, "ctype")), "html", null, true);
         echo " n° ";
         echo twig_escape_filter($this->env, (isset($context["num"]) ? $context["num"] : $this->getContext($context, "num")), "html", null, true);
         echo "
@@ -52,7 +52,7 @@ class __TwigTemplate_2bcbc9f3589679b3691fa6d9bf65046fa7a9a9399181bd317e6fcc4eace
 \t\t\t\t\t<div class=\"panel-heading\">
 \t\t\t    \t\t<h2 class=\"panel-title\"> <strong> ";
         // line 17
-        echo twig_escape_filter($this->env, (isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["ctype"]) ? $context["ctype"] : $this->getContext($context, "ctype")), "html", null, true);
         echo " n° ";
         echo twig_escape_filter($this->env, (isset($context["num"]) ? $context["num"] : $this->getContext($context, "num")), "html", null, true);
         echo " </strong> </small></h2>
@@ -69,27 +69,33 @@ class __TwigTemplate_2bcbc9f3589679b3691fa6d9bf65046fa7a9a9399181bd317e6fcc4eace
 \t\t\t\t\t\t";
         // line 25
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "question"), 'label');
-        echo "<br/>
-            ";
-        // line 26
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "question"), 'widget');
         echo "
-
+                                                 <span class=\"col-md-offset-6\"> ";
+        // line 26
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "point"), 'widget', array("attr" => array("maxlength" => 5, "size" => 3)));
+        echo " point </span> 
+                                                 <br/><br/>
             ";
         // line 28
-        if ((((isset($context["vtype"]) ? $context["vtype"] : $this->getContext($context, "vtype")) == "QCM") || ((isset($context["vtype"]) ? $context["vtype"] : $this->getContext($context, "vtype")) == "QRF"))) {
-            // line 29
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "question"), 'widget', array("attr" => array("rows" => 2, "cols" => 40)));
+        echo "
+                    
+            
+            ";
+        // line 31
+        if ((((isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")) == "qcm") || ((isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")) == "qrf"))) {
+            // line 32
             echo "\t\t\t\t\t\t<h4>Reponses</h4>
 \t\t\t\t\t\t<ul class=\"Reponses\" data-prototype=\"";
-            // line 30
+            // line 33
             echo twig_escape_filter($this->env, $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "Reponses"), "vars"), "prototype"), 'widget'));
             echo "\" >
 \t\t\t\t\t\t\t";
-            // line 31
+            // line 34
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "Reponses"));
             foreach ($context['_seq'] as $context["_key"] => $context["rep"]) {
-                // line 32
+                // line 35
                 echo "\t\t\t\t\t\t\t\t<li class=\"RAW\">";
                 echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["rep"]) ? $context["rep"] : $this->getContext($context, "rep")), 'row');
                 echo "</li>
@@ -98,48 +104,45 @@ class __TwigTemplate_2bcbc9f3589679b3691fa6d9bf65046fa7a9a9399181bd317e6fcc4eace
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['rep'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 34
+            // line 37
             echo "            </ul>
-              ";
-            // line 35
-            $this->displayBlock('javascripts', $context, $blocks);
-            // line 89
-            echo "
+              
+
              ";
-        } elseif (((isset($context["vtype"]) ? $context["vtype"] : $this->getContext($context, "vtype")) == "QP")) {
-            // line 91
+        } elseif (((isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")) == "p")) {
+            // line 41
             echo "            ";
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "file"), 'row');
             echo "<br/>
             <h5>Un exercice de type programme ne peut contenir qu'une seule question.</h5><br/>
             ";
         }
-        // line 94
+        // line 44
         echo "
             ";
-        // line 95
+        // line 45
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "_token"), 'widget');
         echo "
            
             ";
-        // line 97
-        if (((isset($context["vtype"]) ? $context["vtype"] : $this->getContext($context, "vtype")) != "QP")) {
-            // line 98
+        // line 47
+        if (((isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")) != "p")) {
+            // line 48
             echo "\t\t\t\t\t     <br/><br/>";
             echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "valider"), 'row');
             echo " <br/>
             ";
         }
-        // line 100
+        // line 50
         echo "            ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "sauvegarder"), 'row');
         echo " <br/>
             <a href=\"";
-        // line 101
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("moocline_exo_apercu", array("type" => (isset($context["vtype"]) ? $context["vtype"] : $this->getContext($context, "vtype")))), "html", null, true);
+        // line 51
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("moocline_exo_apercu", array("type" => (isset($context["type"]) ? $context["type"] : $this->getContext($context, "type")))), "html", null, true);
         echo "\">Aperçu</a><br/>
             <a href=\"";
-        // line 102
+        // line 52
         echo $this->env->getExtension('routing')->getPath("moocline_exo_create");
         echo "\">Quitter sans sauvegarder</a>
           
@@ -155,17 +158,17 @@ class __TwigTemplate_2bcbc9f3589679b3691fa6d9bf65046fa7a9a9399181bd317e6fcc4eace
   ";
     }
 
-    // line 35
+    // line 65
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 36
+        // line 66
         echo "    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js\"></script>
     <script src=\"";
-        // line 37
+        // line 67
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.js"), "html", null, true);
         echo "\" type=\"text/javascript\"></script>
     <script src=\"";
-        // line 38
+        // line 68
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
         echo "\" type=\"text/javascript\" ></script>
     <script>
@@ -232,6 +235,6 @@ class __TwigTemplate_2bcbc9f3589679b3691fa6d9bf65046fa7a9a9399181bd317e6fcc4eace
 
     public function getDebugInfo()
     {
-        return array (  169 => 38,  165 => 37,  162 => 36,  159 => 35,  143 => 102,  139 => 101,  134 => 100,  128 => 98,  126 => 97,  121 => 95,  118 => 94,  111 => 91,  107 => 89,  105 => 35,  102 => 34,  93 => 32,  89 => 31,  85 => 30,  82 => 29,  80 => 28,  75 => 26,  71 => 25,  66 => 23,  55 => 17,  46 => 10,  43 => 9,  35 => 4,  30 => 3,);
+        return array (  172 => 68,  168 => 67,  165 => 66,  162 => 65,  146 => 52,  142 => 51,  137 => 50,  131 => 48,  129 => 47,  124 => 45,  121 => 44,  114 => 41,  108 => 37,  99 => 35,  95 => 34,  91 => 33,  88 => 32,  86 => 31,  80 => 28,  75 => 26,  71 => 25,  66 => 23,  55 => 17,  46 => 10,  43 => 9,  35 => 4,  30 => 3,);
     }
 }

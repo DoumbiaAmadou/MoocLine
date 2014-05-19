@@ -1,0 +1,46 @@
+<?php
+
+namespace moocline\ExoBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Exercice
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="NoteRepository")
+ */
+class Note
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="moocline\CompteBundle\Entity\User", cascade={"persist"})
+
+    */
+    private $users;
+
+	/**
+    * @ORM\OneToOne(targetEntity="Reponse",mappedBy="Feuille", cascade={"persist"})
+    */
+	private $feuilleEX;
+	
+	
+  
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="note", type="float")
+     */
+    private $note;
+
+
+}

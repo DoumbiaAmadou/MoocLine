@@ -21,7 +21,8 @@ class FeuilleExRepository extends EntityRepository
 				WHERE c.id = :id'
 			)->setParameter('id', $id);
 
-		try {
+			
+			try {
 			return $query->getResult();
 		} catch (\Doctrine\ORM\NoResultException $e) {
 			return null;

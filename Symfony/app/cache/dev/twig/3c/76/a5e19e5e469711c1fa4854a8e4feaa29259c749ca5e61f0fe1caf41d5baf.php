@@ -48,19 +48,19 @@ class __TwigTemplate_3c76a5e19e5e469711c1fa4854a8e4feaa29259c749ca5e61f0fe1caf41
 \t\t\t\t\t<div class=\"panel-body\">
 \t\t\t\t\t    <a href=\"";
         // line 17
-        echo $this->env->getExtension('routing')->getPath("moocline_exo_createExercice", array("type" => "QCM"));
+        echo $this->env->getExtension('routing')->getPath("moocline_exo_createExercice", array("type" => "qcm"));
         echo "\">Créer un Exercice Type QCM</a><br/>
 \t\t\t\t\t    <a href=\"";
         // line 18
-        echo $this->env->getExtension('routing')->getPath("moocline_exo_createExercice", array("type" => "QRF"));
+        echo $this->env->getExtension('routing')->getPath("moocline_exo_createExercice", array("type" => "qrf"));
         echo "\">Créer un Exercice Type QRF</a><br/>
 \t\t\t\t\t\t<a href=\"";
         // line 19
-        echo $this->env->getExtension('routing')->getPath("moocline_exo_createExercice", array("type" => "QP"));
+        echo $this->env->getExtension('routing')->getPath("moocline_exo_createExercice", array("type" => "p"));
         echo "\">Créer un Exercice Type Programme</a><br/>
 \t\t\t\t\t\t<a href=\"";
         // line 20
-        echo $this->env->getExtension('routing')->getPath("moocline_exo_createExercice", array("type" => "QL"));
+        echo $this->env->getExtension('routing')->getPath("moocline_exo_createExercice", array("type" => "l"));
         echo "\">Créer un Exercice Type Libre</a><br/>
             \t\t\t<a href=\"";
         // line 21

@@ -159,10 +159,11 @@ class Exercice
     {
 		$quest = new Question();
         $quest->setExercice($this);
+		$quest->setPoint($question->getPoint());
 		$quest->setQuestion($question->getQuestion());
 		$quest->setReponses($question->getReponses());
 		$quest->setFile($question->getFile());
-		if($this->type == "QP"){	
+		if($this->type == "p"){	
 			$quest->preUpload();
 		}
 		$this->questions->add($quest);
@@ -173,7 +174,7 @@ class Exercice
      * @ORM\PostUpdate()
      */
 	 public function uploadFile(){
-		if($this->type == "QP"){
+		if($this->type == "p"){
 			if($this->questions[0] != null){
 				$quest = $this->questions()[0];
 				$quest->postUpload();

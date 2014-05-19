@@ -9,7 +9,12 @@ use moocline\ExoBundle\Form\Type\ExerciceType ;
 
 class FeuilleExType extends AbstractType
 {
+	private $cours;
 	
+	public function __construct($cours)
+    {
+        $this->cours = $cours;
+    }
         /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -18,6 +23,10 @@ class FeuilleExType extends AbstractType
     {
         $builder
 				 ->add('titre', 'text', array('label' => "Titre"))
+                                 ->add('cours', 'entity', array(
+					'label' => "Cours",
+					'class' => 'mooclineCoursBundle:Cours',
+					'choices' => $this->cours))    
 				 ->add('type', 'choice', array('label' => "Type de feuille", 'choices' => array('Defaut' => 'Tout','TD' =>'TD' ,'TP' => 'TP','Memoire' => 'Memoire','Projet' => 'Projet','Examen' => 'Examen')))
 				 ->add('valider','submit', array('label' => "Créer", 'attr' => array('class' => 'btn btn-primary')));
     }

@@ -1,5 +1,5 @@
 <?php
-/*
+
 namespace moocline\CompteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -7,12 +7,27 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DashboardController extends Controller
 {
+   
+
+    
     public function indexAction($name)
     {
         return $this->render('mooclineCompteBundle:Default:index.html.twig', array('name' => $name));
     }
 
-    public function dashboardEtu_LCAction($id)
+    public function dashboardEtuAction($id)
+    {
+    	$user =$this->getDoctrine()
+                ->getRepository('moocline\CompteBundle\Entity\User')
+                ->find($id);
+        $cours=$user->getCours();
+        $feuille=$
+        
+    	return $this->render('mooclineCompteBundle:Dashboard:EtuDashboard.html.twig', 
+                array('user' => $user, ));
+    }
+    
+ /*   public function dashboardEtu_LCAction($id)
     {
     	$user = $this->getDoctrine()
                 ->getRepository('moocline\CompteBundle\Entity\User')
@@ -115,5 +130,5 @@ class DashboardController extends Controller
     }
 }
 */
-
+}
 ?>
