@@ -189,7 +189,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->redirect($pathinfo.'/', 'home');
             }
 
-            return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegisterController::indexAction',  '_route' => 'home',);
+            return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegistrationController::indexAction',  '_route' => 'home',);
         }
 
         if (0 === strpos($pathinfo, '/inscription-e')) {
@@ -271,6 +271,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // contact_particulier
+        if ($pathinfo === '/contact') {
+            return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\ContactController::contactParticulierAction',  '_route' => 'contact_particulier',);
+        }
+
+        // contact_ecole_partenaire
+        if ($pathinfo === '/ecole-partenaire') {
+            return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\ContactController::contactEcoleAction',  '_route' => 'contact_ecole_partenaire',);
+        }
+
+        // qui_sommes_nous
+        if ($pathinfo === '/qui-sommes-nous') {
+            return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\ContactController::qsNousAction',  '_route' => 'qui_sommes_nous',);
+        }
+
         if (0 === strpos($pathinfo, '/exo')) {
             // moocline_exo_homepage
             if ($pathinfo === '/exo/hello') {
@@ -342,7 +357,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             if (0 === strpos($pathinfo, '/login')) {
                 // fos_user_security_login
                 if ($pathinfo === '/login') {
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
+                    return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
                 }
 
                 // fos_user_security_check
@@ -352,7 +367,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                         goto not_fos_user_security_check;
                     }
 
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
+                    return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
                 }
                 not_fos_user_security_check:
 
@@ -360,7 +375,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             // fos_user_security_logout
             if ($pathinfo === '/logout') {
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
+                return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
             }
 
         }
@@ -396,7 +411,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                         return $this->redirect($pathinfo.'/', 'fos_user_registration_register');
                     }
 
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::registerAction',  '_route' => 'fos_user_registration_register',);
+                    return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegistrationController::registerAction',  '_route' => 'fos_user_registration_register',);
                 }
 
                 if (0 === strpos($pathinfo, '/register/c')) {
@@ -407,7 +422,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                             goto not_fos_user_registration_check_email;
                         }
 
-                        return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
+                        return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegistrationController::checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
                     }
                     not_fos_user_registration_check_email:
 
@@ -419,7 +434,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                                 goto not_fos_user_registration_confirm;
                             }
 
-                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_registration_confirm')), array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmAction',));
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_registration_confirm')), array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegistrationController::confirmAction',));
                         }
                         not_fos_user_registration_confirm:
 
@@ -430,7 +445,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                                 goto not_fos_user_registration_confirmed;
                             }
 
-                            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
+                            return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegistrationController::confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
                         }
                         not_fos_user_registration_confirmed:
 

@@ -21,7 +21,7 @@ class DashboardController extends Controller
                 ->getRepository('moocline\CompteBundle\Entity\User')
                 ->find($id);
         $cours=$user->getCours();
-        $feuille=$
+        //$feuille=$
         
     	return $this->render('mooclineCompteBundle:Dashboard:EtuDashboard.html.twig', 
                 array('user' => $user, ));

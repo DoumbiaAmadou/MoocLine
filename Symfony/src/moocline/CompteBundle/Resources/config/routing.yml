@@ -1,6 +1,6 @@
 home:
     path:  /
-    defaults: { _controller: mooclineCompteBundle:Register:index }
+    defaults: { _controller: mooclineCompteBundle:Registration:index }
 
 inscription_Enseignant:
     path:  /inscription-enseignant
@@ -50,3 +50,16 @@ dashboard_Etudiant_platformCours:
 dashboard_Enseignant:
     path:  /dashboardEnseignant/{id}
     defaults: { _controller: mooclineCompteBundle:Dashboard:dashboardEns }
+
+
+contact_particulier:
+    path:  /contact
+    defaults: { _controller: mooclineCompteBundle:Contact:contactParticulier}
+
+contact_ecole_partenaire:
+    path:  /ecole-partenaire
+    defaults: { _controller: mooclineCompteBundle:Contact:contactEcole}
+    
+qui_sommes_nous:
+    path:  /qui-sommes-nous
+    defaults: { _controller: mooclineCompteBundle:Contact:qsNous}

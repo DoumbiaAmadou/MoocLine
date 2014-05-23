@@ -1,5 +1,13 @@
 # CHANGELOG
 
+### 2.3.0 (2014-05-16)
+
+ * 4fb29d1 - [Helper] Only load the CKEditor library one time
+ * 41636f9 - Add coveralls support
+ * 13e7038 - Allow RegExp by relying on egeloen/json-builder
+ * ac6db2a - Upgrade CKEditor to 4.4.0
+ * 648aa63 - [Helper] Only render StylesSet if they are not already registered
+
 ### 2.2.1 (2014-01-31)
 
  * aa81171 - [Travis] Make symfony/form dynamic

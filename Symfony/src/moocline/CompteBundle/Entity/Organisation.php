@@ -49,7 +49,47 @@ class Organisation
      */
     private $adresse;
 
-  
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=255)
+     */
+    private $ville;
+
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pays", type="text")
+     */
+    private $pays;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="code_postal", type="integer")
+     */
+    private $codePostal;
+
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="telephone", type="integer", nullable=true)
+     */
+    private $telephone;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="Message", type="text")
+     */
+    private $message;
+
+    /**
+     * @ORM\OneToMany(targetEntity="moocline\COmpteBundle\Entity\Enseignant", mappedBy="Organisation")
+     **/
+    private $Users;
 
     /**
      * Get id
@@ -152,5 +192,183 @@ class Organisation
     {
         return $this->adresse;
     }
+
+     /**
+     * Set message
+     *
+     * @param string $message
+     * @return Contact
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
     
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string 
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->Users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add Users
+     *
+     * @param \moocline\COmpteBundle\Entity\Enseignant $Users
+     * @return Organisation
+     */
+    public function addEnseignant(\moocline\COmpteBundle\Entity\Enseignant $Users)
+    {
+        $this->Users[] = $Users;
+        $Users->setOrganisation($this);
+        return $this;
+    }
+
+    /**
+     * Remove Users
+     *
+     * @param \moocline\COmpteBundle\Entity\Enseignant $Users
+     */
+    public function removeEnseignant(\moocline\COmpteBundle\Entity\Enseignant $Users)
+    {
+        $this->Users->removeElement($Users);
+    }
+
+    /**
+     * Get Users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->Users;
+    }
+
+    /**
+     * Set telephone
+     *
+     * @param integer $telephone
+     * @return Organisation
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+    
+        return $this;
+    }
+
+    /**
+     * Get telephone
+     *
+     * @return integer 
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * Add Users
+     *
+     * @param \moocline\COmpteBundle\Entity\Enseignant $users
+     * @return Organisation
+     */
+    public function addUser(\moocline\COmpteBundle\Entity\Enseignant $users)
+    {
+        $this->Users[] = $users;
+    
+        return $this;
+    }
+
+    /**
+     * Remove Users
+     *
+     * @param \moocline\COmpteBundle\Entity\Enseignant $users
+     */
+    public function removeUser(\moocline\COmpteBundle\Entity\Enseignant $users)
+    {
+        $this->Users->removeElement($users);
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     * @return ContactEcole
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+    
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string 
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+    
+    /**
+     * Set pays
+     *
+     * @param string $pays
+     * @return Organisation
+     */
+    public function setPays($pays)
+    {
+        $this->pays = $pays;
+    
+        return $this;
+    }
+
+    /**
+     * Get pays
+     *
+     * @return string 
+     */
+    public function getPays()
+    {
+        return $this->pays;
+    }
+    
+    /**
+     * Set codePostal
+     *
+     * @param integer $codePostal
+     * @return ContactEcole
+     */
+    public function setCodePostal($codePostal)
+    {
+        $this->codePostal = $codePostal;
+    
+        return $this;
+    }
+
+    /**
+     * Get codePostal
+     *
+     * @return integer 
+     */
+    public function getCodePostal()
+    {
+        return $this->codePostal;
+    }
 }

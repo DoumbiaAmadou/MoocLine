@@ -17,6 +17,7 @@ return array(
     'Sensio\\Bundle\\FrameworkExtraBundle' => array($vendorDir . '/sensio/framework-extra-bundle'),
     'Sensio\\Bundle\\DistributionBundle' => array($vendorDir . '/sensio/distribution-bundle'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
+    'Ivory\\JsonBuilder' => array($vendorDir . '/egeloen/json-builder'),
     'Ivory\\CKEditorBundle' => array($vendorDir . '/egeloen/ckeditor-bundle'),
     'Incenteev\\ParameterHandler' => array($vendorDir . '/incenteev/composer-parameter-handler'),
     'FOS\\UserBundle' => array($vendorDir . '/friendsofsymfony/user-bundle'),

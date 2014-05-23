@@ -11,14 +11,13 @@
     <div class="alert alert-error"> {{ error|trans }}</div>
 {% endif %}
 
-<form class="form-horizontal" action="{{ path("fos_user_security_check") }}" method="post">
-    
-	<fieldset>
-		
-		<legend>Mooc'Line Connexion</legend>
-		
-		<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-		
+
+<fieldset>
+	<div class="row">
+  		<div class="col-md-4 col-md-offset-4"><legend>Mooc'Line Connexion</legend></div>
+	</div>
+	<form class="form-horizontal" action="{{ path("fos_user_security_check") }}" method="post">
+   		<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 		<div class="form-group">
 		    <label class="col-md-4 control-label" for="username">{{ 'security.login.username'|trans }}</label>
 		    <div class="col-md-4">
@@ -42,18 +41,19 @@
 				   	<input type="checkbox" id="remember_me" name="_remember_me" value="on" />
 			    	{{ 'security.login.remember_me'|trans }}
 		    	</label>
+		    	<span style="margin-left:30%;">
+		    		<a href="{{ path('fos_user_registration_register') }}">pas encore inscrire ?</a>
+		    	</span>
 		    </div>
 		</div>
 
 		<div class="form-group">
-			<label class="col-md-4 control-label" for="checkboxes"></label>
+			<div class="col-md-4 control-label" for="checkboxes"></div>
 		  	<div class="col-md-4">
 				<input class="btn btn-block btn-success" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 			</div>
 		</div>
-
-	</fieldset>
-
-</form>
+	</form>
+</fieldset>
 
 {% endblock fos_user_content %}

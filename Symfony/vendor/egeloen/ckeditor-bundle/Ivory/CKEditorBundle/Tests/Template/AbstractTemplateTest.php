@@ -169,7 +169,7 @@ if (CKEDITOR.instances["id"]) {
 delete CKEDITOR.instances["id"];
 }
 CKEDITOR.plugins.addExternal("foo", "path", "filename");
-CKEDITOR.stylesSet.add("default", [{"name":"Blue Title","element":"h2","styles":{"color":"Blue"}}]);
+if (CKEDITOR.stylesSet.get("default") === null) { CKEDITOR.stylesSet.add("default", [{"name":"Blue Title","element":"h2","styles":{"color":"Blue"}}]); }
 CKEDITOR.addTemplates("foo", {"imagesPath":"path","templates":[{"title":"My Template","html":"<h1>Template<\/h1>"}]});
 CKEDITOR.replace("id", {"foo":"bar"});
 </script>
@@ -192,6 +192,38 @@ EOF;
 
         $expected = <<<EOF
 <textarea >value</textarea>
+
+EOF;
+
+        $this->assertSame($this->normalizeOutput($expected), $this->normalizeOutput($output));
+    }
+
+    public function testRenderWithMultipleWidgets()
+    {
+        $context = array(
+            'form'      => $this->getMock('Symfony\Component\Form\FormView'),
+            'id'        => 'id',
+            'value'     => '<p>value</p>',
+            'enable'    => true,
+            'base_path' => 'base_path',
+            'js_path'   => 'js_path',
+            'config'    => array(),
+            'plugins'   => array(),
+            'styles'    => array(),
+            'templates' => array(),
+        );
+
+        $this->renderTemplate($context);
+        $output = $this->renderTemplate($context);
+
+        $expected = <<<EOF
+<textarea >&lt;p&gt;value&lt;/p&gt;</textarea>
+<script type="text/javascript">
+if (CKEDITOR.instances["id"]) {
+delete CKEDITOR.instances["id"];
+}
+CKEDITOR.replace("id", []);
+</script>
 
 EOF;
 

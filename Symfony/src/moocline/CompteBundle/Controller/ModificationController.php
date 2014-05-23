@@ -35,13 +35,13 @@ class ModificationController extends Controller // name of controlle file
 
           //$em->persist($user);
           $em->flush();
-          if ($user->getPassword() == $user->getConfirmPassword())
+          //if ($user->getPassword() == $user->getConfirmPassword())
             return $this->redirect($this->generateUrl('vue_Etudiant', array('id' => $user->getId())));
-          else echo "error";
+          //else echo "error";
         }
       }
       return $this->render('mooclineCompteBundle:Modification:Modification.html.twig', 
-      	array('form' => $form->createView(), 'user' => $user, 
+        array('form' => $form->createView(), 'user' => $user, 
           ));     
   }
   
@@ -69,15 +69,15 @@ class ModificationController extends Controller // name of controlle file
   
   public function voirEtuAction($id)
   {
-  	$repository = $this->getDoctrine()
-          						->getManager()
-          						->getRepository('mooclineCompteBundle:User');
-	  $user = $repository->find($id);
-//	echo $user->getEmail();
+    $repository = $this->getDoctrine()
+                      ->getManager()
+                      ->getRepository('mooclineCompteBundle:User');
+    $user = $repository->find($id);
+//  echo $user->getEmail();
   
     return $this->render('mooclineCompteBundle:Modification:EtuVue.html.twig', 
-    	array('id' => $user->getId(), 'nom' => $user->getNom(), 'prenom' => $user->getPrenom(),
-    	     'email' => $user->getEmail(), 'password' => $user->getPassword()));
+      array('id' => $user->getId(), 'nom' => $user->getNom(), 'prenom' => $user->getPrenom(),
+           'email' => $user->getEmail(), 'password' => $user->getPassword()));
   }
   
   public function voirEnsAction($id)

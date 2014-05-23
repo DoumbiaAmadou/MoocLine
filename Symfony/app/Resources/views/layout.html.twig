@@ -9,7 +9,6 @@
 
     {% block stylesheets %}
       <link rel="stylesheet" href="{{ asset('css/bootstrap3/bootstrap.min.css') }}" type="text/css" />
-      
       <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" />
       <link rel="stylesheet" href="{{ asset('css/fstyle.css') }}" type="text/css" />
     {% endblock %}
@@ -28,8 +27,8 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
-              <img src="{{ asset('images/livre.jpg') }}" alt="Home" href="#" style="heigh:20px ; width : 40px">'Line
+            <a class="navbar-brand" href="{{ path('home') }}">
+              <img src="{{ asset('images/livre.jpg') }}" alt="Home" style="heigh:20px ; width : 40px">'Line
             </a>
           </div>
           <div class="navbar-collapse collapse">
@@ -38,13 +37,19 @@
               <li class="active"><a href="{{ path('home') }}">Accueil</a></li>
               <li><a href="{{ path('moocline_cours_list') }}">Cours</a></li>
               <li><a href="{{ path('home') }}">Institutions</a></li>
-              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{ path('contact_ecole_partenaire')}}">Ecole & Partenaire</a></li>
+                  <li><a href="{{ path('contact_particulier')}}">Particulier</a></li>
+                  <li><a href="{{ path('qui_sommes_nous')}}">Qui sommes nous</a></li>
+                </ul>
+              </li>
+              <li>
                <form class="navbar-form navbar-left" role="search">
-        		<div class="form-group">
-        		  <input type="search" class="form-control" placeholder="Search">
-                        <!--  <button type="submit" class="btn btn-default">Submit</button> -->
-                        </div>
-    		
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                </div>
                </form>
               </li>
             </ul>
@@ -65,7 +70,7 @@
                 <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
             {% else %}
               <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-             <li><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
+              <li><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
             {% endif %}
             </ul> 
           </div><!--/.nav-collapse -->
@@ -76,16 +81,15 @@
     {% block body %}
        
       {% block container %}
-        
-        {% block fos_user_content %}
-        {% endblock fos_user_content %}
     
       {% endblock container %}
 
     {% endblock %}
  
     <footer>
-      <center><p>Mooc'Line © 2014 and Team Moocline UPD-7.</p></center>
+      <center><p>
+        <strong>MOOC</strong>'Line © 2014 and <strong>Mooc</strong>'Line Team at Université Paris Diderot (<strong>UPD-7</strong>).
+      </p></center>
     </footer>
 
     {% block javascripts %}

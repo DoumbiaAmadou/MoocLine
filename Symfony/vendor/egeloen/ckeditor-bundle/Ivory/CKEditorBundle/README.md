@@ -1,6 +1,7 @@
 # README
 
 [![Build Status](https://secure.travis-ci.org/egeloen/IvoryCKEditorBundle.png)](http://travis-ci.org/egeloen/IvoryCKEditorBundle)
+[![Coverage Status](https://coveralls.io/repos/egeloen/IvoryCKEditorBundle/badge.png?branch=master)](https://coveralls.io/r/egeloen/IvoryCKEditorBundle?branch=master)
 
 The bundle provides a [CKEditor](http://ckeditor.com/) integration for your Symfony2 Project. It automatically registers
 the new `ckeditor` form type which can be easily configured.
@@ -15,8 +16,6 @@ the new `ckeditor` form type which can be easily configured.
 ## Contribute
 
 We love contributors! Ivory is an open source project. If you'd like to contribute, feel free to propose a PR!
-
-All contributions must be done on the 2.0 branch unless you have a good reason.
 
 ## License
 
