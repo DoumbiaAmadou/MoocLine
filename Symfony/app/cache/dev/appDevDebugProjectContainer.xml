@@ -2341,7 +2341,8 @@
               <argument key="reset">form.type.reset</argument>
               <argument key="currency">form.type.currency</argument>
               <argument key="entity">form.type.entity</argument>
-              <argument key="moocline_user_registration">moocline_user.registration.form.type</argument>
+              <argument key="moocline_user_registration">moocline.registration.form.type</argument>
+              <argument key="moocline_invitation_type">moocline.invitation.form.type</argument>
               <argument key="fos_user_username">fos_user.username_form_type</argument>
               <argument key="fos_user_profile">fos_user.profile.form.type</argument>
               <argument key="fos_user_registration">fos_user.registration.form.type</argument>
@@ -2882,7 +2883,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>537ef2cf537f6</argument>
+            <argument>5383282b59f8a</argument>
           </service>
         </argument>
       </argument>
@@ -3010,7 +3011,7 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/resetting</argument>
+                      <argument>^/inscription-enseignant</argument>
                     </service>
                   </argument>
                   <argument type="collection">
@@ -3021,11 +3022,11 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/admin/</argument>
+                      <argument>^/resetting</argument>
                     </service>
                   </argument>
                   <argument type="collection">
-                    <argument>ROLE_ADMIN</argument>
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -3152,7 +3153,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>537ef2cf537f6</argument>
+            <argument>5383282b59f8a</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -3188,7 +3189,7 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/resetting</argument>
+                      <argument>^/inscription-enseignant</argument>
                     </service>
                   </argument>
                   <argument type="collection">
@@ -3199,11 +3200,11 @@
                 <call method="add">
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-                      <argument>^/admin/</argument>
+                      <argument>^/resetting</argument>
                     </service>
                   </argument>
                   <argument type="collection">
-                    <argument>ROLE_ADMIN</argument>
+                    <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
                   </argument>
                   <argument>null</argument>
                 </call>
@@ -3782,6 +3783,17 @@
     <service id="moocline_user.registration.form.type" class="moocline\CompteBundle\Form\Type\RegistrationFormType">
       <tag name="form.type" alias="moocline_user_registration"/>
       <argument>moocline\CompteBundle\Entity\User</argument>
+    </service>
+    <service id="moocline.registration.form.type" class="moocline\CompteBundle\Form\Type\RegistrationFormType">
+      <tag name="form.type" alias="moocline_user_registration"/>
+      <argument>moocline\CompteBundle\Entity\User</argument>
+    </service>
+    <service id="moocline.invitation.form.type" class="moocline\CompteBundle\Form\Type\InvitationFormType">
+      <tag name="form.type" alias="moocline_invitation_type"/>
+      <argument type="service" id="moocline.invitation.form.data_transformer"/>
+    </service>
+    <service id="moocline.invitation.form.data_transformer" class="moocline\CompteBundle\Form\DataTransformer\InvitationToCodeTransformer">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
     <service id="fos_user.security.interactive_login_listener" class="FOS\UserBundle\EventListener\LastLoginListener">
       <tag name="kernel.event_subscriber"/>
@@ -4413,13 +4425,15 @@
         <argument type="service" id="swiftmailer.mailer.default.plugin.messagelogger"/>
       </call>
     </service>
-    <service id="fos_user.mailer" class="FOS\UserBundle\Mailer\Mailer">
+    <service id="fos_user.mailer" class="FOS\UserBundle\Mailer\TwigSwiftMailer">
       <argument type="service" id="swiftmailer.mailer.default"/>
       <argument type="service" id="router"/>
-      <argument type="service" id="templating"/>
+      <argument type="service" id="twig"/>
       <argument type="collection">
-        <argument key="confirmation.template">FOSUserBundle:Registration:email.txt.twig</argument>
-        <argument key="resetting.template">FOSUserBundle:Resetting:email.txt.twig</argument>
+        <argument key="template" type="collection">
+          <argument key="confirmation">FOSUserBundle:Registration:email.txt.twig</argument>
+          <argument key="resetting">FOSUserBundle:Resetting:email.txt.twig</argument>
+        </argument>
         <argument key="from_email" type="collection">
           <argument key="confirmation" type="collection">
             <argument key="moocline.noreply@gmail.com">Moocline App</argument>

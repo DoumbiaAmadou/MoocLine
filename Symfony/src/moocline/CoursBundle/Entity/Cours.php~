@@ -35,6 +35,13 @@ class Cours
      */
     private $categorie;
 
+	/**
+	*@var string
+	*
+	*@ORM\Column(name="statut", type="text")
+	*/
+	private $statut;
+	
     /**
     * @ORM\ManyToOne(targetEntity="moocline\CompteBundle\Entity\User",
     cascade={"persist"})
@@ -133,7 +140,24 @@ class Cours
         return $this->categorie;
     }
 
-    
+    /**
+     * Get statut
+     *
+     * @return string 
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+	
+    /**
+     * Set statut
+     *
+     *@param string $statut
+     */
+    public function setStatut($statut){
+		$this->statut = $statut;
+    }    
     
     public function __toString() {
         return (string)$this->getNom();
@@ -169,6 +193,8 @@ class Cours
     public function __construct()
     {
         $this->chapitres = new \Doctrine\Common\Collections\ArrayCollection();
+		$this->feuilles = new \Doctrine\Common\Collections\ArrayCollection();
+		$this->etudiants = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -210,28 +236,7 @@ class Cours
         return $this->chapitres;
     }
 
-    /**
-     * Set image
-     *
-     * @param \moocline\CoursBundle\Entity\Image $image
-     * @return Cours
-     */
-    public function setImage(\moocline\CoursBundle\Entity\Image $image = null)
-    {
-        $this->image = $image;
     
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \moocline\CoursBundle\Entity\Image 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
 
     /**
      * Set dateDebut
@@ -300,5 +305,72 @@ class Cours
     public function getEnseignant()
     {
         return $this->enseignant;
+    }
+
+    /**
+     * Add etudiants
+     *
+     * @param \moocline\CompteBundle\Entity\User $etudiants
+     * @return Cours
+     */
+    public function addEtudiant(\moocline\CompteBundle\Entity\User $etudiants)
+    {
+        $this->etudiants[] = $etudiants;
+        $etudiants->setCours($this);
+    
+        return $this;
+    }
+
+    /**
+     * Remove etudiants
+     *
+     * @param \moocline\CompteBundle\Entity\User $etudiants
+     */
+    public function removeEtudiant(\moocline\CompteBundle\Entity\User $etudiants)
+    {
+        $this->etudiants->removeElement($etudiants);
+    }
+
+    /**
+     * Get etudiants
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEtudiants()
+    {
+        return $this->etudiants;
+    }
+
+    /**
+     * Add feuilles
+     *
+     * @param \moocline\ExoBundle\Entity\FeuilleEx $feuilles
+     * @return Cours
+     */
+    public function addFeuille(\moocline\ExoBundle\Entity\FeuilleEx $feuilles)
+    {
+        $this->feuilles[] = $feuilles;
+        $feuilles->setCours($this);
+        return $this;
+    }
+
+    /**
+     * Remove feuilles
+     *
+     * @param \moocline\ExoBundle\Entity\FeuilleEx $feuilles
+     */
+    public function removeFeuille(\moocline\ExoBundle\Entity\FeuilleEx $feuilles)
+    {
+        $this->feuilles->removeElement($feuilles);
+    }
+
+    /**
+     * Get feuilles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFeuilles()
+    {
+        return $this->feuilles;
     }
 }

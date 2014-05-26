@@ -3,6 +3,9 @@
 namespace moocline\CompteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use moocline\CompteBundle\Entity\User;
+use moocline\CompteBundle\Entity\Organisation;
 
 /**
  * Enseignant
@@ -19,8 +22,6 @@ class Enseignant
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-
-    
     private $id;
 
     /**
@@ -36,6 +37,7 @@ class Enseignant
     */
     private $Organisation;
 
+    
     /**
      * Get id
      *
@@ -52,7 +54,7 @@ class Enseignant
      * @param User $user
      * @return User
      */
-    public function setUser(moocline\CompteBundle\Entity\User $user=null)
+    public function setUser(User $user=null)
     {
         $this->user= $user;
         return $this;
@@ -74,7 +76,7 @@ class Enseignant
      * @param Organisation $organisation
      * @return Enseig
      */
-    public function setOrganisation(moocline\CompteBundle\Entity\Organisation $Organisation=null)
+    public function setOrganisation(Organisation $Organisation=null)
     {
         $this->Organisation= $Organisation;
         return $this;
@@ -88,7 +90,5 @@ class Enseignant
     {
         return $this->Organisation;
     }
-
-
 
 }

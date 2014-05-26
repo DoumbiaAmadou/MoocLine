@@ -65,12 +65,6 @@ swiftmailer:
     transport:  gmail
     username:   moocline.noreply@gmail.com
     password:   Mooc2014Line
-#swiftmailer:
- #  transport: "%mailer_transport%"
-  # host:      "%mailer_host%"
-   #username:  "%mailer_user%"
-   #password:  "%mailer_password%"
-   #spool:     { type: memory }
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
@@ -81,9 +75,30 @@ fos_user:
             enabled:    true
         form:
             type: moocline_user_registration
+   # admin_registration:
+   #     confirmation:
+   #         enabled:    true
+   #     form:
+   #         type: moocline_admin_registration
     from_email:
         address:        moocline.noreply@gmail.com
         sender_name:    Moocline App
+    service:
+        mailer: fos_user.mailer.twig_swift
+
+        
+#moocline_admin:
+#    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+#    firewall_name: main
+#    user_class: moocline\CompteBundle\Entity\Admin
+#    registration:
+#        confirmation:
+#            enabled:    true
+#        form:
+#            type: moocline_admin_registration
+#    from_email:
+#        address:        moocline.noreply@gmail.com
+#        sender_name:    Moocline App Admin
 
 ivory_ck_editor:
     configs:

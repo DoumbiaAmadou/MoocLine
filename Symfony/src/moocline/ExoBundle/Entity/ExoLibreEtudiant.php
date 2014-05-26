@@ -131,4 +131,50 @@ class ExoLibreEtudiant
     {
         return $this->note;
     }
+
+    /**
+     * Set etudiant
+     *
+     * @param \moocline\CompteBundle\Entity\User $etudiant
+     * @return ExoLibreEtudiant
+     */
+    public function setEtudiant(\moocline\CompteBundle\Entity\User $etudiant = null)
+    {
+        $this->etudiant = $etudiant;
+    
+        return $this;
+    }
+
+    /**
+     * Get etudiant
+     *
+     * @return \moocline\CompteBundle\Entity\User 
+     */
+    public function getEtudiant()
+    {
+        return $this->etudiant;
+    }
+
+    /**
+     * Set exercice
+     *
+     * @param \moocline\ExoBundle\Entity\Exercice $exercice
+     * @return ExoLibreEtudiant
+     */
+    public function setExercice(\moocline\ExoBundle\Entity\Exercice $exercice = null)
+    {
+        $this->exercice = $exercice;
+    
+        return $this;
+    }
+
+    /**
+     * Get exercice
+     *
+     * @return \moocline\ExoBundle\Entity\Exercice 
+     */
+    public function getExercice()
+    {
+        return $this->exercice;
+    }
 }

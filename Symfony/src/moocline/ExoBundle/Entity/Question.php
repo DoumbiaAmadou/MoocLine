@@ -304,4 +304,27 @@ class Question
 	
 	
 	
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Question
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+    
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
 }

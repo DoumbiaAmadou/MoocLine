@@ -2,13 +2,24 @@ home:
     path:  /
     defaults: { _controller: mooclineCompteBundle:Registration:index }
 
+# admin path
+#admin_registration:
+#    path:  /admin/registration
+#    defaults: { _controller: mooclineCompteBundle:Admin:adminRegister }
+
+admin_send_invitation:
+    path:  /admin/send-invitation/{email}
+    defaults: { _controller: mooclineCompteBundle:Admin:sendInvitation }
+
+
+# Registration path
 inscription_Enseignant:
     path:  /inscription-enseignant
-    defaults: { _controller: mooclineCompteBundle:Register:inscriptionEnseignant }
+    defaults: { _controller: mooclineCompteBundle:Admin:adminRegister }
 
 inscription_Etudiant:
     path:  /inscription-etudiant
-    defaults: { _controller: mooclineCompteBundle:Register:inscrEtudiant }
+    defaults: { _controller: mooclineCompteBundle:Registration:inscrEtudiant }
 
 modification_Etudiant:
     path:     /modificationEtudiant/{id}
@@ -52,6 +63,7 @@ dashboard_Enseignant:
     defaults: { _controller: mooclineCompteBundle:Dashboard:dashboardEns }
 
 
+# Contact path
 contact_particulier:
     path:  /contact
     defaults: { _controller: mooclineCompteBundle:Contact:contactParticulier}

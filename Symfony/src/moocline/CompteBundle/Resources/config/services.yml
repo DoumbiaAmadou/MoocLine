@@ -12,3 +12,38 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: moocline_user_registration }
+
+    moocline.registration.form.type:
+        class: moocline\CompteBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags: [{ name: "form.type", alias: "moocline_user_registration" }]
+
+    moocline.invitation.form.type:
+        class: moocline\CompteBundle\Form\Type\InvitationFormType
+        arguments: [@moocline.invitation.form.data_transformer]
+        tags: [{ name: "form.type", alias: "moocline_invitation_type" }]
+
+    moocline.invitation.form.data_transformer:
+        class: moocline\CompteBundle\Form\DataTransformer\InvitationToCodeTransformer
+        arguments: [@doctrine.orm.entity_manager]
+
+
+#   moocline_user.registration.form.type:
+#        class: moocline\CompteBundle\Form\Type\RegistrationFormType
+#        arguments: [%fos_user.model.user.class%]
+#        tags:
+#            - { name: form.type, alias: moocline_user_registration }
+#
+#    moocline_admin.registration.form.type:
+#        class: moocline\CompteBundle\Form\Type\RegistrationFormType
+#        arguments: [%fos_user.model.user.class%]
+#        tags: [{ name: "form.type", alias: "moocline_admin_registration" }]
+
+#   moocline_admin.invitation.form.type:
+#        class: moocline\CompteBundle\Form\Type\InvitationFormType
+#        arguments: [@moocline_admin.invitation.form.data_transformer]
+#        tags: [{ name: "form.type", alias: "moocline_invitation_type" }]
+#
+#    moocline_admin.invitation.form.data_transformer:
+#        class: moocline\CompteBundle\Form\DataTransformer\InvitationToCodeTransformer
+#        arguments: [@doctrine.orm.entity_manager]

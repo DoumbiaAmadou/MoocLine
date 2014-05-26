@@ -3,6 +3,7 @@
 namespace moocline\CompteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use FOS\UserBundle\Model\User as BaseUser;
 
 /**
@@ -25,28 +26,28 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=50)
+     * @ORM\Column(name="nom", type="string", length=50, nullable=true)
      */
     protected $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=50)
+     * @ORM\Column(name="prenom", type="string", length=50, nullable=true)
      */
     protected $prenom;
 
     /**
      * @var date
      *
-     * @ORM\Column(name="date_naissance", type="date")
+     * @ORM\Column(name="date_naissance", type="date", nullable=true)
      */
     protected $date_naissance;    
     
     /**
      * @var string
      *
-     * @ORM\Column(name="niveau", type="string", length=255)
+     * @ORM\Column(name="niveau", type="string", length=255, nullable=true)
      */
     protected $niveau;
 
@@ -62,6 +63,24 @@ class User extends BaseUser
 	* @ORM\JoinColumn(nullable=false)
     */
     private $cours;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Invitation", inversedBy="user")
+     * @ORM\JoinColumn(referencedColumnName="code")
+     * @Assert\Type(type="moocline\CompteBundle\Entity\Invitation")
+     * @Assert\NotNull(message="Your invitation is wrong")
+     */
+    private $invitation;
+
+    public function setInvitation(Invitation $invitation)
+    {
+        $this->invitation = $invitation;
+    }
+
+    public function getInvitation()
+    {
+        return $this->invitation;
+    }
 	
     /**
      * Get id
@@ -160,7 +179,7 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getniveau()
+    public function getNiveau()
     {
         return $this->niveau;
     }
@@ -193,6 +212,7 @@ class User extends BaseUser
      */
     public function __construct()
     {
+        parent::__construct();
         $this->cours = new \Doctrine\Common\Collections\ArrayCollection();
     }
 

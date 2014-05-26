@@ -79,13 +79,6 @@ class Organisation
      */
     private $telephone;
 
-     /**
-     * @var string
-     *
-     * @ORM\Column(name="Message", type="text")
-     */
-    private $message;
-
     /**
      * @ORM\OneToMany(targetEntity="moocline\COmpteBundle\Entity\Enseignant", mappedBy="Organisation")
      **/
@@ -193,29 +186,6 @@ class Organisation
         return $this->adresse;
     }
 
-     /**
-     * Set message
-     *
-     * @param string $message
-     * @return Contact
-     */
-    public function setMessage($message)
-    {
-        $this->message = $message;
-    
-        return $this;
-    }
-
-    /**
-     * Get message
-     *
-     * @return string 
-     */
-    public function getMessage()
-    {
-        return $this->message;
-    }
-    
     /**
      * Constructor
      */
@@ -230,9 +200,9 @@ class Organisation
      * @param \moocline\COmpteBundle\Entity\Enseignant $Users
      * @return Organisation
      */
-    public function addEnseignant(\moocline\COmpteBundle\Entity\Enseignant $Users)
+    public function addEnseignant(\moocline\COmpteBundle\Entity\Enseignant $User)
     {
-        $this->Users[] = $Users;
+        $this->Users[] = $User;
         $Users->setOrganisation($this);
         return $this;
     }

@@ -90,7 +90,7 @@ class ModificationController extends Controller // name of controlle file
   
     return $this->render('mooclineCompteBundle:Modification:EnsVue.html.twig', 
       array('id' => $user->getId(), 'nom' => $user->getNom(), 'prenom' => $user->getPrenom(),
-           'email' => $user->getEmail(), 'password' => $user->getPassword()));
+            'email' => $user->getEmail(), 'password' => $user->getPassword()));
   }
 }
 

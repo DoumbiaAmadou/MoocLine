@@ -192,15 +192,20 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegistrationController::indexAction',  '_route' => 'home',);
         }
 
+        // admin_send_invitation
+        if (0 === strpos($pathinfo, '/admin/send-invitation') && preg_match('#^/admin/send\\-invitation/(?P<email>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_send_invitation')), array (  '_controller' => 'moocline\\CompteBundle\\Controller\\AdminController::sendInvitationAction',));
+        }
+
         if (0 === strpos($pathinfo, '/inscription-e')) {
             // inscription_Enseignant
             if ($pathinfo === '/inscription-enseignant') {
-                return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegisterController::inscriptionEnseignantAction',  '_route' => 'inscription_Enseignant',);
+                return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\AdminController::adminRegisterAction',  '_route' => 'inscription_Enseignant',);
             }
 
             // inscription_Etudiant
             if ($pathinfo === '/inscription-etudiant') {
-                return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegisterController::inscrEtudiantAction',  '_route' => 'inscription_Etudiant',);
+                return array (  '_controller' => 'moocline\\CompteBundle\\Controller\\RegistrationController::inscrEtudiantAction',  '_route' => 'inscription_Etudiant',);
             }
 
         }
