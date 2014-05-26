@@ -1,0 +1,25 @@
+{# src/moocline/CompteBundle/Resources/views/qui_sommes_nous.html.twig #}
+
+  {#% extends "CompteBundle::layout.html.twig" %#}
+  {% extends "::layout.html.twig" %}
+  {% block title %} 
+    Qui sommes Nous
+  {% endblock %}
+
+  
+  {% block container %}
+  	<div class="row">
+  		<div class="col-md-6 col-md-offset-3">
+  			<h2>Qui sommes nous</h2>
+  			<p><a href="{{path('home')}}"><img src="{{ asset('images/livre.jpg') }}" alt="Home" style="heigh:20px ; width : 40px"></a>'Line est un projet 	académique proposé par <a href="http://www.univ-paris-diderot.fr/"> l'université Paris Diderot</a> dans le cadre de l'enseignement de l'UE <a href="http://upsilon.cc/~zack/teaching/1314/gla/">Génie logiciel Avancé</a>. Elle se veut être une plateforme de cours en ligne est interactif est ouverte à tous, permettant ainsi à des utilisateurs différents horizons de s’instruire au travers des cours proposés sur la plateforme. L'un des principes de cette plateforme est de permettre à ces utilisateurs de valider les connaissances acquises dans un cours. Pour cela, <a href="{{ path('home') }}"><img src="{{ asset('images/livre.jpg') }}" alt="Home" style="heigh:20px ; width : 40px"></a>'Line est dotée d'un module qui assure l'évaluation automatique, l'évaluation entre différents utilisateurq, etc...
+  			</p>
+  		</div>
+	</div>
+	<div class="row">
+  		<div class="col-md-6 col-md-offset-3">
+  			<h2>Contexte</h2>
+  			<p>Le contexte premier de la plateforme sera exclusivement éducatif, le but étant de permettre à un maximum de personnes d'avoir la possibilité de s'instruire malgré les contraintes qui s'opposaient à eux.
+Ce projet est à l’image du réseau « FUN - France Université Numérique », la plateforme française de cours en ligne, ouverte depuis le 16 janvier 2014. Plusieurs cours numériques ont été ouverts pour les 100 000 inscrits de la plateforme. Des plateformes similaires sont disponibles aux Etats Unis depuis 2010 et affichent un nombre d'inscrits de plus de 6 millions.</p>
+  		</div>
+	</div>
+  {%  endblock %}

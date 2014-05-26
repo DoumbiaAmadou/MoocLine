@@ -1,0 +1,45 @@
+{% extends: "mooclineCompteBundle::layout.html.twig"}
+
+{% block container %}
+
+
+	<div class="container">
+        <div class="row">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Admin</h3>
+                    <div class="pull-right">
+                        <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+                            <i class="glyphicon glyphicon-filter"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <input type="text" class="form-control" id="task-table-filter" data-action="filter" data-filters="#task-table" placeholder="Filter Tasks">
+                </div>
+                <table class="table table-hover" id="task-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom Organisation</th>
+                            <th>Type</th>
+                            <th>email</th>
+                            <th>Telephone</h>
+                            <th>Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+	                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

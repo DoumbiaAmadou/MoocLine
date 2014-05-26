@@ -255,48 +255,6 @@ class Question
 	
 	
 	
-	/**
-     * Get point
-     *
-     * @return point
-     */
-    public function getPoint()
-    {
-        return $this->point;
-    }
-	
-	
-    /**
-     * set point
-     *
-     */
-    public function setPoint($point)
-    {
-        return $this->point = $point;
-    }
-	
-	
-	public function getNbGoodQuestion()
-    {
-       $i = 0 ; 
-       foreach ($this->reponses as $value) {
-          
-          if( $value->getCorrect()==true) 
-           $i++; 
-       }
-        return $i;
-    }
-    
-	public function getNbBadQuestion()
-    {
-       $i = 0 ; 
-       foreach ($this->reponses as $value) {
-          
-          if( $value->getCorrect()==false)
-           $i++; 
-       }
-        return $i;
-    }
 	
 	
 	
@@ -304,27 +262,8 @@ class Question
 	
 	
 	
-
-    /**
-     * Set path
-     *
-     * @param string $path
-     * @return Question
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-    
-        return $this;
-    }
-
-    /**
-     * Get path
-     *
-     * @return string 
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
+	
+	
+	
+	
 }

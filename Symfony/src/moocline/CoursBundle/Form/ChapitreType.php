@@ -23,17 +23,13 @@ class ChapitreType extends AbstractType
     {
         $builder
                 ->add('titre', 'text')
-                ->add('date_de_publication', 'date',array(
-                                                'widget' => 'single_text',
-                                                'input' => 'datetime',
-                                                'format' => 'dd/MM/yyyy',
-                                                'attr' => array('class' => 'date')
-                                                ))
+                
                ->add('cours', 'entity', array(
 					'label' => "Cours",
 					'class' => 'mooclineCoursBundle:Cours',
 					'choices' => $this->cours))                                                  
                 ->add('contenu', 'ckeditor', array('config_name' => 'my_config'))
+                ->add('visible', 'choice', array('label' => 'Visibilité','choices' => array(1 => 'public',0 => 'privé')))
                 ->add('valider','submit', array('label' => "Valider", 'attr' => array('class' => 'btn btn-primary')));
     }
     

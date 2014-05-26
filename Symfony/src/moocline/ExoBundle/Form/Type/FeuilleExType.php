@@ -9,11 +9,11 @@ use moocline\ExoBundle\Form\Type\ExerciceType ;
 
 class FeuilleExType extends AbstractType
 {
-	private $cours;
+	private $chapitre;
 	
-	public function __construct($cours)
+	public function __construct($chapitre)
     {
-        $this->cours = $cours;
+        $this->chapitre = $chapitre;
     }
         /**
      * @param FormBuilderInterface $builder
@@ -22,13 +22,14 @@ class FeuilleExType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-				 ->add('titre', 'text', array('label' => "Titre"))
-                                 ->add('cours', 'entity', array(
-					'label' => "Cours",
-					'class' => 'mooclineCoursBundle:Cours',
-					'choices' => $this->cours))    
-				 ->add('type', 'choice', array('label' => "Type de feuille", 'choices' => array('Defaut' => 'Tout','TD' =>'TD' ,'TP' => 'TP','Memoire' => 'Memoire','Projet' => 'Projet','Examen' => 'Examen')))
-				 ->add('valider','submit', array('label' => "Créer", 'attr' => array('class' => 'btn btn-primary')));
+				->add('titre', 'text', array('label' => "Titre"))
+                ->add('chapitre', 'entity', array(
+					'label' => "Chapitre",
+					'class' => 'mooclineCoursBundle:Chapitre',
+					'choices' => $this->chapitre))   
+				->add('type', 'choice', array('label' => "Type de feuille", 'choices' => array('Defaut' => 'Tout','TD' =>'TD' ,'TP' => 'TP','Memoire' => 'Memoire','Projet' => 'Projet','Examen' => 'Examen')))
+				->add('visible', 'choice', array('label' => 'Visibilité','choices' => array(1 => 'public',0 => 'privé')))
+				->add('valider','submit', array('label' => "Créer", 'attr' => array('class' => 'btn btn-primary')));
     }
     
     /**

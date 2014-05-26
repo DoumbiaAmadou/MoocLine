@@ -23,10 +23,26 @@
 							<text> {{ rep.reponse }} </text>
 						{% endif %}
 					{% endfor %}
-			
+					</answer>
+				</answers>
+			{% elseif type=="qrf" %}
+				<answers>
+				{% for rep in quest.reponses %}
+					<answer>  {{ rep.reponse }} </answer>    
+				{% endfor %}
+				</answers>
+			{% elseif type=="p"%}
+				<tests>
+					<test>
+						<input></input>
+						<output></output>
+					</test>
+				</tests>
+				<resources>
+					<resource type="makefile"></resource>
+					<resource type="filename"></resource>
+				</resources>
 			{% endif %}
-                </answer>
-            </answers>
         </question>   
 	{% endfor %}
 

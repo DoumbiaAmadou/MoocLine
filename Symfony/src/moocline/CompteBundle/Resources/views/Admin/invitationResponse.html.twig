@@ -1,0 +1,15 @@
+{% extends "mooclineCompteBundle::layout.html.twig" %}
+
+{% block container %}
+
+	{% if email is defined %}
+	<div class="alert alert-info">
+		<p>L'utilisateur avec l'email: {{ email }} a été crée ;) haha haha .... </p>
+	</div>
+	{% else %}
+	<div class="alert alert-warning">
+		<p>Vous êtes déjà inscrit ;) haha haha ....</p>
+	</div>
+	{% endif %}
+{% endblock %}
+

@@ -1,0 +1,100 @@
+{# empty Twig template #}
+{# On étend le layout principal #}
+{% extends "::layout.html.twig" %}
+
+{% block title %} 
+  {{ parent() }} - DashBoard
+{% endblock %}
+
+{% block stylesheets %}
+     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" type="text/css" />
+    {%endblock %}
+{% block body %}
+ 
+             <div class="container">
+        <div class="row centered-form">
+      <div class="col-xs-10 col-sm-5 col-md-8 col-sm-offset-3 col-md-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h2 class="panel-title"> <strong>Tableau de bord Etudiant</strong> </small></h2>
+          </div>
+          <div class="panel-body">
+
+<form class="form-horizontal" method="POST" action="">
+<fieldset>
+<section>
+<aside>
+	        <div class="user">
+	        	<a href="{{ path('vue_Etudiant', {'id':user.id})}}">{{user.nom}} {{ user.prenom}}</a>
+	        	
+	        	<img src="{{asset('images/student2.png')}}" alt="Photo de Gayllord" />
+	        </div>
+	        <img src="{{asset('images/bulle.png')}}" alt="" id="fleche_bulle" />
+	        <span>
+		        <a href="https://www.facebook.com/"><img src="{{asset('images/facebook.png')}}" alt="Facebook" /></a>
+	          	<a href="https://www.twitter.com/"><img src="{{asset('images/twitter.png')}}" alt="Twitter" /></a>
+	          	<a href="https://vimeo.com/"><img src="{{asset('images/vimeo.png')}}" alt="Vimeo" /></a>
+	          	
+	          	<a href="#"><img src="{{asset('images/rss.png')}}" alt="RSS" /></a>
+          	</span>
+     </aside>
+
+<article>
+			
+	        <div id="notif">
+	          <h4>Invitaton</h4>
+	          <b>
+	          	<form>
+
+	          	<input type="submit" class="btn btn-block btn-lg btn-primary"  value="Enregistrer"/>
+	          	
+	            <a href="{{ path('admin_send_invitation') }}"><font color="">Envoyer une invitation</font></a><br/>
+	            <a href="#"><font color="">Devoirs en attente</font></a><br/>
+	          </b>
+	        </div>
+	        <div id="cours">
+	          <h4>Mes cours</h4>  
+	          <b>
+                      {% for c in user.cours %}
+                            {{ c }}<br/>
+                            <ul>
+                                {% for chap in c.chapitres %}
+                                    <li><a  href="{{ path('moocline_chapitre_vueEtu',{'id': chap.id})}}"> {{ chap }} </a></li>
+                                    {% endfor %}
+                            </ul>
+                    {% endfor %}
+	          
+	        </div>
+	        <div id="devoirs">
+	          <h4>Devoirs</h4>
+	          <br/>
+	          <b>Devoirs commencés</b>
+	          <br/>
+	          <ul>
+	            <li><a href="#">Devoir Mindstorm</a></li>
+	            <li><a href="#">Devoir Dazibao</a></li>
+	          </ul>
+	          <b>Nouveaux Devoirs</b>
+	          <br/>
+	          <ul>
+	            <li><a href="#">Devoir Socket</a></li>
+	            <li><a href="#">Devoir Génie Logiciel</a></li>
+	          </ul>
+	        </div>
+     </article>
+     
+	
+
+
+</section>
+
+
+</fieldset>
+</form>
+
+          </div></div></div></div></div>
+	  <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {% endblock %}

@@ -29,13 +29,6 @@ class FeuilleEx
 	*/
 	private $type;
 	
-	/**
-	*@var string
-	*
-	*@ORM\Column(name="statut", type="text", nullable= true)
-	*/
-	private $statut;
-	
      /**
      * @var string
      *
@@ -44,17 +37,21 @@ class FeuilleEx
     private $titre;
 	
 	 /**
-    * @ORM\ManyToOne(targetEntity="moocline\CoursBundle\Entity\Cours",
-    cascade={"persist"})
+    * @ORM\ManyToOne(targetEntity="moocline\CoursBundle\Entity\Chapitre", cascade={"persist"})
     */
-    private $cours;
+    private $chapitre;
 	
     /**
     * @ORM\OneToMany(targetEntity="Exercice",mappedBy="FeuilleEx", cascade={"persist"})
     */
     private $exercices;
     
-    
+    /**
+    * @ORM\OneToMany(targetEntity="FeuilleExEtu",mappedBy="FeuilleEx", cascade={"persist"})
+    */
+    private $feuillesEtu;
+	
+	
     /**
      * @var boolean
      *
@@ -81,6 +78,7 @@ class FeuilleEx
     {
 		
         $this->exercices = new ArrayCollection();
+		$this->feuillesEtu = new ArrayCollection();
     }
 
 	public function __toString()
@@ -106,26 +104,7 @@ class FeuilleEx
     public function setType($type){
 		$this->type = $type;
     }
-	
-	/**
-     * Get statut
-     *
-     * @return string 
-     */
-    public function getStatut()
-    {
-        return $this->statut;
-    }
-	
-    /**
-     * Set statut
-     *
-     *@param string $statut
-     */
-    public function setStatut($statut){
-		$this->statut = $statut;
-    }
-	
+		
     /**
      * Get titre
      *
@@ -198,6 +177,52 @@ class FeuilleEx
 		return true;
 		else return false;
     }
+	
+	/**
+     * Get feuillesEtu
+     *
+     * @return ArrayCollection 
+     */
+    public function getfeuillesEtu()
+    {
+        return $this->feuillesEtu;
+    }
+
+    /**
+    *Set feuillesEtu
+    *
+    */
+    public function setFeuillesEtu(ArrayCollection $feuillesEtu)
+    {
+        foreach ($feuillesEtu as $feuille){
+            $feuille->setFeuilleRef($this);
+        }
+        $this->feuillesEtu = $feuillesEtu;
+    }
+
+    /**
+     * Add feuilleEtu
+     *
+     * @param FeuilleExEtu $feuilleEtu
+     */
+    public function addFeuilleEtu(FeuilleExEtu $feuilleEtu)
+    {
+        $feuilleEtu->setFeuilleRef($this);
+		$this->feuillesEtu->add($feuilleEtu);
+    }
+	
+    /**
+     * Remove feuilleEtu
+     *
+     * @param FeuilleExEtu $feuilleEtu
+     */
+    public function removeFeuilleEtu(FeuilleExEtu $feuilleEtu)
+    {
+		$feuilleEtu->setFeuilleRef(null);
+        if($this->feuillesEtu->removeElement($feuilleEtu))
+		return true;
+		else return false;
+    }
 
 	/**
      * @ORM\PostPersist()
@@ -215,26 +240,26 @@ class FeuilleEx
 	 }
 
     /**
-     * Set cours
+     * Set chapitre
      *
-     * @param \moocline\CoursBundle\Entity\Cours $cours
+     * @param \moocline\CoursBundle\Entity\Chapitre $chapitre
      * @return FeuilleEx
      */
-    public function setCours(\moocline\CoursBundle\Entity\Cours $cours = null)
+    public function setChapitre(\moocline\CoursBundle\Entity\Chapitre $chapitre = null)
     {
-        $this->cours = $cours;
+        $this->chapitre = $chapitre;
     
         return $this;
     }
 
     /**
-     * Get cours
+     * Get chapitre
      *
-     * @return \moocline\CoursBundle\Entity\Cours 
+     * @return \moocline\CoursBundle\Entity\Chapitre 
      */
-    public function getCours()
+    public function getChapitre()
     {
-        return $this->cours;
+        return $this->chapitre;
     }
 	
 	public function getTotalPoint() {
@@ -245,7 +270,17 @@ class FeuilleEx
             }
         return $i ; 
      }
-
+	 
+    /**
+     * Get visible
+     *
+     * @return boolean 
+     */
+    public function getVisible()
+    {
+        return $this->visible;
+    }
+	
     /**
      * Set visible
      *
@@ -257,15 +292,5 @@ class FeuilleEx
         $this->visible = $visible;
     
         return $this;
-    }
-
-    /**
-     * Get visible
-     *
-     * @return boolean 
-     */
-    public function getVisible()
-    {
-        return $this->visible;
     }
 }

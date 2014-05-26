@@ -57,7 +57,7 @@ class Question
     /**
      * @var float
      *
-     * @ORM\Column(name="point", type="float")
+     * @ORM\Column(name="point", type="float", nullable=false)
      */
     public $point;
 	
@@ -155,7 +155,7 @@ class Question
         $this->reponses->add($reponse);
     }
 
-	//
+
 	/**
      * Get file
      *
@@ -175,7 +175,7 @@ class Question
         $this->file = $file;
     }
 	
-	//
+
 	
     /**
      * Remove reponse
@@ -258,7 +258,7 @@ class Question
 	/**
      * Get point
      *
-     * @return point
+     * @return float
      */
     public function getPoint()
     {
@@ -269,6 +269,7 @@ class Question
     /**
      * set point
      *
+	 * @param float $point
      */
     public function setPoint($point)
     {
@@ -296,35 +297,5 @@ class Question
            $i++; 
        }
         return $i;
-    }
-	
-	
-	
-	
-	
-	
-	
-
-    /**
-     * Set path
-     *
-     * @param string $path
-     * @return Question
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-    
-        return $this;
-    }
-
-    /**
-     * Get path
-     *
-     * @return string 
-     */
-    public function getPath()
-    {
-        return $this->path;
     }
 }

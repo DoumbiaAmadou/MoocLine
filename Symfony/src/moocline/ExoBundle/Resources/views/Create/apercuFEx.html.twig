@@ -19,6 +19,8 @@
 
 
             {%for ex in exercices %}
+              
+                
 
                 <h3>{{ ex.intitule }} ({{ex.type}})</h3><br/>
 
@@ -49,9 +51,12 @@
                 {% endfor %}  
                 <br/>
                 <hr/>
+                
+            
             {%endfor%}
-
-            <a href="{{path('moocline_exo_create',{'type': type } )}}">Retour</a>
+               <div class="col-md-2" align="left">
+            <a href="{{path('moocline_exo_create',{'type': type } )}}" class="btn btn-primary">Retour</a>
+               </div>
           </div>
         </div>
       </div>

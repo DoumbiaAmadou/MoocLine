@@ -60,5 +60,18 @@ class CoursRepository extends EntityRepository
                          ->getSingleScalarResult(); // Utilisation de getSingleScalarResult pour avoir directement le résultat du COUNT
     }
     
+    public function getSearchList ($formvalue) 
+	{
+ 
+		$qb = $this->createQueryBuilder('a');
+ 
+		$qb->where('a.nom LIKE :formvalue')
+				  
+				  
+				  ->setParameter('formvalue', '%'.$formvalue.'%');
+ 
+		return $qb->getQuery()->getResult();
+        }
+    
 }
 

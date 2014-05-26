@@ -20,14 +20,18 @@
 					<form  method="POST" {{ form_enctype(form) }}>
 						
 						{{ form_label(form.titre) }}<br/>
-            {{ form_widget(form.titre) }}<br/><br/>
+            			{{ form_widget(form.titre) }}<br/><br/>
             
-						{{ form_label(form.cours) }}<br/>
-            {{ form_widget(form.cours) }}<br/><br/>
+						{{ form_label(form.chapitre) }}<br/>
+            			{{ form_widget(form.chapitre) }}<br/><br/>
+						
 						{{ form_label(form.type) }}<br/>
-            {{ form_widget(form.type) }}<br/><br/>
+            			{{ form_widget(form.type) }}<br/><br/>
+            
+            			{{ form_label(form.visible) }}<br/>
+            			{{ form_widget(form.visible) }}<br/><br/>
 
-            {{form_widget(form._token)}}
+            			{{form_widget(form._token)}}
            
 					  {{ form_row(form.valider) }} <br/>
           

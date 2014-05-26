@@ -72,6 +72,12 @@ class User extends BaseUser
      */
     private $invitation;
 
+    /**
+    * @ORM\OneToMany(targetEntity="moocline\ExoBundle\Entity\FeuilleExEtu",mappedBy="User", cascade={"persist"})
+* 
+    */
+    private $mesFeuilles;
+
     public function setInvitation(Invitation $invitation)
     {
         $this->invitation = $invitation;
@@ -208,12 +214,14 @@ class User extends BaseUser
         return $this->image;
     }
     /**
+     /**
      * Constructor
      */
     public function __construct()
     {
-        parent::__construct();
+parent::__construct();
         $this->cours = new \Doctrine\Common\Collections\ArrayCollection();
+$this->mesFeuilles = new ArrayCollection();
     }
 
     
@@ -223,7 +231,7 @@ class User extends BaseUser
      * @param \moocline\CoursBundle\Entity\Cours $cours
      * @return User
      */
-    public function addCour(\moocline\CoursBundle\Entity\Cours $cours)
+    public function addCours(\moocline\CoursBundle\Entity\Cours $cours)
     {
         $this->cours[] = $cours;
     
@@ -235,7 +243,7 @@ class User extends BaseUser
      *
      * @param \moocline\CoursBundle\Entity\Cours $cours
      */
-    public function removeCour(\moocline\CoursBundle\Entity\Cours $cours)
+    public function removeCours(\moocline\CoursBundle\Entity\Cours $cours)
     {
         $this->cours->removeElement($cours);
     }
@@ -248,5 +256,49 @@ class User extends BaseUser
     public function getCours()
     {
         return $this->cours;
+    }
+/**
+     * Get mesFeuilles
+     *
+     * @return ArrayCollection 
+     */
+    public function getFeuilles()
+    {
+        return $this->mesFeuilles;
+    }
+
+    /**
+    *Set mesFeuilles
+    *
+    */
+    public function setFeuilles(ArrayCollection $mesFeuilles)
+    {
+        foreach ($mesFeuilles as $feuille){
+            $feuille->setEtudiant($this);
+        }
+        $this->mesFeuilles = $mesFeuilles;
+    }
+
+    /**
+     * Add feuille
+     *
+     * @param moocline\ExoBundle\Entity\FeuilleExEtu $feuille
+     */
+    public function addFeuille($feuille)
+    {
+        $feuille->setEtudiant($this);
+$this->mesFeuilles->add($feuille);
+    }
+    /**
+     * Remove feuille
+     *
+     * @param moocline\ExoBundle\Entity\FeuilleExEtu $feuille
+     */
+    public function removeFeuille($feuille)
+    {
+        $feuille->setEtudiant(null);
+        if($this->mesFeuilles->removeElement($feuille))
+        return true;
+        else return false;
     }
 }

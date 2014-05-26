@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use moocline\CoursBundle\Entity\Cours;
 use moocline\CoursBundle\Form\CoursType;
 
+
 class CoursController extends Controller
 {
     public function indexAction()
@@ -39,7 +40,7 @@ class CoursController extends Controller
         }
 
       }
-	return $this->render('mooclineCoursBundle:Cours:CreerCours.html.twig',array('form' => $form->createView()));
+	return $this->render('mooclineCoursBundle:Cours:CreerCours.html.twig',array('form' => $form->createView(),'titre' => 'Nouveau Cours ( Présentation )'));
       
 
     
@@ -55,11 +56,19 @@ class CoursController extends Controller
     
      public function voirEtudiantAction($id)
     {
+       $user =$this->container->get('security.context')->getToken()->getUser();  
+       $coursEtu= $user->getCours();
+       $v=false;
+       foreach ($coursEtu as $c){
+           if($c->getId() == $id){
+               $v=true;
+           }
+       }
       $repository = $this->getDoctrine()->getManager()->getRepository('mooclineCoursBundle:Cours');
 	  $cours = $repository->find($id);
           
           
-        return $this->render('mooclineCoursBundle:Cours:voirEtudiant.html.twig',array('cours' => $cours));
+        return $this->render('mooclineCoursBundle:Cours:voirEtudiant.html.twig',array('cours' => $cours,'inscrie'=> $v));
     }
     
     
@@ -114,10 +123,9 @@ class CoursController extends Controller
  
     if( $request->getMethod() == 'POST' ) {
         
-        // Récupération de la valeur ici
-        $recherche=$request->get('moocline-catalog-search-id');
-        
-           $cours= $this->RechercheCours($recherche,$em); 
+        $formvalue= $request->request->get('moocline-catalog-search-id');
+				$em = $this->getDoctrine()->getEntityManager(); 
+				$cours = $em->getRepository('mooclineCoursBundle:Cours')->getSearchList($formvalue);
            
       }
       else {
@@ -126,7 +134,7 @@ class CoursController extends Controller
       }
                  
          return $this->render('mooclineCoursBundle:Cours:list.html.twig', array(
-            'cours' => $cours,
+            'cours' => $cours,  
             'pagination' => $pagination,
              
         ));

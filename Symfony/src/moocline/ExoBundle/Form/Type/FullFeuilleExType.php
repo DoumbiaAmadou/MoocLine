@@ -20,7 +20,7 @@ class FullFeuilleExType extends AbstractType
 		$this->feuille->setType($FEx->getType());
 		$this->feuille->setTitre($FEx->getTitre());
         $this->feuille->setExercices($FEx->getExercices());
-		$this->feuille->setCours($FEx->getCours());
+		$this->feuille->setChapitre($FEx->getChapitre());
     }
 
         /**
@@ -40,7 +40,7 @@ class FullFeuilleExType extends AbstractType
 				if($exercice->getType() == "qcm")
 				{
 					$builder->add($i, 'entity', array(
-						'label' => $question->getQuestion(),
+						'label' => $question->getQuestion()." (".$question->getPoint()." point(s))",
 						'class' => 'mooclineExoBundle:Reponse',
 						'choices' => $question->getReponses(), 'multiple' => true, 'expanded' => true));			
 				}

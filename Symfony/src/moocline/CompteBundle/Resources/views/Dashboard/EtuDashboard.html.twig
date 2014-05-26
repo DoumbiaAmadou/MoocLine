@@ -59,9 +59,14 @@
 	          <h4>Mes cours</h4>  
 	          <b>
                       {% for c in user.cours %}
-	            <a href="#">{{ c }}</a><br/>
+                            {{ c }}<br/>
+                            <ul>
+                                {% for chap in c.chapitres %}
+                                    <li><a  href="{{ path('moocline_chapitre_vueEtu',{'id': chap.id})}}"> {{ chap }} </a></li>
+                                    {% endfor %}
+                            </ul>
                     {% endfor %}
-	          </b>
+	          
 	        </div>
 	        <div id="devoirs">
 	          <h4>Devoirs</h4>

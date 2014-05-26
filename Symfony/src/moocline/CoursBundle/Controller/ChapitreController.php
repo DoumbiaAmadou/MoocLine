@@ -51,7 +51,7 @@ class ChapitreController extends Controller
         }
 
       }
-	return $this->render('mooclineCoursBundle:Chapitre:CreerChapitre.html.twig',array('formb' => $form->createView(), 'titre' => 'Nouveau CHapitre'));
+	return $this->render('mooclineCoursBundle:Chapitre:CreerChapitre.html.twig',array('formb' => $form->createView(), 'titre' => 'Nouveau Chapitre'));
       
 
     

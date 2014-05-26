@@ -1,0 +1,31 @@
+{% block subject %}Création compte responsable Organisation {% endblock %}
+
+{% block body_text %}
+{% autoescape false %}
+
+{% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+
+
+<p> Nous avons étudié votre demande d'intégrer Mooc'Line.
+Nous avons le plaisir de vous accueillir dans nos organisations.
+</p>
+<p>
+Veuillez trouver ci-dessous quelques informations utiles.
+</p>
+<p>
+Code d'invitation: <strong> {{ code }} </strong>
+</p>
+<p>
+Greetings, <br />
+the Mooc'Line team
+</p>
+
+{#
+    You can of course render the html directly here.
+    Including a template as done here allows keeping things DRY by using
+    the template inheritance in it
+#}
+{% endblock %}

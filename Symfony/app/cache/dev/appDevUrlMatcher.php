@@ -151,9 +151,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_cours_inscription')), array (  '_controller' => 'moocline\\CoursBundle\\Controller\\CoursController::inscriptionAction',));
             }
 
-            // moocline_cours_vueEtu
-            if (0 === strpos($pathinfo, '/cours/vuecoursEtu') && preg_match('#^/cours/vuecoursEtu/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_cours_vueEtu')), array (  '_controller' => 'moocline\\CoursBundle\\Controller\\CoursController::voirEtudiantAction',));
+            if (0 === strpos($pathinfo, '/cours/vuec')) {
+                // moocline_cours_vueEtu
+                if (0 === strpos($pathinfo, '/cours/vuecoursEtu') && preg_match('#^/cours/vuecoursEtu/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_cours_vueEtu')), array (  '_controller' => 'moocline\\CoursBundle\\Controller\\CoursController::voirEtudiantAction',));
+                }
+
+                // moocline_chapitre_vueEtu
+                if (0 === strpos($pathinfo, '/cours/vuechapitreEtu') && preg_match('#^/cours/vuechapitreEtu/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'moocline_chapitre_vueEtu')), array (  '_controller' => 'moocline\\CoursBundle\\Controller\\ChapitreController::voirEtudiantAction',));
+                }
+
             }
 
             // moocline_cours_chapitre
@@ -242,36 +250,20 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // dashboard_Admin
+        if (0 === strpos($pathinfo, '/admin/dashboard') && preg_match('#^/admin/dashboard/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'dashboard_Admin')), array (  '_controller' => 'moocline\\CompteBundle\\Controller\\DashboardController::DashboardAdminAction',));
+        }
+
         if (0 === strpos($pathinfo, '/dashboard')) {
             // dashboard_Etudiant
-            if (preg_match('#^/dashboard/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/dashboard/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'dashboard_Etudiant')), array (  '_controller' => 'moocline\\CompteBundle\\Controller\\DashboardController::DashboardEtuAction',));
             }
 
-            if (0 === strpos($pathinfo, '/dashboardE')) {
-                if (0 === strpos($pathinfo, '/dashboardEtudiant')) {
-                    // dashboard_Etudiant_listCours
-                    if (0 === strpos($pathinfo, '/dashboardEtudiantListCours') && preg_match('#^/dashboardEtudiantListCours/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'dashboard_Etudiant_listCours')), array (  '_controller' => 'moocline\\CompteBundle\\Controller\\DashboardController::dashboardEtu_LCAction',));
-                    }
-
-                    // dashboard_Etudiant_radierCours
-                    if (0 === strpos($pathinfo, '/dashboardEtudiantRadierCours') && preg_match('#^/dashboardEtudiantRadierCours/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'dashboard_Etudiant_radierCours')), array (  '_controller' => 'moocline\\CompteBundle\\Controller\\DashboardController::dashboardEtu_RCAction',));
-                    }
-
-                    // dashboard_Etudiant_platformCours
-                    if (0 === strpos($pathinfo, '/dashboardEtudiantPlatformCours') && preg_match('#^/dashboardEtudiantPlatformCours/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'dashboard_Etudiant_platformCours')), array (  '_controller' => 'moocline\\CompteBundle\\Controller\\DashboardController::dashboardEtu_PCAction',));
-                    }
-
-                }
-
-                // dashboard_Enseignant
-                if (0 === strpos($pathinfo, '/dashboardEnseignant') && preg_match('#^/dashboardEnseignant/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'dashboard_Enseignant')), array (  '_controller' => 'moocline\\CompteBundle\\Controller\\DashboardController::dashboardEnsAction',));
-                }
-
+            // dashboard_Enseignant
+            if (0 === strpos($pathinfo, '/dashboardEns') && preg_match('#^/dashboardEns/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'dashboard_Enseignant')), array (  '_controller' => 'moocline\\CompteBundle\\Controller\\DashboardController::dashboardEnsAction',));
             }
 
         }

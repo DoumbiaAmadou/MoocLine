@@ -245,27 +245,4 @@ class FeuilleEx
             }
         return $i ; 
      }
-
-    /**
-     * Set visible
-     *
-     * @param boolean $visible
-     * @return FeuilleEx
-     */
-    public function setVisible($visible)
-    {
-        $this->visible = $visible;
-    
-        return $this;
-    }
-
-    /**
-     * Get visible
-     *
-     * @return boolean 
-     */
-    public function getVisible()
-    {
-        return $this->visible;
-    }
 }

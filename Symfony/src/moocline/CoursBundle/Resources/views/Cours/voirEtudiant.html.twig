@@ -15,7 +15,11 @@
             {{ cours.presentation|raw }}
             </div>
             <div class="col-md-2 col-md-offset-8">
-        <a href="{{ path('moocline_cours_inscription', {'id':cours.id})}}" class="btn btn-block btn-lg btn-primary">s'inscrire au cours</a>
+                {% if inscrie %}
+             <a href="{{ path('dashboard_Etudiant', {'id':app.user.id})}}" class="btn    btn-primary">retour</a>        
+                 {% else %}   
+        <a href="{{ path('moocline_cours_inscription', {'id':cours.id})}}" class="btn  btn-primary">s'inscrire au cours</a>
+        {% endif %}
         </div>
         </div>
         

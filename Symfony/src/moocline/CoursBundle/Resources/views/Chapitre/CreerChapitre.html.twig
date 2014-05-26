@@ -8,7 +8,7 @@
 
 
 {% block body %}
-    
+    <div class="container">
 <form class="form-horizontal" method="POST" action="">
 <fieldset>
 
@@ -25,9 +25,9 @@
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-5 control-label" for="email">date de publication</label>  
+  <label class="col-md-5 control-label" >Visibilité de la feuille</label>  
   <div class="col-md-3">
-  {{ form_widget(formb.date_de_publication) }} 
+  {{ form_widget(formb.visible) }} 
   </div>
 </div>
   
@@ -54,5 +54,5 @@
 
 </fieldset>
 </form>
-
+    </div>
 {% endblock %}

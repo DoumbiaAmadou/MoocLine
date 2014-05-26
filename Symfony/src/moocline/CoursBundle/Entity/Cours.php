@@ -35,12 +35,6 @@ class Cours
      */
     private $categorie;
 
-	/**
-	*@var string
-	*
-	*@ORM\Column(name="statut", type="text")
-	*/
-	private $statut;
 	
     /**
     * @ORM\ManyToOne(targetEntity="moocline\CompteBundle\Entity\User",
@@ -66,10 +60,7 @@ class Cours
     */
     private $etudiants;
     
-     /**
-    * @ORM\OneToMany(targetEntity="moocline\ExoBundle\Entity\FeuilleEx",mappedBy="cours")
-    */
-    private $feuilles;
+    
     /**
      * @var \DateTime
      *
@@ -140,24 +131,7 @@ class Cours
         return $this->categorie;
     }
 
-    /**
-     * Get statut
-     *
-     * @return string 
-     */
-    public function getStatut()
-    {
-        return $this->statut;
-    }
-	
-    /**
-     * Set statut
-     *
-     *@param string $statut
-     */
-    public function setStatut($statut){
-		$this->statut = $statut;
-    }    
+      
     
     public function __toString() {
         return (string)$this->getNom();
@@ -193,7 +167,7 @@ class Cours
     public function __construct()
     {
         $this->chapitres = new \Doctrine\Common\Collections\ArrayCollection();
-		$this->feuilles = new \Doctrine\Common\Collections\ArrayCollection();
+		
 		$this->etudiants = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -341,36 +315,5 @@ class Cours
         return $this->etudiants;
     }
 
-    /**
-     * Add feuilles
-     *
-     * @param \moocline\ExoBundle\Entity\FeuilleEx $feuilles
-     * @return Cours
-     */
-    public function addFeuille(\moocline\ExoBundle\Entity\FeuilleEx $feuilles)
-    {
-        $this->feuilles[] = $feuilles;
-        $feuilles->setCours($this);
-        return $this;
-    }
-
-    /**
-     * Remove feuilles
-     *
-     * @param \moocline\ExoBundle\Entity\FeuilleEx $feuilles
-     */
-    public function removeFeuille(\moocline\ExoBundle\Entity\FeuilleEx $feuilles)
-    {
-        $this->feuilles->removeElement($feuilles);
-    }
-
-    /**
-     * Get feuilles
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getFeuilles()
-    {
-        return $this->feuilles;
-    }
+   
 }

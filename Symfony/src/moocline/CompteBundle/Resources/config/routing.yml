@@ -40,28 +40,17 @@ vue_Enseignant:
     path:     /vueEnseignant/{id}
     defaults: { _controller: mooclineCompteBundle:Modification:voirEns }
 
+dashboard_Admin:
+    path:  /admin/dashboard/{id}
+    defaults: { _controller: mooclineCompteBundle:Dashboard:DashboardAdmin }
+
 dashboard_Etudiant:
     path:  /dashboard/{id}
     defaults: { _controller: mooclineCompteBundle:Dashboard:DashboardEtu }
-    requirements:
-        id: \d+
-
-dashboard_Etudiant_listCours:
-    path:  /dashboardEtudiantListCours/{id}
-    defaults: { _controller: mooclineCompteBundle:Dashboard:dashboardEtu_LC }
-
-dashboard_Etudiant_radierCours:
-    path:  /dashboardEtudiantRadierCours/{id}
-    defaults: { _controller: mooclineCompteBundle:Dashboard:dashboardEtu_RC }
-
-dashboard_Etudiant_platformCours:
-    path:  /dashboardEtudiantPlatformCours/{id}
-    defaults: { _controller: mooclineCompteBundle:Dashboard:dashboardEtu_PC }
-
+   
 dashboard_Enseignant:
-    path:  /dashboardEnseignant/{id}
+    path:  /dashboardEns/{id}
     defaults: { _controller: mooclineCompteBundle:Dashboard:dashboardEns }
-
 
 # Contact path
 contact_particulier:

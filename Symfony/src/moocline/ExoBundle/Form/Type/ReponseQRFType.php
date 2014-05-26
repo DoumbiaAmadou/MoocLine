@@ -16,7 +16,7 @@ class ReponseQRFType extends AbstractType
     {
         $builder
             ->add('Reponse' , 'text', array('attr' => array('placeholder' => 'Entrez la reponse')))
-            ->add('Correct', 'hidden', array(/*'choices' => array('Vrai','Faux'),*/'required' => false, 'data' => 0));
+            ->add('Correct', 'hidden', array('required' => false, 'data' => 0));
     }
     
     /**

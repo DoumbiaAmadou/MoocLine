@@ -41,30 +41,31 @@ class CreateExoController extends Controller
                          $user = $this->container->get('security.context')->getToken()->getUser(); 
                         $em = $this->getDoctrine()->getEntityManager();
                         $query = $em->createQuery(
-                     'SELECT p
-                     FROM mooclineCoursBundle:Cours p
-                    WHERE p.enseignant = '. $user->getId() .''
+                     'SELECT cp
+                     FROM mooclineCoursBundle:Chapitre cp
+                     JOIN cp.cours c
+					WHERE 
+					c.enseignant = '. $user->getId() .''
                     );
 
-                $cours = $query->getResult();
+                $chapitre = $query->getResult();
         
-      $form = $this->createForm(new FeuilleExType($cours),$feuille);
+      $form = $this->createForm(new FeuilleExType($chapitre),$feuille);
 	if ($this->getRequest()->getMethod() == 'POST') {
              $form->bind($this->getRequest());
-                if ($form->isValid()) {
-                    $feuille=$form->getData();
-                     $data = $this->getRequest()->request->get('mooc_exobundle_feuilleEx');
-                // $id_cours = intval($data['cours']) -1;   
+                if ($form->isValid())
+				{
+					$feuille=$form->getData();
+                    $data = $this->getRequest()->request->get('mooc_exobundle_feuilleEx');
 
-                $dbId = $data['cours'];
-            $courselect = $em->getRepository('mooclineCoursBundle:Cours')->findOneById($dbId);
-                $feuille->setCours($courselect);
+					$dbId = $data['chapitre'];
+					$chapselect = $em->getRepository('mooclineCoursBundle:Chapitre')->findOneById($dbId);
+					$feuille->setChapitre($chapselect);
                  
-                
-                $em=$this->getDoctrine()->getManager();
-		$em->persist($feuille);
-		$em->flush();
-                return $this->redirect($this->generateUrl('moocline_exo_create'));
+					$em=$this->getDoctrine()->getManager();
+					$em->persist($feuille);
+					$em->flush();
+					return $this->redirect($this->generateUrl('moocline_exo_create'));
 				}
 			}							
 			return $this->render('mooclineExoBundle:Create:creationFEx.html.twig', array('form' => $form->createView()));	
@@ -204,7 +205,30 @@ class CreateExoController extends Controller
 		{
 			$exercice = $session->get('exercice');
 			$em = $this->getDoctrine()->getManager();
-			$feuilles = $em->getRepository('mooclineExoBundle:FeuilleEx')->findAll();//findFeuillesExByIdOfCoursJoinedToCours($cours->getId());
+                       
+                        $user = $this->container->get('security.context')->getToken()->getUser(); 
+                        $em = $this->getDoctrine()->getEntityManager();
+                        $query = $em->createQuery(
+                                        'SELECT cp
+                                        FROM mooclineCoursBundle:Chapitre cp
+                                        JOIN cp.cours c
+					WHERE 
+					c.enseignant = '. $user->getId() .''
+                        );
+
+                $chapitres = $query->getResult();
+                $feuilles = new ArrayCollection();
+                foreach($chapitres as $chap)
+                {
+                    $feuilleList = $chap->getFeuilles();
+                    foreach($feuilleList as $f)
+                    {
+                        $feuilles->add($f);
+                    }
+                    
+                }
+                        //
+			//$feuilles = $em->getRepository('mooclineExoBundle:FeuilleEx')->findAll();//findFeuillesExByIdOfCoursJoinedToCours($cours->getId());
 			$form = $this->createForm(new ChooseFExType($feuilles));
 			if ($request->isMethod('POST'))
 			{
@@ -212,25 +236,7 @@ class CreateExoController extends Controller
 				if ($form->isValid())
 				{
 					if($form->get('exporter')->isClicked()){
-						//
-						/* $data =$exercice; 
-						 	$filename = "export_".date("Y_m_d_His").".csv"; 
-    
-					    	$response = $this->render('AcmeTestBundle:Default:adminCsv.html.twig', array('data' => $data)); 
-					 
-						    $response->setStatusCode(200);
-						    $response->headers->set('Content-Type', 'text/csv');
-						    $response->headers->set('Content-Description', 'Submissions Export');
-						    $response->headers->set('Content-Disposition', 'attachment; filename='.$filename);
-						    $response->headers->set('Content-Transfer-Encoding', 'binary');
-						    $response->headers->set('Pragma', 'no-cache');
-						    $response->headers->set('Expires', '0');
-						 
-						    $response->prepare();
-						    $response->sendHeaders();
-						    $response->sendContent();
-					  	*/
-						//
+						
 						
 							
 					    $filename = "export_".date("file_Y_m_d_His").".xml"; 
@@ -258,6 +264,7 @@ class CreateExoController extends Controller
 						$intitule = "Exercice";
 						$exercice->setIntitule($intitule);
 						$feuille->addExercice($exercice);
+						$feuille->setVisible($data['visible']);
 						$em->flush();
 						
 						$exercices = new ArrayCollection();
@@ -332,38 +339,60 @@ class CreateExoController extends Controller
 					$feuillesEx = new FeuilleEx(); 
 					foreach($xml->children() as $exercice)
 					{
-						$exo = new Exercice(); 
-						$exo->setType((string) $exercice["type"]) ; 
-						foreach($exercice->children() as $question)
+						if( $exercice["type"]!="p")
 						{
-							$quest = new Question();
-							$quest->setQuestion((string)$question->text);
-							//if()
-							//{
-								foreach($question->answers->children() as $answer )
-								{
-									foreach($answer->text as $text )
-									{	$rep = new Reponse();
+							$exo = new Exercice(); 
+							$exo->setType((string) $exercice["type"]) ; 
+							foreach($exercice->children() as $question)
+							{
+								$quest = new Question();
+								$quest->setQuestion((string)$question->text);
+							
+									if($exercice["type"]!="l")
+									{
+										foreach($question->answers->children() as $answer )
+										{		
+											if($exo->getType()=="qrf"){
+												$rep = new Reponse();
+												$rep->setCorrect(true); 
+												$rep->setReponse((string)$answer);
+												$quest->addReponse($rep);
+												// var_dump($rep);
+											}
+											if($exo->getType()=="qcm")
+											{
+												foreach($answer->text as $text )
+												{	$rep = new Reponse();
+														if($answer->attributes()->good =='true')
+															$rep->setCorrect(true); 
+														else 
+															$rep->setCorrect(false);
+												}
+												$rep->setReponse((string)$text);
+												$quest->addReponse($rep);
+											}
+									
+
 										
-										if($answer->attributes()->good =='true')
-											$rep->setCorrect(true); 
-										else 
-											$rep->setCorrect(false);
-										
-											$rep->setReponse((string)$text);
-											$quest->addReponse($rep);
-										
+												  //var_dump($rep);
+										}
 									}
-								}
-							//}
-							//
-							$exo->addQuestion($quest);
+								$exo->addQuestion($quest);
+							
+							
+									
+						
+							$session =  $this->get('session');
+                 		   	$session->set('exercice', $exo);
+                 		   }
 							//
 						}
+
+						
 					}
-                     
-					$session =  $this->get('session');
-                    $session->set('exercice', $exo);
+                       
+					
+                    //print_r($exo);
                                       
 					return $this->redirect($this->generateUrl('moocline_exo_validImportExercice'));
 				}
@@ -372,11 +401,6 @@ class CreateExoController extends Controller
 			
 		}
 		return $this->render('mooclineExoBundle:Create:importExo.html.twig', array('form'=> $form->createView()));
-		
-		
-		
-		
-		
     }
 	
 	public function validImportExerciceAction (Request $request){

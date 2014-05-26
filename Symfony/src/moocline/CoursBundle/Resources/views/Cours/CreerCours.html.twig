@@ -9,6 +9,8 @@
     <div class="container">
 <form class="form-horizontal" action=""  method="POST" {{ form_enctype(form) }}>
   <fieldset>
+      <!-- Form Name -->
+<legend style="" align="center">{{ titre }}</legend>
 
   <div class="form-group">
   <label class="col-md-5 control-label">nom</label>  
@@ -37,7 +39,7 @@
   
   {{ form_widget(form.presentation) }}
   
- 
+  
   {{ form_widget(form._token) }}<br>
   <div class="col-md-5">
    <input type="submit" class="btn btn-primary" value="Sauvegarder">   

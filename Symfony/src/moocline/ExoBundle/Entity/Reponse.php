@@ -34,7 +34,7 @@ class Reponse
      * @ORM\Column(name="reponse", type="text")
      */
     protected $reponse;
-
+	
      /**
     * @ORM\ManyToOne(targetEntity="moocline\ExoBundle\Entity\Question", cascade={"persist"})
 	* @ORM\JoinColumn(name="question_id", referencedColumnName="id")
@@ -57,6 +57,16 @@ class Reponse
     }
 
     /**
+     * Get correct
+     *
+     * @return boolean 
+     */
+    public function getCorrect()
+    {
+        return $this->correct;
+    }
+	
+	/**
      * Set correct
      *
      * @param boolean $correct
@@ -66,17 +76,17 @@ class Reponse
     {
         $this->correct = $correct;
     }
-
+	
     /**
-     * Get correct
+     * Get reponse
      *
-     * @return boolean 
+     * @return string 
      */
-    public function getCorrect()
+    public function getReponse()
     {
-        return $this->correct;
+        return $this->reponse;
     }
-
+	
     /**
      * Set reponse
      *
@@ -88,17 +98,7 @@ class Reponse
         $this->reponse = $reponse;
 
     }
-
-    /**
-     * Get reponse
-     *
-     * @return string 
-     */
-    public function getReponse()
-    {
-        return $this->reponse;
-    }
-
+	
     /**
      * Set question
      *

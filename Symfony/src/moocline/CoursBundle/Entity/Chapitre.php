@@ -37,12 +37,7 @@ class Chapitre
      */
     private $dateCreation;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_de_publication", type="date")
-     */
-    private $dateDePublication;
+    
 
     /**
      * @var string
@@ -56,7 +51,25 @@ class Chapitre
     cascade={"persist"})
     */
     private $cours;
+	
+	 /**
+     * @var boolean
+     *
+     * @ORM\Column(name="visible", type="boolean")
+     */
+    private $visible;
+	
+	
+	/**
+    * @ORM\OneToMany(targetEntity="moocline\ExoBundle\Entity\FeuilleEx",mappedBy="chapitre")
+    */
+    private $feuilles;
     
+	
+	public function __toString()
+    {
+        return (string) $this->getTitre()." (".$this->getCours()->__toString().")";
+    }
 
     /**
      * Get id
@@ -114,28 +127,8 @@ class Chapitre
         return $this->dateCreation;
     }
 
-    /**
-     * Set dateDePublication
-     *
-     * @param \DateTime $dateDePublication
-     * @return Chapitre
-     */
-    public function setDateDePublication($dateDePublication)
-    {
-        $this->dateDePublication = $dateDePublication;
-    
-        return $this;
-    }
+   
 
-    /**
-     * Get dateDePublication
-     *
-     * @return \DateTime 
-     */
-    public function getDateDePublication()
-    {
-        return $this->dateDePublication;
-    }
 
     /**
      * Set contenu
@@ -181,5 +174,61 @@ class Chapitre
     public function getCours()
     {
         return $this->cours;
+    }
+	
+	/**
+     * Add feuilles
+     *
+     * @param \moocline\ExoBundle\Entity\FeuilleEx $feuilles
+     * @return Cours
+     */
+    public function addFeuille(\moocline\ExoBundle\Entity\FeuilleEx $feuilles)
+    {
+        $this->feuilles[] = $feuilles;
+        $feuilles->setCours($this);
+        return $this;
+    }
+
+    /**
+     * Remove feuilles
+     *
+     * @param \moocline\ExoBundle\Entity\FeuilleEx $feuilles
+     */
+    public function removeFeuille(\moocline\ExoBundle\Entity\FeuilleEx $feuilles)
+    {
+        $this->feuilles->removeElement($feuilles);
+    }
+
+    /**
+     * Get feuilles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFeuilles()
+    {
+        return $this->feuilles;
+    }
+	
+	 /**
+     * Get visible
+     *
+     * @return boolean 
+     */
+    public function getVisible()
+    {
+        return $this->visible;
+    }
+	
+    /**
+     * Set visible
+     *
+     * @param boolean $visible
+     * @return FeuilleEx
+     */
+    public function setVisible($visible)
+    {
+        $this->visible = $visible;
+    
+        return $this;
     }
 }

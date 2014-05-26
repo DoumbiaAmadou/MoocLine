@@ -21,6 +21,12 @@ moocline_cours_vueEtu:
     requirements:
         id: \d+
 
+moocline_chapitre_vueEtu:
+    path:     /vuechapitreEtu/{id}
+    defaults: { _controller: mooclineCoursBundle:Chapitre:voirEtudiant }
+    requirements:
+        id: \d+
+
 moocline_cours_chapitre:
     pattern:  /chapitre/creation
     defaults: { _controller: mooclineCoursBundle:Chapitre:creer }

@@ -70,7 +70,11 @@
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="{{ path('dashboard_Etudiant', { 'id' : app.user.id}) }}">Tableau de bord</a></li>
+                  {% if ('ROLE_ADMIN' in app.user.roles) %}
+                  <li><a href="{{ path('dashboard_Enseignant', { 'id' : app.user.id}) }}">Tableau de bord</a></li>
+                  {% elseif ('ROLE_SUPER_ADMIN' in app.user.roles) %}
+                  <li><a href="{{ path('dashboard_Admin', { 'id' : app.user.id}) }}">Tableau de bord</a></li>
+                  {% endif %}
                   <li><a href="{{ path('vue_Etudiant', { 'id' : app.user.id}) }}">Profil</a></li>
                   <li><a href="{{ path('modification_Etudiant', { 'id' : app.user.id}) }}">Edition Profil</a></li>
                 </ul>

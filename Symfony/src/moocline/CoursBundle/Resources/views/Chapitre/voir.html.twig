@@ -19,7 +19,8 @@
    <form class="form-horizontal" method="POST" action="">    
     <div class="form-group">
         <div class="col-md-2" align="left">
-        <a href="{{ path('moocline_chapitre_edition', {'id':chapitre.id})}}" class="btn btn-block btn-lg btn-primary">Modifier</a>
+        <a href="{{ path('moocline_chapitre_edition', {'id':chapitre.id})}}" class="btn  btn-primary">Modifier</a>
+        <a href="{{ path('dashboard_Enseignant', {'id':app.user.id})}}" class="btn  btn-primary">retour</a>
         </div>
     </div>    
    </form>

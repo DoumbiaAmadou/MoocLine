@@ -1,0 +1,90 @@
+{# empty Twig template #}
+{# On étend le layout principal #}
+{% extends "::layout.html.twig" %}
+
+{% block title %} 
+  {{ parent() }} - DashBoard
+{% endblock %}
+
+{% block stylesheets %}
+     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" type="text/css" />
+    {%endblock %}
+{% block body %}
+ 
+             <div class="container">
+        <div class="row centered-form">
+      <div class="col-xs-10 col-sm-5 col-md-8 col-sm-offset-3 col-md-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h2 class="panel-title"> <strong>Tableau de bord Enseignant</strong> </small></h2>
+          </div>
+          <div class="panel-body">
+
+<form class="form-horizontal" method="POST" action="">
+<fieldset>
+<section>
+<aside>
+	        <div class="user">
+	        	<a href="{{ path('vue_Etudiant', {'id':user.id})}}">{{user.nom}} {{ user.prenom}}</a>
+	        	
+	        	<img src="{{asset('images/enseignant.png')}}" alt="Photo de l'enseignant" />
+	        </div>
+	        <img src="{{asset('images/bulle.png')}}" alt="" id="fleche_bulle" />
+	        <span>
+		        <a href="https://www.facebook.com/"><img src="{{asset('images/facebook.png')}}" alt="Facebook" /></a>
+	          	<a href="https://www.twitter.com/"><img src="{{asset('images/twitter.png')}}" alt="Twitter" /></a>
+	          	<a href="https://vimeo.com/"><img src="{{asset('images/vimeo.png')}}" alt="Vimeo" /></a>
+	          	
+	          	<a href="#"><img src="{{asset('images/rss.png')}}" alt="RSS" /></a>
+          	</span>
+     </aside>
+
+<article>
+			<div id="gestionc">
+	          <h4>Gestion de cours</h4>
+	          <b>
+	            <a href="{{ path('moocline_cours_creation') }}">Créer un cours</a><br/>
+	            <a href="{{ path('moocline_cours_chapitre') }}">Créer un chapitre</a>
+	          </b>
+	        </div>
+	        <div id="notif">
+	          <h4>Correction</h4>
+	          <b>
+	            <a href="#"><font color="">Devoirs  à corrigés</font></a><br/>
+	            
+	          </b>
+	        </div>
+	        <div id="cours">
+	          <h4>Mes cours</h4>  
+	          <b>
+                      {% for c in user.cours %}
+	            <a href="{{ path('moocline_cours_vue',{'id':c.id}) }}">{{ c }}</a><br/>
+                    {% endfor %}
+	          </b>
+	        </div>
+	        <div id="devoirs">
+                    <h4>Devoirs</h4>
+	          <ul>
+	            <li><a href="{{ path('moocline_FEx_create') }}">Créer un Devoir</a></li>
+                    {% if ex  %}
+	            <li><a href="{{ path('moocline_exo_create') }}">Créer un exercice</a></li>
+                    {% endif %}
+	          </ul>
+	        </div>
+     </article>
+     
+	
+
+
+</section>
+
+
+</fieldset>
+</form>
+
+          </div></div></div></div></div>
+	  <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {% endblock %}

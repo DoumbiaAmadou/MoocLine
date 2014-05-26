@@ -1,0 +1,48 @@
+{# src/moocline/CompteBundle/Resources/views/contact.html.twig #}
+
+  {#% extends "CompteBundle::layout.html.twig" %#}
+  {% extends "::layout.html.twig" %}
+  {% block title %} 
+    Contact
+  {% endblock %}
+
+  
+  {% block container %}
+    {# ------------------------------------ debut du formulaire --------------------------------------------#}
+    <fieldset>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4"><legend>Formulaire de Contact <strong>MOOC</strong>'Line</legend></div>
+        </div>
+        <form class="form-horizontal" {{ form_enctype(form) }} method="POST">
+            {{ form_widget(form._token) }}
+            <div class="form-group">
+                {{ form_label(form.email, 'Email', {'label_attr': {'class': 'col-md-4 control-label'}}) }}
+                <div class="col-md-4">
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control input-sm','placeholder':'veuillez indiquer votre adresse eamil'}}) }}
+                    {{ form_errors(form.email) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(form.sujet, 'Sujet', {'label_attr': {'class': 'col-md-4 control-label'}}) }}
+                <div class="col-md-4">
+                    {{ form_widget(form.sujet, {'attr': {'class': 'form-control input-sm','placeholder':'veuillez indiquer un sujet'}}) }}
+                    {{ form_errors(form.sujet) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(form.message, 'Commentaire', {'label_attr': {'class': 'col-md-4 control-label'}}) }}
+                <div class="col-md-4">
+                    {{ form_widget(form.message, {'attr': {'class': 'form-control input-sm','placeholder':'votre message... '}}) }}
+                        {{ form_errors(form.message) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="checkboxes"></label>
+                <div class="col-md-4">
+                        <input class="btn btn-block btn-success" type="submit" value="valider" />
+                </div>
+            </div>	
+        </form>
+    </fieldset>
+    {# --------------------------------------- fin du formulaire -------------------------------------------#}
+  {% endblock %}
